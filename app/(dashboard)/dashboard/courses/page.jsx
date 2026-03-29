@@ -1,57 +1,11 @@
 "use client";
-import DeleteIcon from "@assets/icons/DashboardIcon/DeleteIcon";
-import EditIcon from "@assets/icons/DashboardIcon/EditIcon";
-import DropdownSelect from "@common/DropdownSelect";
-import Loader from "@common/Loader";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import SearchInput from "@common/FormFieldComponent/SearchInput/SearchInput";
-import Pagination from "@common/FormFieldComponent/Pagination/Pagination";
 import { deleteUser, getAllUsers } from "@api/ApiAuth";
-import { formatDate } from "@utils/date";
-import AddButton from "@common/FormFieldComponent/AddButton/AddButton";
-import DropdownTableColumn from "@common/DropdownTableColumn";
-import Modal from "@common/Modal";
-import FormFieldInput from "@common/FormFieldComponent/FormFieldInput/FormFieldInput";
-import FormFieldSelect from "@common/FormFieldComponent/FormFieldSelect/FormFieldSelect";
-import AdminForm from "@components/Dashboard/User/AdminForm";
-
-export function ToggleSwitch() {
-  const [isOn, setIsOn] = useState(false);
-
-  return (
-    <button onClick={() => setIsOn(!isOn)}>
-      <svg
-        width="28"
-        height="18"
-        viewBox="0 0 22 12"
-        xmlns="http://www.w3.org/2000/svg"
-        className={`transition-all duration-200 ${isOn ? "text-[#25CA43]" : "text-gray-400"
-          }`}
-        fill="none"
-      >
-        <path
-          d={
-            isOn
-              ? `M6 12C4.33333 12 2.91667 11.4167 1.75 10.25C0.583333 9.08333 0 7.66667 0 6C0 4.33333 0.583333 2.91667 1.75 1.75C2.91667 0.583333 4.33333 0 6 0H16C17.6667 0 19.0833 0.583333 20.25 1.75C21.4167 2.91667 22 4.33333 22 6C22 7.66667 21.4167 9.08333 20.25 10.25C19.0833 11.4167 17.6667 12 16 12H6ZM18.125 8.125C18.7083 7.54167 19 6.83333 19 6C19 5.16667 18.7083 4.45833 18.125 3.875C17.5417 3.29167 16.8333 3 16 3C15.1667 3 14.4583 3.29167 13.875 3.875C13.2917 4.45833 13 5.16667 13 6C13 6.83333 13.2917 7.54167 13.875 8.125C14.4583 8.70833 15.1667 9 16 9C16.8333 9 17.5417 8.70833 18.125 8.125Z`
-              : `M6 12C4.33333 12 2.91667 11.4167 1.75 10.25C0.583333 9.08333 0 7.66667 0 6C0 4.33333 0.583333 2.91667 1.75 1.75C2.91667 0.583333 4.33333 0 6 0H16C17.6667 0 19.0833 0.583333 20.25 1.75C21.4167 2.91667 22 4.33333 22 6C22 7.66667 21.4167 9.08333 20.25 10.25C19.0833 11.4167 17.6667 12 16 12H6ZM8.125 8.125C8.70833 7.54167 9 6.83333 9 6C9 5.16667 8.70833 4.45833 8.125 3.875C7.54167 3.29167 6.83333 3 6 3C5.16667 3 4.45833 3.29167 3.875 3.875C3.29167 4.45833 3 5.16667 3 6C3 6.83333 3.29167 7.54167 3.875 8.125C4.45833 8.70833 5.16667 9 6 9C6.83333 9 7.54167 8.70833 8.125 8.125Z`
-          }
-          fill="currentColor"
-        />
-      </svg>
-    </button>
-  );
-}
+import courseImg from "@assets/images/courseImg.png";
+import Image from "next/image";
+import RoundStatus from "@common/RoundStatus";
 
 export default function Courses() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -151,7 +105,260 @@ export default function Courses() {
 
   return (
     <section className="p-4 ">
-      <h1>Courses</h1>
+      <div className="mb-10 ">
+        <h3 className="text-[#EFEFEE] textDisplay40 ">Programs</h3>
+      </div>
+      <div className="grid grid-cols-4 gap-[22px] ">
+        <div className="w-full max-w-[335px] rounded-[20px] border-2 border-[#37352B] overflow-hidden flex flex-col">
+          <Image src={courseImg} className="" />
+          <div className="pt-6 ps-[22px] pr-[34px] pb-4 flex-1 ">
+            <h1 className="text-[#EFEFEE] textDisplay24 mb-[13px] ">CEO Mindset & Discipline Protocol</h1>
+            <p className="text-[#ABADAF] textBody16 mb-4 ">
+              Rewrite your identity, discipline, and
+              daily operating system to think and...
+            </p>
+            <div className="flex items-center gap-3 text-[#ABADAF] textLabel16 ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="12" fill="#37352B" />
+                <path d="M13 10C13 8.89543 12.1046 8 11 8C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12C12.1046 12 13 11.1046 13 10ZM16.5 16C16.5 14.4947 15.5932 13.0697 14.7002 12.3999C14.5743 12.3055 14.5 12.1574 14.5 12C14.5 11.8427 14.5739 11.6945 14.6997 11.6001C14.9627 11.4028 15.173 11.1436 15.312 10.8457C15.451 10.5478 15.5144 10.2203 15.4966 9.89209C15.4788 9.56383 15.3803 9.24501 15.21 8.96387C15.0396 8.68277 14.8027 8.44797 14.52 8.28027C14.2825 8.13941 14.2039 7.83224 14.3447 7.59473C14.4856 7.35726 14.7928 7.27906 15.0303 7.41992C15.4543 7.67146 15.8099 8.02366 16.0654 8.44531C16.321 8.86704 16.4684 9.34549 16.4951 9.83789C16.5218 10.3303 16.4267 10.8217 16.2183 11.2686C16.0963 11.5299 15.9366 11.7702 15.7471 11.9849C16.6833 12.8963 17.5 14.3885 17.5 16C17.5 16.2761 17.2761 16.5 17 16.5C16.7239 16.5 16.5 16.2761 16.5 16ZM14 10C14 10.973 13.5363 11.8371 12.8184 12.3853C13.3217 12.6077 13.7855 12.9212 14.1821 13.3179C15.026 14.1618 15.5 15.3065 15.5 16.5C15.5 16.7761 15.2761 17 15 17C14.7239 17 14.5 16.7761 14.5 16.5C14.5 15.5717 14.1315 14.6813 13.4751 14.0249C12.8187 13.3685 11.9283 13 11 13C10.0717 13 9.18128 13.3685 8.5249 14.0249C7.86853 14.6813 7.5 15.5717 7.5 16.5C7.5 16.7761 7.27614 17 7 17C6.72386 17 6.5 16.7761 6.5 16.5C6.5 15.3065 6.97396 14.1618 7.81787 13.3179C8.21441 12.9213 8.67796 12.6077 9.18115 12.3853C8.46341 11.8371 8 10.9729 8 10C8 8.34315 9.34315 7 11 7C12.6569 7 14 8.34315 14 10Z" fill="#AE9060" />
+              </svg>
+              <span>Mark Suh</span>
+            </div>
+          </div>
+          <div className="mt-auto pt-4 pb-8 ms-[22px] mr-[34px] border-0 border-t-2 border-[#26282A] flex gap-3 items-center flex-wrap">
+            <div className="flex gap-[3px] items-center textLabel14 text-[#ABADAF] ">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_123_34)">
+                  <path d="M14.0013 7.99984C14.0013 4.68613 11.315 1.99984 8.0013 1.99984C4.68759 1.99984 2.0013 4.68613 2.0013 7.99984C2.0013 11.3135 4.68759 13.9998 8.0013 13.9998C11.315 13.9998 14.0013 11.3135 14.0013 7.99984ZM7.33464 3.99984C7.33464 3.63165 7.63311 3.33317 8.0013 3.33317C8.36949 3.33317 8.66797 3.63165 8.66797 3.99984V7.58773L10.9661 8.73682C11.2955 8.90148 11.429 9.30203 11.2643 9.63135C11.0997 9.96067 10.6991 10.0942 10.3698 9.92953L7.70312 8.59619C7.47727 8.48326 7.33464 8.25235 7.33464 7.99984V3.99984ZM15.3346 7.99984C15.3346 12.0499 12.0514 15.3332 8.0013 15.3332C3.95121 15.3332 0.667969 12.0499 0.667969 7.99984C0.667969 3.94975 3.95121 0.666504 8.0013 0.666504C12.0514 0.666504 15.3346 3.94975 15.3346 7.99984Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_123_34">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>3h</span>
+            </div>
+            <RoundStatus color="green" label="Beginner" />
+          </div>
+        </div>
+        <div className="w-full max-w-[335px] rounded-[20px] border-2 border-[#37352B] overflow-hidden flex flex-col ">
+          <Image src={courseImg} className="" />
+          <div className="pt-6 ps-[22px] pr-[34px] pb-4 flex-1">
+            <RoundStatus color="golden" label="Mindset" />
+            <h1 className="text-[#EFEFEE] textDisplay24 mb-[13px] mt-4">CEO Mindset & Discipline Protocol</h1>
+            <p className="text-[#ABADAF] textBody16 mb-4 ">
+              Rewrite your identity, discipline, and
+              daily operating system to think and...
+            </p>
+            <div className="flex items-center gap-3 text-[#ABADAF] textLabel16 ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="12" fill="#37352B" />
+                <path d="M13 10C13 8.89543 12.1046 8 11 8C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12C12.1046 12 13 11.1046 13 10ZM16.5 16C16.5 14.4947 15.5932 13.0697 14.7002 12.3999C14.5743 12.3055 14.5 12.1574 14.5 12C14.5 11.8427 14.5739 11.6945 14.6997 11.6001C14.9627 11.4028 15.173 11.1436 15.312 10.8457C15.451 10.5478 15.5144 10.2203 15.4966 9.89209C15.4788 9.56383 15.3803 9.24501 15.21 8.96387C15.0396 8.68277 14.8027 8.44797 14.52 8.28027C14.2825 8.13941 14.2039 7.83224 14.3447 7.59473C14.4856 7.35726 14.7928 7.27906 15.0303 7.41992C15.4543 7.67146 15.8099 8.02366 16.0654 8.44531C16.321 8.86704 16.4684 9.34549 16.4951 9.83789C16.5218 10.3303 16.4267 10.8217 16.2183 11.2686C16.0963 11.5299 15.9366 11.7702 15.7471 11.9849C16.6833 12.8963 17.5 14.3885 17.5 16C17.5 16.2761 17.2761 16.5 17 16.5C16.7239 16.5 16.5 16.2761 16.5 16ZM14 10C14 10.973 13.5363 11.8371 12.8184 12.3853C13.3217 12.6077 13.7855 12.9212 14.1821 13.3179C15.026 14.1618 15.5 15.3065 15.5 16.5C15.5 16.7761 15.2761 17 15 17C14.7239 17 14.5 16.7761 14.5 16.5C14.5 15.5717 14.1315 14.6813 13.4751 14.0249C12.8187 13.3685 11.9283 13 11 13C10.0717 13 9.18128 13.3685 8.5249 14.0249C7.86853 14.6813 7.5 15.5717 7.5 16.5C7.5 16.7761 7.27614 17 7 17C6.72386 17 6.5 16.7761 6.5 16.5C6.5 15.3065 6.97396 14.1618 7.81787 13.3179C8.21441 12.9213 8.67796 12.6077 9.18115 12.3853C8.46341 11.8371 8 10.9729 8 10C8 8.34315 9.34315 7 11 7C12.6569 7 14 8.34315 14 10Z" fill="#AE9060" />
+              </svg>
+              <span>Mark Suh</span>
+            </div>
+          </div>
+          <div className="mt-auto pt-4 pb-8 ms-[22px] mr-[34px] border-0 border-t-2 border-[#26282A] flex gap-3 items-center flex-wrap">
+            <div className="flex gap-[3px] items-center textLabel14 text-[#ABADAF] ">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_123_34)">
+                  <path d="M14.0013 7.99984C14.0013 4.68613 11.315 1.99984 8.0013 1.99984C4.68759 1.99984 2.0013 4.68613 2.0013 7.99984C2.0013 11.3135 4.68759 13.9998 8.0013 13.9998C11.315 13.9998 14.0013 11.3135 14.0013 7.99984ZM7.33464 3.99984C7.33464 3.63165 7.63311 3.33317 8.0013 3.33317C8.36949 3.33317 8.66797 3.63165 8.66797 3.99984V7.58773L10.9661 8.73682C11.2955 8.90148 11.429 9.30203 11.2643 9.63135C11.0997 9.96067 10.6991 10.0942 10.3698 9.92953L7.70312 8.59619C7.47727 8.48326 7.33464 8.25235 7.33464 7.99984V3.99984ZM15.3346 7.99984C15.3346 12.0499 12.0514 15.3332 8.0013 15.3332C3.95121 15.3332 0.667969 12.0499 0.667969 7.99984C0.667969 3.94975 3.95121 0.666504 8.0013 0.666504C12.0514 0.666504 15.3346 3.94975 15.3346 7.99984Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_123_34">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>3h</span>
+            </div>
+            <RoundStatus color="yellow" label="Intermediate" />
+          </div>
+        </div>
+        <div className="w-full max-w-[335px] rounded-[20px] border-2 border-[#37352B] overflow-hidden flex flex-col ">
+          <Image src={courseImg} className="" />
+          <div className="pt-6 ps-[22px] pr-[34px] pb-4 flex-1">
+            <RoundStatus color="golden" label="Mindset" />
+            <h1 className="text-[#EFEFEE] textDisplay24 mb-[13px] mt-4">CEO Mindset & Discipline Protocol</h1>
+            <p className="text-[#ABADAF] textBody16 mb-4 ">
+              Rewrite your identity, discipline, and
+              daily operating system to think and...
+            </p>
+            <div className="flex items-center gap-3 text-[#ABADAF] textLabel16 ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="12" fill="#37352B" />
+                <path d="M13 10C13 8.89543 12.1046 8 11 8C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12C12.1046 12 13 11.1046 13 10ZM16.5 16C16.5 14.4947 15.5932 13.0697 14.7002 12.3999C14.5743 12.3055 14.5 12.1574 14.5 12C14.5 11.8427 14.5739 11.6945 14.6997 11.6001C14.9627 11.4028 15.173 11.1436 15.312 10.8457C15.451 10.5478 15.5144 10.2203 15.4966 9.89209C15.4788 9.56383 15.3803 9.24501 15.21 8.96387C15.0396 8.68277 14.8027 8.44797 14.52 8.28027C14.2825 8.13941 14.2039 7.83224 14.3447 7.59473C14.4856 7.35726 14.7928 7.27906 15.0303 7.41992C15.4543 7.67146 15.8099 8.02366 16.0654 8.44531C16.321 8.86704 16.4684 9.34549 16.4951 9.83789C16.5218 10.3303 16.4267 10.8217 16.2183 11.2686C16.0963 11.5299 15.9366 11.7702 15.7471 11.9849C16.6833 12.8963 17.5 14.3885 17.5 16C17.5 16.2761 17.2761 16.5 17 16.5C16.7239 16.5 16.5 16.2761 16.5 16ZM14 10C14 10.973 13.5363 11.8371 12.8184 12.3853C13.3217 12.6077 13.7855 12.9212 14.1821 13.3179C15.026 14.1618 15.5 15.3065 15.5 16.5C15.5 16.7761 15.2761 17 15 17C14.7239 17 14.5 16.7761 14.5 16.5C14.5 15.5717 14.1315 14.6813 13.4751 14.0249C12.8187 13.3685 11.9283 13 11 13C10.0717 13 9.18128 13.3685 8.5249 14.0249C7.86853 14.6813 7.5 15.5717 7.5 16.5C7.5 16.7761 7.27614 17 7 17C6.72386 17 6.5 16.7761 6.5 16.5C6.5 15.3065 6.97396 14.1618 7.81787 13.3179C8.21441 12.9213 8.67796 12.6077 9.18115 12.3853C8.46341 11.8371 8 10.9729 8 10C8 8.34315 9.34315 7 11 7C12.6569 7 14 8.34315 14 10Z" fill="#AE9060" />
+              </svg>
+              <span>Mark Suh</span>
+            </div>
+          </div>
+          <div className="mt-auto pt-4 pb-8 ms-[22px] mr-[34px] border-0 border-t-2 border-[#26282A] flex gap-3 items-center flex-wrap">
+            <div className="flex gap-[3px] items-center textLabel14 text-[#ABADAF] ">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_123_34)">
+                  <path d="M14.0013 7.99984C14.0013 4.68613 11.315 1.99984 8.0013 1.99984C4.68759 1.99984 2.0013 4.68613 2.0013 7.99984C2.0013 11.3135 4.68759 13.9998 8.0013 13.9998C11.315 13.9998 14.0013 11.3135 14.0013 7.99984ZM7.33464 3.99984C7.33464 3.63165 7.63311 3.33317 8.0013 3.33317C8.36949 3.33317 8.66797 3.63165 8.66797 3.99984V7.58773L10.9661 8.73682C11.2955 8.90148 11.429 9.30203 11.2643 9.63135C11.0997 9.96067 10.6991 10.0942 10.3698 9.92953L7.70312 8.59619C7.47727 8.48326 7.33464 8.25235 7.33464 7.99984V3.99984ZM15.3346 7.99984C15.3346 12.0499 12.0514 15.3332 8.0013 15.3332C3.95121 15.3332 0.667969 12.0499 0.667969 7.99984C0.667969 3.94975 3.95121 0.666504 8.0013 0.666504C12.0514 0.666504 15.3346 3.94975 15.3346 7.99984Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_123_34">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>3h</span>
+            </div>
+            <RoundStatus color="red" label="Advanced" />
+          </div>
+        </div>
+        <div className="w-full max-w-[335px] rounded-[20px] border-2 border-[#37352B] overflow-hidden flex flex-col ">
+          <Image src={courseImg} className="" />
+          <div className="pt-6 ps-[22px] pr-[34px] pb-4 flex-1">
+            <RoundStatus color="golden" label="Mindset" />
+            <h1 className="text-[#EFEFEE] textDisplay24 mb-[13px] mt-4">CEO Mindset & Discipline Protocol</h1>
+            <p className="text-[#ABADAF] textBody16 mb-4 ">
+              Rewrite your identity, discipline, and
+              daily operating system to think and...
+            </p>
+            <div className="flex items-center gap-3 text-[#ABADAF] textLabel16 ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="12" fill="#37352B" />
+                <path d="M13 10C13 8.89543 12.1046 8 11 8C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12C12.1046 12 13 11.1046 13 10ZM16.5 16C16.5 14.4947 15.5932 13.0697 14.7002 12.3999C14.5743 12.3055 14.5 12.1574 14.5 12C14.5 11.8427 14.5739 11.6945 14.6997 11.6001C14.9627 11.4028 15.173 11.1436 15.312 10.8457C15.451 10.5478 15.5144 10.2203 15.4966 9.89209C15.4788 9.56383 15.3803 9.24501 15.21 8.96387C15.0396 8.68277 14.8027 8.44797 14.52 8.28027C14.2825 8.13941 14.2039 7.83224 14.3447 7.59473C14.4856 7.35726 14.7928 7.27906 15.0303 7.41992C15.4543 7.67146 15.8099 8.02366 16.0654 8.44531C16.321 8.86704 16.4684 9.34549 16.4951 9.83789C16.5218 10.3303 16.4267 10.8217 16.2183 11.2686C16.0963 11.5299 15.9366 11.7702 15.7471 11.9849C16.6833 12.8963 17.5 14.3885 17.5 16C17.5 16.2761 17.2761 16.5 17 16.5C16.7239 16.5 16.5 16.2761 16.5 16ZM14 10C14 10.973 13.5363 11.8371 12.8184 12.3853C13.3217 12.6077 13.7855 12.9212 14.1821 13.3179C15.026 14.1618 15.5 15.3065 15.5 16.5C15.5 16.7761 15.2761 17 15 17C14.7239 17 14.5 16.7761 14.5 16.5C14.5 15.5717 14.1315 14.6813 13.4751 14.0249C12.8187 13.3685 11.9283 13 11 13C10.0717 13 9.18128 13.3685 8.5249 14.0249C7.86853 14.6813 7.5 15.5717 7.5 16.5C7.5 16.7761 7.27614 17 7 17C6.72386 17 6.5 16.7761 6.5 16.5C6.5 15.3065 6.97396 14.1618 7.81787 13.3179C8.21441 12.9213 8.67796 12.6077 9.18115 12.3853C8.46341 11.8371 8 10.9729 8 10C8 8.34315 9.34315 7 11 7C12.6569 7 14 8.34315 14 10Z" fill="#AE9060" />
+              </svg>
+              <span>Mark Suh</span>
+            </div>
+          </div>
+          <div className="mt-auto pt-4 pb-8 ms-[22px] mr-[34px] border-0 border-t-2 border-[#26282A] flex gap-3 items-center flex-wrap">
+            <div className="flex gap-[3px] items-center textLabel14 text-[#ABADAF] ">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_123_34)">
+                  <path d="M14.0013 7.99984C14.0013 4.68613 11.315 1.99984 8.0013 1.99984C4.68759 1.99984 2.0013 4.68613 2.0013 7.99984C2.0013 11.3135 4.68759 13.9998 8.0013 13.9998C11.315 13.9998 14.0013 11.3135 14.0013 7.99984ZM7.33464 3.99984C7.33464 3.63165 7.63311 3.33317 8.0013 3.33317C8.36949 3.33317 8.66797 3.63165 8.66797 3.99984V7.58773L10.9661 8.73682C11.2955 8.90148 11.429 9.30203 11.2643 9.63135C11.0997 9.96067 10.6991 10.0942 10.3698 9.92953L7.70312 8.59619C7.47727 8.48326 7.33464 8.25235 7.33464 7.99984V3.99984ZM15.3346 7.99984C15.3346 12.0499 12.0514 15.3332 8.0013 15.3332C3.95121 15.3332 0.667969 12.0499 0.667969 7.99984C0.667969 3.94975 3.95121 0.666504 8.0013 0.666504C12.0514 0.666504 15.3346 3.94975 15.3346 7.99984Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_123_34">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>3h</span>
+            </div>
+            <RoundStatus color="green" label="Beginner" />
+          </div>
+        </div>
+        <div className="relative w-full max-w-[335px] rounded-[20px] border-2 border-[#37352B] overflow-hidden flex flex-col ">
+          <Image src={courseImg} className="" />
+          <div className="pt-6 ps-[22px] pr-[34px] pb-4 flex-1">
+            <RoundStatus color="golden" label="Mindset" />
+            <h1 className="text-[#EFEFEE] textDisplay24 mb-[13px] mt-4">CEO Mindset & Discipline Protocol</h1>
+            <p className="text-[#ABADAF] textBody16 mb-4 ">
+              Rewrite your identity, discipline, and
+              daily operating system to think and...
+            </p>
+            <div className="flex items-center gap-3 text-[#ABADAF] textLabel16 ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="12" fill="#37352B" />
+                <path d="M13 10C13 8.89543 12.1046 8 11 8C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12C12.1046 12 13 11.1046 13 10ZM16.5 16C16.5 14.4947 15.5932 13.0697 14.7002 12.3999C14.5743 12.3055 14.5 12.1574 14.5 12C14.5 11.8427 14.5739 11.6945 14.6997 11.6001C14.9627 11.4028 15.173 11.1436 15.312 10.8457C15.451 10.5478 15.5144 10.2203 15.4966 9.89209C15.4788 9.56383 15.3803 9.24501 15.21 8.96387C15.0396 8.68277 14.8027 8.44797 14.52 8.28027C14.2825 8.13941 14.2039 7.83224 14.3447 7.59473C14.4856 7.35726 14.7928 7.27906 15.0303 7.41992C15.4543 7.67146 15.8099 8.02366 16.0654 8.44531C16.321 8.86704 16.4684 9.34549 16.4951 9.83789C16.5218 10.3303 16.4267 10.8217 16.2183 11.2686C16.0963 11.5299 15.9366 11.7702 15.7471 11.9849C16.6833 12.8963 17.5 14.3885 17.5 16C17.5 16.2761 17.2761 16.5 17 16.5C16.7239 16.5 16.5 16.2761 16.5 16ZM14 10C14 10.973 13.5363 11.8371 12.8184 12.3853C13.3217 12.6077 13.7855 12.9212 14.1821 13.3179C15.026 14.1618 15.5 15.3065 15.5 16.5C15.5 16.7761 15.2761 17 15 17C14.7239 17 14.5 16.7761 14.5 16.5C14.5 15.5717 14.1315 14.6813 13.4751 14.0249C12.8187 13.3685 11.9283 13 11 13C10.0717 13 9.18128 13.3685 8.5249 14.0249C7.86853 14.6813 7.5 15.5717 7.5 16.5C7.5 16.7761 7.27614 17 7 17C6.72386 17 6.5 16.7761 6.5 16.5C6.5 15.3065 6.97396 14.1618 7.81787 13.3179C8.21441 12.9213 8.67796 12.6077 9.18115 12.3853C8.46341 11.8371 8 10.9729 8 10C8 8.34315 9.34315 7 11 7C12.6569 7 14 8.34315 14 10Z" fill="#AE9060" />
+              </svg>
+              <span>Mark Suh</span>
+            </div>
+          </div>
+          <div className="mt-auto pt-4 pb-8 ms-[22px] mr-[34px] border-0 border-t-2 border-[#26282A] flex gap-3 items-center flex-wrap">
+            <div className="flex gap-[3px] items-center textLabel14 text-[#ABADAF] ">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_123_34)">
+                  <path d="M14.0013 7.99984C14.0013 4.68613 11.315 1.99984 8.0013 1.99984C4.68759 1.99984 2.0013 4.68613 2.0013 7.99984C2.0013 11.3135 4.68759 13.9998 8.0013 13.9998C11.315 13.9998 14.0013 11.3135 14.0013 7.99984ZM7.33464 3.99984C7.33464 3.63165 7.63311 3.33317 8.0013 3.33317C8.36949 3.33317 8.66797 3.63165 8.66797 3.99984V7.58773L10.9661 8.73682C11.2955 8.90148 11.429 9.30203 11.2643 9.63135C11.0997 9.96067 10.6991 10.0942 10.3698 9.92953L7.70312 8.59619C7.47727 8.48326 7.33464 8.25235 7.33464 7.99984V3.99984ZM15.3346 7.99984C15.3346 12.0499 12.0514 15.3332 8.0013 15.3332C3.95121 15.3332 0.667969 12.0499 0.667969 7.99984C0.667969 3.94975 3.95121 0.666504 8.0013 0.666504C12.0514 0.666504 15.3346 3.94975 15.3346 7.99984Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_123_34">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>3h</span>
+            </div>
+            <RoundStatus color="green" label="Beginner" />
+          </div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[#1D1D1DCC] backdrop-blur-[4px] flex items-center justify-center ">
+            <div className="flex flex-col items-center ">
+              <span className="mx-auto mb-5 ">
+                <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="72" height="72" rx="36" fill="url(#paint0_linear_123_1600)" />
+                  <path d="M48 37.5C48 36.6716 47.3284 36 46.5 36H25.5C24.6716 36 24 36.6716 24 37.5V48C24 48.8284 24.6716 49.5 25.5 49.5H46.5C47.3284 49.5 48 48.8284 48 48V37.5ZM42 28.5C42 26.9087 41.3674 25.383 40.2422 24.2578C39.117 23.1326 37.5913 22.5 36 22.5C34.4087 22.5 32.883 23.1326 31.7578 24.2578C30.6326 25.383 30 26.9087 30 28.5V33H42V28.5ZM45 33H46.5C48.9853 33 51 35.0147 51 37.5V48C51 50.4853 48.9853 52.5 46.5 52.5H25.5C23.0147 52.5 21 50.4853 21 48V37.5C21 35.0147 23.0147 33 25.5 33H27V28.5C27 26.1131 27.9489 23.8245 29.6367 22.1367C31.3245 20.4489 33.6131 19.5 36 19.5C38.3869 19.5 40.6755 20.4489 42.3633 22.1367C44.0511 23.8245 45 26.1131 45 28.5V33Z" fill="#B88934" />
+                  <defs>
+                    <linearGradient id="paint0_linear_123_1600" x1="0" y1="36" x2="72" y2="36" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#AA7C30" stop-opacity="0.4" />
+                      <stop offset="1" stop-color="#AA7C30" stop-opacity="0.2" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <p className="text-[#EFEFEE] font-semibold text-[22px] leading-[130%] text-center mb-3 ">Coming Soon</p>
+              <p className="text-[#ABADAF] textLabel14 text-center mb-[13px] ">Launching in February!</p>
+              <div className="text-[#AE9060] textLabel14 flex gap-2 items-center mx-auto ">
+                <span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.9987 10.6665C13.9987 8.82555 12.5063 7.33317 10.6654 7.33317C8.82442 7.33317 7.33203 8.82555 7.33203 10.6665C7.33203 12.5075 8.82442 13.9998 10.6654 13.9998C12.5063 13.9998 13.9987 12.5075 13.9987 10.6665ZM9.9987 9.33317C9.9987 8.96498 10.2972 8.6665 10.6654 8.6665C11.0336 8.6665 11.332 8.96498 11.332 9.33317V10.4295L12.0853 10.9009C12.3975 11.096 12.4927 11.5079 12.2975 11.8202C12.1024 12.1322 11.6911 12.2268 11.3789 12.0317L10.3118 11.3651C10.1171 11.2433 9.99874 11.0297 9.9987 10.8V9.33317ZM13.332 4.99984V3.99984C13.332 3.82303 13.2617 3.65351 13.1367 3.52848C13.0117 3.40346 12.8422 3.33317 12.6654 3.33317H11.332V3.99984C11.332 4.36803 11.0336 4.6665 10.6654 4.6665C10.2972 4.6665 9.9987 4.36803 9.9987 3.99984V3.33317H5.9987V3.99984C5.9987 4.36803 5.70022 4.6665 5.33203 4.6665C4.96384 4.6665 4.66536 4.36803 4.66536 3.99984V3.33317H3.33203C3.15522 3.33317 2.9857 3.40346 2.86068 3.52848C2.73565 3.65351 2.66536 3.82303 2.66536 3.99984V5.99984H5.33203C5.70022 5.99984 5.9987 6.29831 5.9987 6.6665C5.9987 7.03469 5.70022 7.33317 5.33203 7.33317H2.66536V13.3332C2.66536 13.51 2.73565 13.6795 2.86068 13.8045C2.9857 13.9296 3.15522 13.9998 3.33203 13.9998H5.66536C6.03355 13.9998 6.33203 14.2983 6.33203 14.6665C6.33203 15.0347 6.03355 15.3332 5.66536 15.3332H3.33203C2.8016 15.3332 2.29304 15.1223 1.91797 14.7472C1.5429 14.3722 1.33203 13.8636 1.33203 13.3332V3.99984C1.33203 3.4694 1.5429 2.96085 1.91797 2.58577C2.29304 2.2107 2.8016 1.99984 3.33203 1.99984H4.66536V1.33317C4.66536 0.964981 4.96384 0.666504 5.33203 0.666504C5.70022 0.666504 5.9987 0.964981 5.9987 1.33317V1.99984H9.9987V1.33317C9.9987 0.964981 10.2972 0.666504 10.6654 0.666504C11.0336 0.666504 11.332 0.964981 11.332 1.33317V1.99984H12.6654C13.1958 1.99984 13.7044 2.2107 14.0794 2.58577C14.4545 2.96085 14.6654 3.4694 14.6654 3.99984V4.99984C14.6654 5.36803 14.3669 5.6665 13.9987 5.6665C13.6305 5.6665 13.332 5.36803 13.332 4.99984ZM15.332 10.6665C15.332 13.2438 13.2427 15.3332 10.6654 15.3332C8.08804 15.3332 5.9987 13.2438 5.9987 10.6665C5.9987 8.08918 8.08804 5.99984 10.6654 5.99984C13.2427 5.99984 15.332 8.08918 15.332 10.6665Z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span>
+                  Expected Feb 2026
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="relative w-full max-w-[335px] rounded-[20px] border-2 border-[#37352B] overflow-hidden flex flex-col ">
+          <Image src={courseImg} className="" />
+          <div className="pt-6 ps-[22px] pr-[34px] pb-4 flex-1">
+            <RoundStatus color="golden" label="Mindset" />
+            <h1 className="text-[#EFEFEE] textDisplay24 mb-[13px] mt-4">CEO Mindset & Discipline Protocol</h1>
+            <p className="text-[#ABADAF] textBody16 mb-4 ">
+              Rewrite your identity, discipline, and
+              daily operating system to think and...
+            </p>
+            <div className="flex items-center gap-3 text-[#ABADAF] textLabel16 ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="12" fill="#37352B" />
+                <path d="M13 10C13 8.89543 12.1046 8 11 8C9.89543 8 9 8.89543 9 10C9 11.1046 9.89543 12 11 12C12.1046 12 13 11.1046 13 10ZM16.5 16C16.5 14.4947 15.5932 13.0697 14.7002 12.3999C14.5743 12.3055 14.5 12.1574 14.5 12C14.5 11.8427 14.5739 11.6945 14.6997 11.6001C14.9627 11.4028 15.173 11.1436 15.312 10.8457C15.451 10.5478 15.5144 10.2203 15.4966 9.89209C15.4788 9.56383 15.3803 9.24501 15.21 8.96387C15.0396 8.68277 14.8027 8.44797 14.52 8.28027C14.2825 8.13941 14.2039 7.83224 14.3447 7.59473C14.4856 7.35726 14.7928 7.27906 15.0303 7.41992C15.4543 7.67146 15.8099 8.02366 16.0654 8.44531C16.321 8.86704 16.4684 9.34549 16.4951 9.83789C16.5218 10.3303 16.4267 10.8217 16.2183 11.2686C16.0963 11.5299 15.9366 11.7702 15.7471 11.9849C16.6833 12.8963 17.5 14.3885 17.5 16C17.5 16.2761 17.2761 16.5 17 16.5C16.7239 16.5 16.5 16.2761 16.5 16ZM14 10C14 10.973 13.5363 11.8371 12.8184 12.3853C13.3217 12.6077 13.7855 12.9212 14.1821 13.3179C15.026 14.1618 15.5 15.3065 15.5 16.5C15.5 16.7761 15.2761 17 15 17C14.7239 17 14.5 16.7761 14.5 16.5C14.5 15.5717 14.1315 14.6813 13.4751 14.0249C12.8187 13.3685 11.9283 13 11 13C10.0717 13 9.18128 13.3685 8.5249 14.0249C7.86853 14.6813 7.5 15.5717 7.5 16.5C7.5 16.7761 7.27614 17 7 17C6.72386 17 6.5 16.7761 6.5 16.5C6.5 15.3065 6.97396 14.1618 7.81787 13.3179C8.21441 12.9213 8.67796 12.6077 9.18115 12.3853C8.46341 11.8371 8 10.9729 8 10C8 8.34315 9.34315 7 11 7C12.6569 7 14 8.34315 14 10Z" fill="#AE9060" />
+              </svg>
+              <span>Mark Suh</span>
+            </div>
+          </div>
+          <div className="mt-auto pt-4 pb-8 ms-[22px] mr-[34px] border-0 border-t-2 border-[#26282A] flex gap-3 items-center flex-wrap">
+            <div className="flex gap-[3px] items-center textLabel14 text-[#ABADAF] ">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_123_34)">
+                  <path d="M14.0013 7.99984C14.0013 4.68613 11.315 1.99984 8.0013 1.99984C4.68759 1.99984 2.0013 4.68613 2.0013 7.99984C2.0013 11.3135 4.68759 13.9998 8.0013 13.9998C11.315 13.9998 14.0013 11.3135 14.0013 7.99984ZM7.33464 3.99984C7.33464 3.63165 7.63311 3.33317 8.0013 3.33317C8.36949 3.33317 8.66797 3.63165 8.66797 3.99984V7.58773L10.9661 8.73682C11.2955 8.90148 11.429 9.30203 11.2643 9.63135C11.0997 9.96067 10.6991 10.0942 10.3698 9.92953L7.70312 8.59619C7.47727 8.48326 7.33464 8.25235 7.33464 7.99984V3.99984ZM15.3346 7.99984C15.3346 12.0499 12.0514 15.3332 8.0013 15.3332C3.95121 15.3332 0.667969 12.0499 0.667969 7.99984C0.667969 3.94975 3.95121 0.666504 8.0013 0.666504C12.0514 0.666504 15.3346 3.94975 15.3346 7.99984Z" fill="currentColor" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_123_34">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>3h</span>
+            </div>
+            <RoundStatus color="green" label="Beginner" />
+          </div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[#1D1D1DCC] backdrop-blur-[4px] flex items-center justify-center ">
+            <div className="flex flex-col items-center ">
+              <span className="mx-auto mb-5 ">
+                <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="72" height="72" rx="36" fill="url(#paint0_linear_123_1600)" />
+                  <path d="M48 37.5C48 36.6716 47.3284 36 46.5 36H25.5C24.6716 36 24 36.6716 24 37.5V48C24 48.8284 24.6716 49.5 25.5 49.5H46.5C47.3284 49.5 48 48.8284 48 48V37.5ZM42 28.5C42 26.9087 41.3674 25.383 40.2422 24.2578C39.117 23.1326 37.5913 22.5 36 22.5C34.4087 22.5 32.883 23.1326 31.7578 24.2578C30.6326 25.383 30 26.9087 30 28.5V33H42V28.5ZM45 33H46.5C48.9853 33 51 35.0147 51 37.5V48C51 50.4853 48.9853 52.5 46.5 52.5H25.5C23.0147 52.5 21 50.4853 21 48V37.5C21 35.0147 23.0147 33 25.5 33H27V28.5C27 26.1131 27.9489 23.8245 29.6367 22.1367C31.3245 20.4489 33.6131 19.5 36 19.5C38.3869 19.5 40.6755 20.4489 42.3633 22.1367C44.0511 23.8245 45 26.1131 45 28.5V33Z" fill="#B88934" />
+                  <defs>
+                    <linearGradient id="paint0_linear_123_1600" x1="0" y1="36" x2="72" y2="36" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#AA7C30" stop-opacity="0.4" />
+                      <stop offset="1" stop-color="#AA7C30" stop-opacity="0.2" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <p className="text-[#EFEFEE] font-semibold text-[22px] leading-[130%] text-center mb-3 ">Coming Soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
