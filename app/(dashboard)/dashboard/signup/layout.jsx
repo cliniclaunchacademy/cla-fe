@@ -3,6 +3,6 @@ export const metadata = {
   description: "",
 };
 
-export default function EditAdminLayout({ children }) {
+export default function SignupLayout({ children }) {
   return <div>{children}</div>;
 }

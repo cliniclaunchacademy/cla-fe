@@ -25,7 +25,7 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
 
   const handleLogout = () => {
     logout();
-    router.push("/dashboard/adminLogin");
+    router.push("/dashboard/login");
   };
 
   console.log(active);

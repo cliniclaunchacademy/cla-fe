@@ -89,7 +89,7 @@ const Footer = () => {
         <div>
           <p className="mb-3 text-[#929292]">Account</p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-4  font-medium text-[14px] leading-[16px] tracking-[0em] text-[#F8F8F8]">
-            <Link href="/dashboard/adminLogin" className="min-w-[90px]">
+            <Link href="/dashboard/login" className="min-w-[90px]">
               Admin Login
             </Link>
           </div>

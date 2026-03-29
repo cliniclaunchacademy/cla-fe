@@ -38,12 +38,12 @@ api.interceptors.response.use(
       setTimeout(() => {
         const currentRoute = window.location.pathname;
         console.log("111111111111", currentRoute);
-        if(currentRoute.startsWith("/dashboard/adminLogin") || currentRoute.startsWith("/login")) {
+        if(currentRoute.startsWith("/dashboard/login") || currentRoute.startsWith("/login")) {
           return;
         }
 
         if (currentRoute.startsWith("/dashboard")) {
-          window.location.href = "/dashboard/adminLogin";
+          window.location.href = "/dashboard/login";
         } else {
           window.location.href = "/login";
         }

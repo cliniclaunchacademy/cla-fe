@@ -12,9 +12,9 @@ const LayoutWrapper = ({ children }) => {
   const { roleChecked, isAdminAuthRoute } = useAdminAuth();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  if (!roleChecked) return <div className="h-screen flex items-center justify-center">
-    <Loader isLoading={true}></Loader>
-  </div>;
+  // if (!roleChecked) return <div className="h-screen flex items-center justify-center">
+  //   <Loader isLoading={true}></Loader>
+  // </div>;
 
   // route page
   if (!isAdminAuthRoute) {

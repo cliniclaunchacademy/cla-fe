@@ -8,7 +8,7 @@ import { getUserDetails } from "@api/ApiAuth";
 export const useUserAuth = () => {
   const router = useRouter();
   const pathname = usePathname() || "/";
-  const isAdminLoginRoute = pathname === "/dashboard/adminLogin";
+  const isAdminLoginRoute = pathname === "/dashboard/login";
 
   const [roleChecked, setRoleChecked] = useState(false);
 

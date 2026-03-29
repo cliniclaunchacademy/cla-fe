@@ -55,7 +55,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Admin button */}
-        <Link href="/dashboard/adminLogin" className="hidden md:block px-4 py-2 border border-[#45A08B] rounded-[10px] text-[#45A08B] textBody16 hover:bg-[#45A08B33] transition duration-200">
+        <Link href="/dashboard/login" className="hidden md:block px-4 py-2 border border-[#45A08B] rounded-[10px] text-[#45A08B] textBody16 hover:bg-[#45A08B33] transition duration-200">
           Admin Login
         </Link>
       </div>
@@ -115,7 +115,7 @@ const Navbar = () => {
                 </div>
               )
             )}
-            <Link href="/dashboard/adminLogin" className="block text-center w-full mt-4 px-4 py-2 border border-[#45A08B] rounded-[10px] text-[#45A08B] textBody16 hover:bg-[#45A08B33] transition duration-200">
+            <Link href="/dashboard/login" className="block text-center w-full mt-4 px-4 py-2 border border-[#45A08B] rounded-[10px] text-[#45A08B] textBody16 hover:bg-[#45A08B33] transition duration-200">
               Admin Login
             </Link>
           </div>
