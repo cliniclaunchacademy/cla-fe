@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import modalImg from "@assets/images/modalImage.png";
 import { formatDate } from "@utils/date";
 import Link from "next/link";
 import Loader from "./Loader";

@@ -61,7 +61,7 @@ const LayoutWrapper = ({ children }) => {
           {/* Scrollable children */}
           <div className="row-start-2 overflow-y-auto min-h-0 h-full"
           >
-            <div className="w-full bg-[#121415] min-h-screen px-9 py-10 ">
+            <div className="w-full bg-[#121415] min-h-screen px-9 py-10 text-[#EFEFEE] ">
               {children}
             </div>
           </div>

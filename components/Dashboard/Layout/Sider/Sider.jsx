@@ -44,14 +44,18 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
   };
 
   const getIconClasses = (path) =>
-    `flex items-center gap-3 px-3 py-2.5 rounded-[8px] ${isActiveRoute(path) ? "bg-[#3e301c] text-white" : " text-[#ABADAF]"}`;
+    `flex items-center gap-3 px-3 py-2.5 rounded-[8px] border-2
+   ${isActiveRoute(path)
+      ? "bg-[linear-gradient(90deg,rgba(170,124,48,0.4)_0%,rgba(170,124,48,0.2)_100%)] text-white border-[#37352B]"
+      : "text-[#ABADAF] border-[rgba(55,53,43,0)] hover:border-[rgba(55,53,43,0)] hover:bg-[#17191B]"
+    }`;
 
   return (
     <section
       className={`fixed top-0 left-0 z-50 h-screen w-[256px] bg-[#0A0A0A] text-[#FFFAFA]
     transform transition-transform duration-300 ease-in-out
     ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} 
-    md:translate-x-0 pt-[26px] pb-[16px]`} // desktop always open
+    md:translate-x-0 pt-[26px] pb-4 `} // desktop always open
       style={{ minHeight: "100vh" }}
     >
       <div className="h-full flex flex-col  ">
@@ -153,18 +157,43 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             </span>
             <p className="">Dashboard</p>
           </Link>
-          {/* <button
-            onClick={handleLogout}
-            className="w-full flex flex-col items-center justify-center gap-y-[21.5px] "
+          <Link
+            href="/dashboard/courses"
+            className={getIconClasses("/dashboard/courses")}
           >
-            <span >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H9V2H2V16H9V18H2ZM13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14Z" fill="#FFFAFA" />
+            <span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4V11H9V4H4ZM11 11C11 12.1046 10.1046 13 9 13H4C2.89543 13 2 12.1046 2 11V4C2 2.89543 2.89543 2 4 2H9C10.1046 2 11 2.89543 11 4V11Z" fill="currentColor" />
+                <path d="M15 4V7H20V4H15ZM22 7C22 8.10457 21.1046 9 20 9H15C13.8954 9 13 8.10457 13 7V4C13 2.89543 13.8954 2 15 2H20C21.1046 2 22 2.89543 22 4V7Z" fill="currentColor" />
+                <path d="M15 13V20H20V13H15ZM22 20C22 21.1046 21.1046 22 20 22H15C13.8954 22 13 21.1046 13 20V13C13 11.8954 13.8954 11 15 11H20C21.1046 11 22 11.8954 22 13V20Z" fill="currentColor" />
+                <path d="M4 17V20H9V17H4ZM11 20C11 21.1046 10.1046 22 9 22H4C2.89543 22 2 21.1046 2 20V17C2 15.8954 2.89543 15 4 15H9C10.1046 15 11 15.8954 11 17V20Z" fill="currentColor" />
               </svg>
-
             </span>
-            <p className="">Logout</p>
-          </button> */}
+            <p className="">Courses</p>
+          </Link>
+        </div>
+
+        <div className="border-0 border-t-2 border-[#26282A] pt-6 px-[14px] ">
+          <div className="bg-[#AA7C3012] py-2.5 px-3 border border-[#2E2D26] rounded-[8px] flex gap-3 items-center mb-4">
+            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.5" y="0.5" width="45" height="45" rx="22.5" fill="#AA7C30" fill-opacity="0.2" />
+              <rect x="0.5" y="0.5" width="45" height="45" rx="22.5" stroke="#514920" />
+              <path d="M27 19C27 16.7909 25.2091 15 23 15C20.7909 15 19 16.7909 19 19C19 21.2091 20.7909 23 23 23C25.2091 23 27 21.2091 27 19ZM29 19C29 20.946 28.0726 22.6742 26.6367 23.7705C27.6434 24.2154 28.571 24.8424 29.3643 25.6357C31.0521 27.3236 32 29.6131 32 32C32 32.5523 31.5523 33 31 33C30.4477 33 30 32.5523 30 32C30 30.1435 29.2629 28.3626 27.9502 27.0498C26.6374 25.7371 24.8565 25 23 25C21.1435 25 19.3626 25.7371 18.0498 27.0498C16.7371 28.3626 16 30.1435 16 32C16 32.5523 15.5523 33 15 33C14.4477 33 14 32.5523 14 32C14 29.6131 14.9479 27.3236 16.6357 25.6357C17.4288 24.8427 18.3559 24.2153 19.3623 23.7705C17.9268 22.6742 17 20.9457 17 19C17 15.6863 19.6863 13 23 13C26.3137 13 29 15.6863 29 19Z" fill="#B88934" />
+            </svg>
+            <div>
+              <p className="textLabel16 text-[#DFE1E3] ">Test Student</p>
+              <p className="textBody12 text-[#ABADAF] ">teststudent@lms.local</p>
+            </div>
+
+          </div>
+          <button
+            onClick={handleLogout}
+            className="w-full rounded-[8px] px-3 py-2.5 flex items-center gap-3 textLabel16 text-[#ABADAF] hover:bg-[#17191B] transition duration-200">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 19V5C2 4.20435 2.3163 3.44152 2.87891 2.87891C3.44152 2.3163 4.20435 2 5 2H9C9.55228 2 10 2.44772 10 3C10 3.55228 9.55228 4 9 4H5C4.73478 4 4.4805 4.10543 4.29297 4.29297C4.10543 4.4805 4 4.73478 4 5V19C4 19.2652 4.10543 19.5195 4.29297 19.707C4.48051 19.8946 4.73478 20 5 20H9C9.55228 20 10 20.4477 10 21C10 21.5523 9.55228 22 9 22H5C4.20435 22 3.44152 21.6837 2.87891 21.1211C2.3163 20.5585 2 19.7957 2 19ZM15.293 6.29297C15.6835 5.90244 16.3165 5.90244 16.707 6.29297L21.707 11.293C22.0976 11.6835 22.0976 12.3165 21.707 12.707L16.707 17.707C16.3165 18.0976 15.6835 18.0976 15.293 17.707C14.9024 17.3165 14.9024 16.6835 15.293 16.293L18.5859 13H9C8.44772 13 8 12.5523 8 12C8 11.4477 8.44772 11 9 11H18.5859L15.293 7.70703C14.9024 7.31651 14.9024 6.68349 15.293 6.29297Z" fill="currentColor" />
+            </svg>
+            <span>Sign Out</span>
+          </button>
         </div>
       </div>
     </section>
