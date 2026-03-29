@@ -105,7 +105,12 @@ export default function Courses() {
 
   return (
     <section className="p-4 ">
-      <div className="mb-10 ">
+      <div className="mb-10 flex gap-5 items-center ">
+        <button className="bg-[#26282A] hover:bg-[#26282A]/80 active:bg-[#26282A] w-[44px] h-[44px] flex items-center justify-center rounded-full transition duration-200 ">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.2929 4.29289C11.6834 3.90237 12.3164 3.90237 12.707 4.29289C13.0975 4.68342 13.0975 5.31643 12.707 5.70696L7.41399 10.9999H18.9999C19.5522 10.9999 19.9999 11.4476 19.9999 11.9999C19.9999 12.5522 19.5522 12.9999 18.9999 12.9999H7.41399L12.707 18.2929C13.0975 18.6834 13.0975 19.3164 12.707 19.707C12.3164 20.0975 11.6834 20.0975 11.2929 19.707L4.29289 12.707C3.90237 12.3164 3.90237 11.6834 4.29289 11.2929L11.2929 4.29289Z" fill="#EFEFEE" />
+          </svg>
+        </button>
         <h3 className="text-[#EFEFEE] textDisplay40 ">Programs</h3>
       </div>
       <div className="grid grid-cols-4 gap-[22px] ">
@@ -358,7 +363,6 @@ export default function Courses() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }
