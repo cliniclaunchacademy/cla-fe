@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./app/*"],
+      "@components/*": ["./components/*"],
+      "@common/*": ["./common/*"],
+      "@assets/*": ["public/assets/*"],
+      "@dashboardIcon/*": ["public/assets/DashboardIcon/*"],
+      "@utils/*": ["./utils/*"],
+      "@api/*": ["./api/*"]
+    }
+  }
+}

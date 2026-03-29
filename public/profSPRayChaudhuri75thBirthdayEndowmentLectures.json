@@ -1,0 +1,122 @@
+[
+  {
+    "_id": 1,
+    "year": 1984,
+    "lectureDeliveredBy": "Dr O Siddiqui (TIFR)",
+    "conference": "VIII All India Cell Biology Conference, Madurai"
+  },
+  {
+    "_id": 2,
+    "year": 1986,
+    "lectureDeliveredBy": "Dr A T Natarajan",
+    "conference": "X All India Cell Biology Conference, Ahmedabad"
+  },
+  {
+    "_id": 3,
+    "year": 1989,
+    "lectureDeliveredBy": "Dr G Padmanaban (IISc)",
+    "conference": "National Seminar on Cell Biology, Mysore"
+  },
+  {
+    "_id": 4,
+    "year": 1990,
+    "lectureDeliveredBy": "Dr H Sarat Chandra (IISc)",
+    "conference": "XIV All India Cell Biology Conference and Cell Biology Symposia, Mumbai"
+  },
+  {
+    "_id": 5,
+    "year": 1995,
+    "lectureDeliveredBy": "Dr Lalji Singh (CCMB)",
+    "conference": "XVIII All India Cell Biology Conference and Symposia, Lucknow"
+  },
+  {
+    "_id": 6,
+    "year": 1997,
+    "lectureDeliveredBy": "Dr K P Gopinathan (IISc)",
+    "conference": "XX All India Cell Biology Conference and Symposia, Mumbai"
+  },
+  {
+    "_id": 7,
+    "year": 1999,
+    "lectureDeliveredBy": "Dr A N Bhaduri (IICB)",
+    "conference": "XXII All India Cell Biology Conference, Thiruvananthapuram"
+  },
+  {
+    "_id": 8,
+    "year": 2000,
+    "lectureDeliveredBy": "Dr A N Bhisey (CRI)",
+    "conference": "XXIV All India Cell Biology Conference, New Delhi"
+  },
+  {
+    "_id": 9,
+    "year": 2002,
+    "lectureDeliveredBy": "Dr S C Lakhotia (BHU)",
+    "conference": "XXVI All India Cell Biology Conference, Mumbai"
+  },
+  {
+    "_id": 10,
+    "year": 2004,
+    "lectureDeliveredBy": "Dr R Raman (BHU)",
+    "conference": "XXVIII All India Cell Biology Conference, Chandigarh"
+  },
+  {
+    "_id": 11,
+    "year": 2007,
+    "lectureDeliveredBy": "Dr K VijayRaghavan (NCBS)",
+    "conference": "XXX All India Cell Biology Conference, Delhi"
+  },
+  {
+    "_id": 12,
+    "year": 2008,
+    "lectureDeliveredBy": "Dr S K Sopory (ICGEB)",
+    "conference": "XXXII All India Cell Biology Conference, Pune"
+  },
+  {
+    "_id": 13,
+    "year": 2010,
+    "lectureDeliveredBy": "Dr Veena K Parnaik (CCMB)",
+    "conference": "XXXIV All India Cell Biology Conference, Kolkata"
+  },
+  {
+    "_id": 14,
+    "year": 2012,
+    "lectureDeliveredBy": "Dr T Kundu (JNCASR)",
+    "conference": "XXXVI All India Cell Biology Conference, Mumbai"
+  },
+  {
+    "_id": 15,
+    "year": 2014,
+    "lectureDeliveredBy": "Dr G Swarup (CCMB)",
+    "conference": "XXXVIII All India Cell Biology Conference, Lucknow"
+  },
+  {
+    "_id": 16,
+    "year": 2016,
+    "lectureDeliveredBy": "Dr S Chattopadhyay (IICB)",
+    "conference": "XL All India Cell Biology Conference, Gwalior"
+  },
+  {
+    "_id": 17,
+    "year": 2018,
+    "lectureDeliveredBy": "Dr B K Thelma (DUSC)",
+    "conference": "XLII All India Cell Biology Conference, Goa"
+  },
+  {
+    "_id": 18,
+    "year": 2020,
+    "lectureDeliveredBy": "Dr C Shaha (IICB)",
+    "conference": "XLIV All India Cell Biology Conference, Srinagar"
+  },
+  {
+    "_id": 19,
+    "year": 2022,
+    "lectureDeliveredBy": "Dr Sathees C Raghavan",
+    "conference": "XLV All India Cell Biology Conference, Varanasi"
+  },
+  {
+    "_id": 20,
+    "year": 2024,
+    "lectureDeliveredBy": "Dr Arun Kumar Shukla",
+    "conference": "XLVII All India Cell Biology Conference, Bhubaneswar"
+  }
+]

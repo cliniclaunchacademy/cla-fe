@@ -1,0 +1,8 @@
+export const metadata = {
+  title: "",
+  description: "",
+};
+
+export default function PaymentLayout({ children }) {
+  return <div>{children}</div>;
+}

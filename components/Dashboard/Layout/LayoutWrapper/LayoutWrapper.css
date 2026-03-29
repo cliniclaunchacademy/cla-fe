@@ -1,0 +1,9 @@
+/* styles/globals.css or a CSS module */
+.gradient-border {
+  border-top: 3.8px solid transparent;
+  border-left: 3.8px solid transparent;
+  border-top-left-radius: 24px;
+  background: 
+    linear-gradient(#fff, #fff) padding-box,
+    radial-gradient(29.45% 174.39% at 50% 50%, #E5E1B3 0%, #E5C879 15.87%, #D5A459 31.73%, #E9BE5F 70.67%, #F9ECB8 85.34%, #F2D386 100%) border-box;
+}

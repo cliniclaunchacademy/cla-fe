@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "year": 2016,
+    "lectureDeliveredBy": "Dr. Amit Mishra, IIT, Jodhpur",
+    "conference": "XL All India Cell Biology Conference, Gwalior"
+  },
+  {
+    "_id": 2,
+    "year": 2018,
+    "lectureDeliveredBy": "Dr. Arun Shukla, IIT, Kanpur",
+    "conference": "XLII All India Cell Biology Conference, Goa"
+  },
+  {
+    "_id": 3,
+    "year": 2020,
+    "lectureDeliveredBy": "Dr. Md. Imtaiyaz Hassan, Jamia Millia Islamia, N. Delhi",
+    "conference": "XLIV All India Cell Biology Conference, University of Kashmir, Srinagar"
+  },
+  {
+    "_id": 4,
+    "year": 2022,
+    "lectureDeliveredBy": "Dr. Anirban Banerjee, IIT Bombay, Powai",
+    "conference": "XLIV All India Cell Biology Conference, BHU, Varanasi"
+  },
+  {
+    "_id": 5,
+    "year": 2024,
+    "lectureDeliveredBy": "Dr. Sandeep M Eswarappa, IISc Bangaluru",
+    "conference": "XLVII All India Cell Biology Conference, NISER Bhubaneswar"
+  }
+]
