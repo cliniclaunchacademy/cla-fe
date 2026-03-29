@@ -9,7 +9,7 @@ import { useAdminAuth } from "hooks/useAdminAuth";
 import "./LayoutWrapper.css";
 
 const LayoutWrapper = ({ children }) => {
-  const { roleChecked, isAdminLoginRoute } = useAdminAuth();
+  const { roleChecked, isAdminAuthRoute } = useAdminAuth();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   if (!roleChecked) return <div className="h-screen flex items-center justify-center">
@@ -17,7 +17,7 @@ const LayoutWrapper = ({ children }) => {
   </div>;
 
   // route page
-  if (!isAdminLoginRoute) {
+  if (!isAdminAuthRoute) {
     return (
       <main className="relative w-full flex h-screen overflow-hidden bg-[#663F7E]">
         {/* Sidebar */}
