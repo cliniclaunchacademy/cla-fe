@@ -19,7 +19,7 @@ const LayoutWrapper = ({ children }) => {
   // route page
   if (!isAdminAuthRoute) {
     return (
-      <main className="relative w-full flex h-screen overflow-hidden bg-[#663F7E]">
+      <main className="relative w-full flex h-screen overflow-hidden ">
         {/* Sidebar */}
         <Sider isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
@@ -35,7 +35,7 @@ const LayoutWrapper = ({ children }) => {
         <div
           className="
             w-full
-            md:ml-[180px]
+            md:ml-[256px]
             grid
             grid-rows-[auto_auto_minmax(0,1fr)]
             transition-all duration-300
@@ -54,14 +54,14 @@ const LayoutWrapper = ({ children }) => {
           </div>
 
           {/* Header*/}
-          <div className="row-start-2">
+          {/* <div className="row-start-2">
             <Header />
-          </div>
+          </div> */}
 
           {/* Scrollable children */}
-          <div className="row-start-3 overflow-y-auto min-h-0 h-full gradient-border"
+          <div className="row-start-2 overflow-y-auto min-h-0 h-full"
           >
-            <div className="w-full">
+            <div className="w-full bg-[#121415] min-h-screen px-9 py-10 ">
               {children}
             </div>
           </div>

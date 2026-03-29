@@ -44,17 +44,17 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
   };
 
   const getIconClasses = (path) =>
-    `w-[48px] h-[48px] flex items-center justify-center rounded-full ${isActiveRoute(path) ? "bg-[linear-gradient(270deg,_#BA9532_0%,_#DEBC53_15.87%,_#F7EE89_34.62%,_#EAD26C_55.29%,_#D1AC47_77.88%,_#FAD36E_88.46%,_#DCB449_100%)] text-[#663F7E]" : "text-[#FFFAFA]"}`;
+    `flex items-center gap-3 px-3 py-2.5 rounded-[8px] ${isActiveRoute(path) ? "bg-[#3e301c] text-white" : " text-[#ABADAF]"}`;
 
   return (
-    <div
-      className={`fixed top-0 left-0 z-50 h-screen w-[180px] bg-[#663F7E] text-[#FFFAFA]
+    <section
+      className={`fixed top-0 left-0 z-50 h-screen w-[256px] bg-[#0A0A0A] text-[#FFFAFA]
     transform transition-transform duration-300 ease-in-out
     ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} 
-    md:translate-x-0 `} // desktop always open
+    md:translate-x-0 pt-[26px] pb-[16px]`} // desktop always open
       style={{ minHeight: "100vh" }}
     >
-      <div className="h-full flex flex-col px-2.5 py-6 overflow-y-auto sider-scrollbar">
+      <div className="h-full flex flex-col  ">
         {/* Close button for mobile */}
         <button
           onClick={() => setIsMobileOpen((prev) => !prev)}
@@ -64,20 +64,25 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
         </button>
 
         {/* Logo & title */}
-        <div className="">
+        <div className="flex justify-between px-[26px] pb-[26px] border-0 border-b-2 border-b-[#26282A] ">
           <Image
-            className="mx-auto"
+            className=""
             src={logo}
-            width={77}
-            height={80}
+            width={44}
+            height={44}
             alt=""
           />
+          <button className="bg-[#17191B] hover:bg-[#23272a] active:bg-[#17191B] rounded-[8px] p-[11px] transition duration-300 " >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.7956 18.7917C12.0488 18.3533 12.6096 18.2029 13.048 18.4561C13.4864 18.7092 13.6367 19.27 13.3837 19.7084C13.1423 20.1264 12.7946 20.4733 12.3766 20.7146C11.9586 20.9559 11.4843 21.0834 11.0016 21.0834C10.519 21.0834 10.0446 20.9559 9.62662 20.7146C9.20874 20.4733 8.86173 20.1263 8.62043 19.7084C8.36728 19.27 8.5177 18.7092 8.95612 18.4561C9.39445 18.2032 9.95446 18.3535 10.2076 18.7917C10.288 18.9311 10.404 19.047 10.5433 19.1274C10.6826 19.2078 10.8408 19.25 11.0016 19.2501C11.1624 19.2501 11.3207 19.2078 11.4599 19.1274C11.5993 19.047 11.7152 18.9311 11.7956 18.7917ZM15.5849 7.33341C15.5849 6.118 15.1024 4.95236 14.2431 4.09285C13.3835 3.23331 12.2172 2.75008 11.0016 2.75008C9.78612 2.75014 8.62055 3.23337 7.76106 4.09285C6.90159 4.95239 6.41828 6.11789 6.41828 7.33341C6.41828 9.49148 6.08003 10.9984 5.53205 12.1584C4.9908 13.3042 4.27254 14.0439 3.66918 14.6667H18.3349C17.7303 14.0436 17.0131 13.3034 16.4721 12.1584C15.9239 10.9982 15.5849 9.49138 15.5849 7.33341ZM17.4183 7.33341C17.4183 9.29938 17.7262 10.5224 18.1291 11.3752C18.432 12.0163 18.8052 12.4872 19.2301 12.948L19.6715 13.4117L19.6912 13.4332C19.9303 13.696 20.0881 14.0224 20.145 14.3731C20.2019 14.7236 20.1561 15.0832 20.0125 15.408C19.8688 15.7328 19.6334 16.0091 19.3358 16.2029C19.0751 16.3725 18.7762 16.4733 18.4674 16.4956L18.3349 16.5001H3.66828C3.31296 16.4998 2.96504 16.3961 2.66747 16.202C2.36988 16.0078 2.13495 15.7313 1.99161 15.4062C1.84831 15.0811 1.80264 14.7211 1.86001 14.3704C1.91742 14.02 2.07544 13.6938 2.31477 13.4314L2.33357 13.4108C2.94265 12.782 3.47036 12.23 3.87418 11.3752C4.277 10.5224 4.58495 9.29941 4.58495 7.33341C4.58495 5.63161 5.26147 3.99909 6.46483 2.79574C7.66811 1.59264 9.30005 0.916808 11.0016 0.916748C12.7034 0.916748 14.3359 1.59245 15.5393 2.79574C16.7427 3.99909 17.4183 5.63161 17.4183 7.33341Z" fill="#ABADAF" />
+            </svg>
+          </button>
         </div>
 
-        <div className="flex-1 flex-col space-y-[36px] pt-[72px] ">
+        {/* <div className="flex-1 flex-col space-y-[36px] px-[14px] py-6 overflow-y-auto sider-scrollbar">
           <Link
             href="/dashboard"
-            className="flex flex-col items-center justify-center gap-y-[5px] "
+            className="flex items-center justify-center gap-y-[5px] px-3 "
           >
             <span className={getIconClasses("/dashboard")}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,9 +137,37 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             </span>
             <p className="">Logout</p>
           </button>
+        </div> */}
+        <div className="flex-1 flex-col space-y-1 px-[14px] py-6 overflow-y-auto sider-scrollbar">
+          <Link
+            href="/dashboard"
+            className={getIconClasses("/dashboard")}
+          >
+            <span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4V11H9V4H4ZM11 11C11 12.1046 10.1046 13 9 13H4C2.89543 13 2 12.1046 2 11V4C2 2.89543 2.89543 2 4 2H9C10.1046 2 11 2.89543 11 4V11Z" fill="currentColor" />
+                <path d="M15 4V7H20V4H15ZM22 7C22 8.10457 21.1046 9 20 9H15C13.8954 9 13 8.10457 13 7V4C13 2.89543 13.8954 2 15 2H20C21.1046 2 22 2.89543 22 4V7Z" fill="currentColor" />
+                <path d="M15 13V20H20V13H15ZM22 20C22 21.1046 21.1046 22 20 22H15C13.8954 22 13 21.1046 13 20V13C13 11.8954 13.8954 11 15 11H20C21.1046 11 22 11.8954 22 13V20Z" fill="currentColor" />
+                <path d="M4 17V20H9V17H4ZM11 20C11 21.1046 10.1046 22 9 22H4C2.89543 22 2 21.1046 2 20V17C2 15.8954 2.89543 15 4 15H9C10.1046 15 11 15.8954 11 17V20Z" fill="currentColor" />
+              </svg>
+            </span>
+            <p className="">Dashboard</p>
+          </Link>
+          {/* <button
+            onClick={handleLogout}
+            className="w-full flex flex-col items-center justify-center gap-y-[21.5px] "
+          >
+            <span >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 18C1.45 18 0.979167 17.8042 0.5875 17.4125C0.195833 17.0208 0 16.55 0 16V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H9V2H2V16H9V18H2ZM13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14Z" fill="#FFFAFA" />
+              </svg>
+
+            </span>
+            <p className="">Logout</p>
+          </button> */}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
