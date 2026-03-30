@@ -47,6 +47,9 @@
   }
 
   /* === Body === */
+  .textBody18 {
+    @apply text-[18px] leading-[140%] font-normal;
+  }
   .textBody16 {
     @apply text-[16px] leading-[24px] font-normal;
   }
