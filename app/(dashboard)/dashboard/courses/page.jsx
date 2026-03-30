@@ -5,7 +5,7 @@ import RoundStatus from "@common/RoundStatus";
 
 export default function Courses() {
   return (
-    <section className="p-4 ">
+    <section className="px-9 py-10 ">
       <div className="mb-10 flex gap-5 items-center ">
         <button className="bg-[#26282A] hover:bg-[#26282A]/80 active:bg-[#26282A] w-[44px] h-[44px] flex items-center justify-center rounded-full transition duration-200 ">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

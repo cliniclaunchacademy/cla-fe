@@ -3,6 +3,6 @@ export const metadata = {
   description: "",
 };
 
-export default function AddEditCourseLayout({ children }) {
+export default function CourseOverviewLayout({ children }) {
   return <div>{children}</div>;
 }

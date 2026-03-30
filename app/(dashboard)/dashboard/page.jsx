@@ -24,7 +24,7 @@ const ProgressBar = ({ percentage = 14 }) => {
 
 export default function Dashboard() {
   return (
-    <section className="w-full flex flex-col gap-y-10 ">
+    <section className="w-full flex flex-col gap-y-10 px-9 py-10 ">
       <div className=" ">
         <h3 className="text-[#EFEFEE] textDisplay40 mb-3 ">Welcome back, Test!</h3>
         <p className="text-[#ABADAF] textBody18 ">Continue your learning journey at Clinic Launch Academy</p>
