@@ -7,7 +7,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "api/ApiAuth";
+import { login } from "apis/auth.api";
 import FormFieldInput from "@common/FormFieldComponent/FormFieldInput/FormFieldInput";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -32,10 +32,10 @@ export default function Login() {
     setLoading(true);
     try {
       const res = await mutateLogin(data);
-      localStorage.setItem("accessToken", res.data.data.accessToken);
-      localStorage.setItem("role", res.data.data.user.role);
-      localStorage.setItem("email", res.data.data.user.email);
-      localStorage.setItem("username", res.data.data.user.username);
+      localStorage.setItem("accessToken", res.data.token);
+      localStorage.setItem("role", res.data.user.role);
+      localStorage.setItem("email", res.data.user.email);
+      localStorage.setItem("username", res.data.user.username);
       Swal.fire({
         title: "Success",
         text: "User logged in successfully!",
