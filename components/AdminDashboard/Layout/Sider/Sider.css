@@ -1,0 +1,33 @@
+/* Firefox */
+.sider-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent #0A0A0A; /* thumb transparent by default */
+}
+
+.sider-scrollbar:hover {
+  scrollbar-color: #26282A #0A0A0A; /* thumb visible on hover */
+}
+
+/* Webkit browsers */
+.sider-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  background: transparent; /* hide by default */
+}
+
+.sider-scrollbar:hover::-webkit-scrollbar {
+  background: #0A0A0A; /* track visible on hover */
+}
+
+.sider-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent; /* hide thumb by default */
+  border-radius: 6px;
+  border: 2px solid #0A0A0A;
+}
+
+.sider-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: #1e453c; /* thumb visible on hover */
+}
+
+.sider-scrollbar:hover::-webkit-scrollbar-thumb:hover {
+  background-color: #16342d; /* darker on thumb hover */
+}

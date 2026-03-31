@@ -38,7 +38,7 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
     const isRoutesChildrenActive =
       isRoutesActive || pathname.startsWith(href + "/");
 
-    return href === "/dashboard"
+    return href === "/adminDashboard"
       ? isRoutesActive
       : isRoutesChildrenActive;
   };
@@ -85,8 +85,8 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
 
         <div className="flex-1 flex-col space-y-1 px-[14px] py-6 overflow-y-auto sider-scrollbar">
           <Link
-            href="/dashboard"
-            className={getIconClasses("/dashboard")}
+            href="/adminDashboard"
+            className={getIconClasses("/adminDashboard")}
           >
             <span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,15 +99,16 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             <p className="">Dashboard</p>
           </Link>
           <Link
-            href="/dashboard/courses"
-            className={getIconClasses("/dashboard/courses")}
+            href="/adminDashboard/labApplications"
+            className={getIconClasses("/adminDashboard/labApplications")}
           >
             <span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 16H16V20H19C19.5523 20 20 19.5523 20 19V16ZM10 20H14V16H10V20ZM16 14H20V10H16V14ZM10 14H14V10H10V14ZM4 14H8V10H4V14ZM10 8H14V4H10V8ZM4 19C4 19.5523 4.44771 20 5 20H8V16H4V19ZM20 5C20 4.44771 19.5523 4 19 4H16V8H20V5ZM4 8H8V4H5C4.44772 4 4 4.44772 4 5V8ZM22 19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19Z" fill="#DFE1E3" />
+                <path d="M8.00977 15C8.56205 15 9.00977 15.4477 9.00977 16C9.00977 16.5523 8.56205 17 8.00977 17H8C7.44772 17 7 16.5523 7 16C7 15.4477 7.44772 15 8 15H8.00977ZM16 15C16.5523 15 17 15.4477 17 16C17 16.5523 16.5523 17 16 17H12C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15H16ZM8.00977 10C8.56205 10 9.00977 10.4477 9.00977 11C9.00977 11.5523 8.56205 12 8.00977 12H8C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10H8.00977ZM16 10C16.5523 10 17 10.4477 17 11C17 11.5523 16.5523 12 16 12H12C11.4477 12 11 11.5523 11 11C11 10.4477 11.4477 10 12 10H16ZM15 3H9V5H15V3ZM17 5C17 6.10457 16.1046 7 15 7H9C7.89543 7 7 6.10457 7 5H6C5.73478 5 5.4805 5.10543 5.29297 5.29297C5.10543 5.4805 5 5.73478 5 6V20C5 20.2652 5.10543 20.5195 5.29297 20.707C5.48051 20.8946 5.73478 21 6 21H18C18.2652 21 18.5195 20.8946 18.707 20.707C18.8946 20.5195 19 20.2652 19 20V6C19 5.73478 18.8946 5.48051 18.707 5.29297C18.5195 5.10543 18.2652 5 18 5H17ZM18 3C18.7956 3 19.5585 3.3163 20.1211 3.87891C20.6837 4.44152 21 5.20435 21 6V20C21 20.7957 20.6837 21.5585 20.1211 22.1211C19.5585 22.6837 18.7957 23 18 23H6C5.20435 23 4.44152 22.6837 3.87891 22.1211C3.3163 21.5585 3 20.7957 3 20V6C3 5.20435 3.3163 4.44152 3.87891 3.87891C4.44152 3.3163 5.20435 3 6 3H7C7 1.89543 7.89543 1 9 1H15C16.1046 1 17 1.89543 17 3H18Z" fill="#DFE1E3" />
               </svg>
+
             </span>
-            <p className="">Courses</p>
+            <p className="">Lab Applications</p>
           </Link>
         </div>
 
@@ -122,6 +123,7 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
               <p className="textLabel16 text-[#DFE1E3] ">Test Student</p>
               <p className="textBody12 text-[#ABADAF] ">teststudent@lms.local</p>
             </div>
+
           </div>
           <button
             onClick={handleLogout}

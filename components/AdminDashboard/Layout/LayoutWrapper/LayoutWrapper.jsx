@@ -1,11 +1,11 @@
 "use client";
 
-import Sider from "../Sider/Sider";
 import HamburgerIcon from "@assets/icons/hamburgerIcon";
 import { useState } from "react";
 import Loader from "@common/Loader";
 import { useAdminAuth } from "hooks/useAdminAuth";
 import "./LayoutWrapper.css";
+import Sider from "../Sider/Sider";
 
 const LayoutWrapper = ({ children }) => {
   const { roleChecked, isAdminAuthRoute } = useAdminAuth();
