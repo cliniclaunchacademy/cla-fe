@@ -179,9 +179,9 @@ export default function AdminDashboard() {
                   </TableHeader>
                   <TableBody className="textBody16 ">
                     {invoices.map((invoice, index) => (
-                      <TableRow key={index} className="border-b border-transparent ">
-                        <TableCell>{invoice.course}</TableCell>
-                        <TableCell>{invoice.lesson}</TableCell>
+                      <TableRow key={index} className="border-b border-transparent hover:bg-[#26282A] transition duration-300">
+                        <TableCell className="">{invoice.course}</TableCell>
+                        <TableCell className="">{invoice.lesson}</TableCell>
                         <TableCell className="text-right">{invoice.started}</TableCell>
                         <TableCell className="text-right">{invoice.completed}</TableCell>
                         <TableCell className="text-right text-[#B88934] ">{invoice.dropOff}</TableCell>
