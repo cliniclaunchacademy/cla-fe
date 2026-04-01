@@ -115,7 +115,7 @@ export default function Login() {
             />
 
             <div className="relative ">
-              <button type="button" className="absolute top-0 right-0 text-[#AE9060] textLabel16 ">Forgot password?</button>
+              <Link href="/forgot-password" className="absolute top-0 right-0 text-[#AE9060] hover:text-[#B88934] textLabel16 transition duration-200">Forgot password?</Link>
               <FormFieldInput
                 id="password"
                 label="Password"
