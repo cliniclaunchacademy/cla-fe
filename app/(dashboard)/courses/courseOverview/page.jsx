@@ -87,9 +87,9 @@ export default function CourseOverview() {
       {/* Banner */}
       <div className="relative mb-10">
         {course.banner ? (
-          <img src={course.banner} alt={course.title} className="w-full h-[346px] object-cover" />
+          <img src={course.banner} alt={course.title} className="w-full h-[420px] object-cover" />
         ) : (
-          <Image src={courseBanner} className="w-full h-[346px]" alt="" />
+          <Image src={courseBanner} className="w-full h-[420px]" alt="" />
         )}
         <div className="w-full absolute left-0 bottom-0 z-10">
           <Image src={courseBannerBottomBg} alt="" />
