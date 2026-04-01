@@ -53,6 +53,11 @@ export default function Login() {
       localStorage.setItem("role", role);
       localStorage.setItem("email", res.data.user.email);
       localStorage.setItem("username", res.data.user.username);
+      if (res.data.user.profilePhoto) {
+        localStorage.setItem("profilePhoto", res.data.user.profilePhoto);
+      } else {
+        localStorage.removeItem("profilePhoto");
+      }
       toast({
         type: "success",
         title: "Welcome back!",

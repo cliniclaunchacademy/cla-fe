@@ -8,6 +8,9 @@ export const login = async (data) => {
 export const logout = () => {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("role");
+  localStorage.removeItem("email");
+  localStorage.removeItem("username");
+  localStorage.removeItem("profilePhoto");
 };
 
 export const getAllUsers = async ({ queryKey }) => {
