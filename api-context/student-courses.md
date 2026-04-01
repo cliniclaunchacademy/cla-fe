@@ -19,6 +19,7 @@ Fetch all published courses with the student's progress on each.
       "subheading": "Learn the fundamentals",
       "about": "A comprehensive overview...",
       "thumbnail": "http://localhost:5000/uploads/thumb.jpg",
+      "banner": "https://res.cloudinary.com/dy0j4c40y/image/upload/v1775031850/cla/courses-backgrounds/CLA_ResourcesCEO_Mindset_svlk9l.jpg",
       "instructor": {
         "_id": "64f1a2b3c4d5e6f7a8b9c0i1",
         "firstName": "Dr. Sarah",
@@ -69,6 +70,7 @@ Fetch a single course with its full module/lesson structure and the student's pr
     "subheading": "Learn the fundamentals",
     "about": "A comprehensive overview...",
     "thumbnail": "http://localhost:5000/uploads/thumb.jpg",
+    "banner": "https://res.cloudinary.com/dy0j4c40y/image/upload/v1775031850/cla/courses-backgrounds/CLA_ResourcesCEO_Mindset_svlk9l.jpg",
     "instructor": {
       "_id": "64f1a2b3c4d5e6f7a8b9c0i1",
       "firstName": "Dr. Sarah",

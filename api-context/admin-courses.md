@@ -22,6 +22,7 @@ Fetch all courses (flat list, ordered by `order` field).
       "subheading": "Learn the basics",
       "about": "A detailed description of the course...",
       "thumbnail": "http://localhost:5000/uploads/thumb.jpg",
+      "banner": "https://res.cloudinary.com/dy0j4c40y/image/upload/v1775031850/cla/courses-backgrounds/CLA_ResourcesCEO_Mindset_svlk9l.jpg",
       "instructor": {
         "_id": "64f1a2b3c4d5e6f7a8b9c0d2",
         "firstName": "Dr. Sarah",
@@ -57,6 +58,7 @@ Create a new course.
   "title": "Advanced Clinic Operations",   // required
   "subheading": "Take your clinic further", // optional
   "about": "Full course description...",    // optional
+  "banner": "https://res.cloudinary.com/example/image/upload/banner.jpg", // optional image URL string
   "instructorId": "64f1a2b3c4d5e6f7a8b9c0d2", // required, must be a valid Instructor ObjectId
   "status": "draft",                        // required: "draft" | "unpublished" | "published"
   "comingSoon": false,                      // optional boolean
@@ -87,6 +89,7 @@ Update an existing course.
   "title": "Updated Title",
   "subheading": "Updated subheading",
   "about": "Updated description",
+  "banner": "https://res.cloudinary.com/example/image/upload/new-banner.jpg",  // send "" to clear
   "instructorId": "64f1a2b3c4d5e6f7a8b9c0d2",
   "status": "published",
   "comingSoon": true,
