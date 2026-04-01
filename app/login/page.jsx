@@ -130,11 +130,6 @@ export default function Login() {
               Sign In
             </button>
           </form>
-          <div className="w-full border-0 border-t-2  border-[#484942] my-[28px] "></div>
-          <div className="textLabel16 text-center">
-            <span className="text-[#ABADAF] mr-1 ">Don't have an account?</span>
-            <Link href="/signup" className="text-[#B88934] ">Sign up</Link>
-          </div>
         </div>
       </div>
     </section>

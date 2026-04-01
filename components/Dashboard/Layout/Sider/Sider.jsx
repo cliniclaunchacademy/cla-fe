@@ -19,11 +19,13 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
   const [active, setActive] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState(null);
 
   const syncFromStorage = () => {
     setRole(localStorage.getItem("role"));
     setUsername(localStorage.getItem("username") || "");
     setEmail(localStorage.getItem("email") || "");
+    setProfilePhoto(localStorage.getItem("profilePhoto") || null);
   };
 
   useEffect(() => {
@@ -146,11 +148,19 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
 
         <div className="border-0 border-t-2 border-[#26282A] pt-6 px-[14px] ">
           <div className="bg-[#AA7C3012] py-2.5 px-3 border border-[#2E2D26] rounded-[8px] flex gap-3 items-center mb-4">
-            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="45" height="45" rx="22.5" fill="#AA7C30" fill-opacity="0.2" />
-              <rect x="0.5" y="0.5" width="45" height="45" rx="22.5" stroke="#514920" />
-              <path d="M27 19C27 16.7909 25.2091 15 23 15C20.7909 15 19 16.7909 19 19C19 21.2091 20.7909 23 23 23C25.2091 23 27 21.2091 27 19ZM29 19C29 20.946 28.0726 22.6742 26.6367 23.7705C27.6434 24.2154 28.571 24.8424 29.3643 25.6357C31.0521 27.3236 32 29.6131 32 32C32 32.5523 31.5523 33 31 33C30.4477 33 30 32.5523 30 32C30 30.1435 29.2629 28.3626 27.9502 27.0498C26.6374 25.7371 24.8565 25 23 25C21.1435 25 19.3626 25.7371 18.0498 27.0498C16.7371 28.3626 16 30.1435 16 32C16 32.5523 15.5523 33 15 33C14.4477 33 14 32.5523 14 32C14 29.6131 14.9479 27.3236 16.6357 25.6357C17.4288 24.8427 18.3559 24.2153 19.3623 23.7705C17.9268 22.6742 17 20.9457 17 19C17 15.6863 19.6863 13 23 13C26.3137 13 29 15.6863 29 19Z" fill="#B88934" />
-            </svg>
+            {profilePhoto ? (
+              <img
+                src={profilePhoto}
+                alt="Profile"
+                className="w-[46px] h-[46px] rounded-full object-cover border border-[#514920]"
+              />
+            ) : (
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="45" height="45" rx="22.5" fill="#AA7C30" fillOpacity="0.2" />
+                <rect x="0.5" y="0.5" width="45" height="45" rx="22.5" stroke="#514920" />
+                <path d="M27 19C27 16.7909 25.2091 15 23 15C20.7909 15 19 16.7909 19 19C19 21.2091 20.7909 23 23 23C25.2091 23 27 21.2091 27 19ZM29 19C29 20.946 28.0726 22.6742 26.6367 23.7705C27.6434 24.2154 28.571 24.8424 29.3643 25.6357C31.0521 27.3236 32 29.6131 32 32C32 32.5523 31.5523 33 31 33C30.4477 33 30 32.5523 30 32C30 30.1435 29.2629 28.3626 27.9502 27.0498C26.6374 25.7371 24.8565 25 23 25C21.1435 25 19.3626 25.7371 18.0498 27.0498C16.7371 28.3626 16 30.1435 16 32C16 32.5523 15.5523 33 15 33C14.4477 33 14 32.5523 14 32C14 29.6131 14.9479 27.3236 16.6357 25.6357C17.4288 24.8427 18.3559 24.2153 19.3623 23.7705C17.9268 22.6742 17 20.9457 17 19C17 15.6863 19.6863 13 23 13C26.3137 13 29 15.6863 29 19Z" fill="#B88934" />
+              </svg>
+            )}
             <div>
               <p className="textLabel16 text-[#DFE1E3] ">{username}</p>
               <p className="textBody12 text-[#ABADAF] ">{email}</p>

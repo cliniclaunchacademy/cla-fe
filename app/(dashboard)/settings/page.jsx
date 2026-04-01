@@ -49,12 +49,16 @@ export default function SettingsPage() {
 
   const user = data?.data?.user;
 
-  // Sync form fields when profile loads
+  // Sync form fields and localStorage when profile loads or updates
   useEffect(() => {
     if (user) {
       setFirstName(user.firstName || "");
       setLastName(user.lastName || "");
       setUsername(user.username || "");
+      if (user.profilePhoto) {
+        localStorage.setItem("profilePhoto", user.profilePhoto);
+        window.dispatchEvent(new CustomEvent("app:profile-updated"));
+      }
     }
   }, [user]);
 
@@ -79,7 +83,7 @@ export default function SettingsPage() {
 
   const { mutate: savePhoto, isPending: isSavingPhoto } = useMutation({
     mutationFn: updateStudentPhoto,
-    onSuccess: (res) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["studentProfile"] });
       setPhotoPreview(null);
       toast({ type: "success", title: "Photo updated", message: "Your profile photo has been saved." });
