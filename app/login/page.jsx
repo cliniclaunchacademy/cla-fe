@@ -9,12 +9,35 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "apis/auth.api";
 import FormFieldInput from "@common/FormFieldComponent/FormFieldInput/FormFieldInput";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 import Loader from "@common/Loader";
 
 export default function Login() {
   const [isLoading, setLoading] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) { setIsChecking(false); return; }
+    const role = localStorage.getItem("role");
+    if (role === "admin" || role === "superAdmin") {
+      router.replace("/admin");
+    } else {
+      router.replace("/");
+    }
+  }, []);
+
+  if (isChecking) {
+    return (
+      <div className="w-full min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 rounded-full border-2 border-[#37352B] border-t-[#B88934] animate-spin" />
+        </div>
+      </div>
+    );
+  }
   const {
     register,
     handleSubmit,

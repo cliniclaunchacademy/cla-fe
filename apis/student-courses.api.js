@@ -18,6 +18,10 @@ export const markLessonComplete = async ({ courseId, lessonId }) => {
   return api.post(`/student/courses/${courseId}/lessons/${lessonId}/complete`);
 };
 
+export const unmarkLessonComplete = async ({ courseId, lessonId }) => {
+  return api.delete(`/student/courses/${courseId}/lessons/${lessonId}/complete`);
+};
+
 export const flagLessonVideo = async ({ courseId, lessonId }) => {
   return api.post(`/student/courses/${courseId}/lessons/${lessonId}/flag-video`);
 };

@@ -6,9 +6,10 @@ import {
   getStudentLesson,
   getStudentCourseById,
   markLessonComplete,
+  unmarkLessonComplete,
   flagLessonVideo,
 } from "apis/student-courses.api";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Loader from "@common/Loader";
 
 function getVimeoEmbedUrl(url) {
@@ -56,8 +57,25 @@ export default function CourseVideoPlayer() {
     })),
   }));
 
+  // Track completion state; initialise from sidebar once data loads
+  const [isCompleted, setIsCompleted] = useState(null);
+
+  useEffect(() => {
+    if (!sidebar.length || lessonId === null) return;
+    const current = sidebar
+      .flatMap((m) => m.lessons || [])
+      .find((l) => l._id === lessonId);
+    if (current) setIsCompleted(current.completed);
+  }, [sidebar, lessonId]);
+
   const { mutate: complete, isPending: completing } = useMutation({
     mutationFn: markLessonComplete,
+    onSuccess: () => setIsCompleted(true),
+  });
+
+  const { mutate: uncomplete, isPending: uncompleting } = useMutation({
+    mutationFn: unmarkLessonComplete,
+    onSuccess: () => setIsCompleted(false),
   });
 
   const { mutate: flagVideo, isPending: flagging } = useMutation({
@@ -118,15 +136,15 @@ export default function CourseVideoPlayer() {
               >
                 <iframe
                   src={embedUrl}
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                   style={{
                     position: "absolute",
                     top: 0,
                     left: 0,
                     width: "100%",
                     height: "100%",
+                    border: 0,
                   }}
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                   title={lesson.title}
                 />
               </div>
@@ -149,32 +167,45 @@ export default function CourseVideoPlayer() {
             </div>
 
             <div className="flex gap-2.5 items-center flex-wrap">
-              <button
-                onClick={() => complete({ courseId, lessonId })}
-                disabled={completing}
-                className="px-[14px] py-2.5 flex gap-2 items-center bg-[#271C13] hover:bg-[#313335] active:bg-transparent rounded-[8px] border-2 border-[#50392A] text-[#FFEEEF] textLabel16 transition duration-200 disabled:opacity-60"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+              {isCompleted ? (
+                <button
+                  onClick={() => uncomplete({ courseId, lessonId })}
+                  disabled={uncompleting}
+                  className="px-[14px] py-2.5 flex gap-2 items-center bg-[#1A2E1A] hover:bg-[#313335] active:bg-transparent rounded-[8px] border-2 border-[#2E5A2E] text-[#6FCF6F] textLabel16 transition duration-200 disabled:opacity-60"
                 >
-                  <g clipPath="url(#clip_mc)">
-                    <path
-                      d="M7.71625 0.848019C9.58029 0.554348 11.4885 0.909111 13.123 1.85217C13.4817 2.05912 13.6051 2.51736 13.3984 2.8761C13.1914 3.23487 12.7325 3.35776 12.3737 3.15075C11.0365 2.3792 9.47495 2.08949 7.94989 2.32971C6.4248 2.56998 5.0279 3.32597 3.99262 4.47131C2.95735 5.6167 2.34588 7.08259 2.26044 8.62414C2.17502 10.1657 2.62072 11.6904 3.52313 12.9432C4.42555 14.1959 5.73046 15.1016 7.21967 15.5089C8.70887 15.9161 10.2929 15.8006 11.7072 15.1815C13.1216 14.5624 14.2811 13.4766 14.9921 12.1061C15.7031 10.7356 15.9222 9.16282 15.614 7.65002C15.5313 7.24424 15.7934 6.84807 16.1992 6.76526C16.605 6.68256 17.0012 6.94462 17.0839 7.35046C17.4607 9.19952 17.192 11.1217 16.3229 12.7967C15.4539 14.4718 14.0372 15.7988 12.3085 16.5555C10.58 17.3122 8.64424 17.4531 6.82416 16.9554C5.00397 16.4576 3.4088 15.3511 2.30585 13.8199C1.20291 12.2888 0.658265 10.4255 0.762636 8.54138C0.867033 6.6572 1.61471 4.86565 2.88007 3.46569C4.14541 2.06582 5.85224 1.14169 7.71625 0.848019ZM15.9684 2.4696C16.2614 2.17704 16.7362 2.17685 17.029 2.4696C17.3219 2.76249 17.3219 3.23799 17.029 3.53088L9.52899 11.0309C9.23621 11.3236 8.76135 11.3234 8.46845 11.0309L6.21845 8.78088C5.92555 8.48799 5.92555 8.01249 6.21845 7.7196C6.51135 7.42704 6.98621 7.42685 7.27899 7.7196L8.99872 9.43933L15.9684 2.4696Z"
-                      fill="#FFEEEF"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip_mc">
-                      <rect width="18" height="18" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <span>{completing ? "Marking..." : "Mark Complete"}</span>
-              </button>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span>{uncompleting ? "Updating..." : "Completed"}</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => complete({ courseId, lessonId })}
+                  disabled={completing}
+                  className="px-[14px] py-2.5 flex gap-2 items-center bg-[#271C13] hover:bg-[#313335] active:bg-transparent rounded-[8px] border-2 border-[#50392A] text-[#FFEEEF] textLabel16 transition duration-200 disabled:opacity-60"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clipPath="url(#clip_mc)">
+                      <path
+                        d="M7.71625 0.848019C9.58029 0.554348 11.4885 0.909111 13.123 1.85217C13.4817 2.05912 13.6051 2.51736 13.3984 2.8761C13.1914 3.23487 12.7325 3.35776 12.3737 3.15075C11.0365 2.3792 9.47495 2.08949 7.94989 2.32971C6.4248 2.56998 5.0279 3.32597 3.99262 4.47131C2.95735 5.6167 2.34588 7.08259 2.26044 8.62414C2.17502 10.1657 2.62072 11.6904 3.52313 12.9432C4.42555 14.1959 5.73046 15.1016 7.21967 15.5089C8.70887 15.9161 10.2929 15.8006 11.7072 15.1815C13.1216 14.5624 14.2811 13.4766 14.9921 12.1061C15.7031 10.7356 15.9222 9.16282 15.614 7.65002C15.5313 7.24424 15.7934 6.84807 16.1992 6.76526C16.605 6.68256 17.0012 6.94462 17.0839 7.35046C17.4607 9.19952 17.192 11.1217 16.3229 12.7967C15.4539 14.4718 14.0372 15.7988 12.3085 16.5555C10.58 17.3122 8.64424 17.4531 6.82416 16.9554C5.00397 16.4576 3.4088 15.3511 2.30585 13.8199C1.20291 12.2888 0.658265 10.4255 0.762636 8.54138C0.867033 6.6572 1.61471 4.86565 2.88007 3.46569C4.14541 2.06582 5.85224 1.14169 7.71625 0.848019ZM15.9684 2.4696C16.2614 2.17704 16.7362 2.17685 17.029 2.4696C17.3219 2.76249 17.3219 3.23799 17.029 3.53088L9.52899 11.0309C9.23621 11.3236 8.76135 11.3234 8.46845 11.0309L6.21845 8.78088C5.92555 8.48799 5.92555 8.01249 6.21845 7.7196C6.51135 7.42704 6.98621 7.42685 7.27899 7.7196L8.99872 9.43933L15.9684 2.4696Z"
+                        fill="#FFEEEF"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip_mc">
+                        <rect width="18" height="18" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span>{completing ? "Marking..." : "Mark Complete"}</span>
+                </button>
+              )}
               <button
                 onClick={() => flagVideo({ courseId, lessonId })}
                 disabled={flagging}
