@@ -9,13 +9,14 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "api/ApiAuth";
 import FormFieldInput from "@common/FormFieldComponent/FormFieldInput/FormFieldInput";
 import { useRouter } from "next/navigation";
-import Swal from "sweetalert2";
+import { useToast } from "@components/Common/Toast/ToastProvider";
 import Loader from "@common/Loader";
 
 export default function Signup() {
   const [isLoading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const toast = useToast();
   const {
     register,
     handleSubmit,
@@ -36,21 +37,10 @@ export default function Signup() {
       localStorage.setItem("role", res.data.data.user.role);
       localStorage.setItem("email", res.data.data.user.email);
       localStorage.setItem("username", res.data.data.user.username);
-      Swal.fire({
-        title: "Success",
-        text: "User logged in successfully!",
-        icon: "success",
-        timer: 2000,
-        showConfirmButton: false,
-      }).then(() => {
-        router.push("/");
-      });
+      toast({ type: "success", title: "Welcome!", message: "Account created successfully." });
+      router.push("/");
     } catch (error) {
-      Swal.fire({
-        title: "Error",
-        text: error?.response?.data?.message || "Something went wrong.",
-        icon: "error",
-      });
+      toast({ type: "error", title: "Sign up failed", message: error?.response?.data?.message || "Something went wrong." });
       console.error(error);
     } finally {
       setLoading(false);

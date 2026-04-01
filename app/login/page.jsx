@@ -10,13 +10,20 @@ import { login } from "apis/auth.api";
 import FormFieldInput from "@common/FormFieldComponent/FormFieldInput/FormFieldInput";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Swal from "sweetalert2";
+import { useToast } from "@components/Common/Toast/ToastProvider";
 import Loader from "@common/Loader";
 
 export default function Login() {
   const [isLoading, setLoading] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
   const router = useRouter();
+  const toast = useToast();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { mutateAsync: mutateLogin } = useMutation({
+    mutationFn: login,
+    onError: () => {},
+    onSuccess: () => {},
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -32,23 +39,10 @@ export default function Login() {
   if (isChecking) {
     return (
       <div className="w-full min-h-screen bg-[#0A0A0A] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 rounded-full border-2 border-[#37352B] border-t-[#B88934] animate-spin" />
-        </div>
+        <div className="w-10 h-10 rounded-full border-2 border-[#37352B] border-t-[#B88934] animate-spin" />
       </div>
     );
   }
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const { mutateAsync: mutateLogin } = useMutation({
-    mutationFn: login,
-    onError: (error) => { },
-    onSuccess: () => { },
-  });
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -59,24 +53,21 @@ export default function Login() {
       localStorage.setItem("role", role);
       localStorage.setItem("email", res.data.user.email);
       localStorage.setItem("username", res.data.user.username);
-      Swal.fire({
-        title: "Success",
-        text: "User logged in successfully!",
-        icon: "success",
-        timer: 2000,
-        showConfirmButton: false,
-      }).then(() => {
-        if (role === "admin" || role === "superAdmin") {
-          router.push("/admin");
-        } else {
-          router.push("/");
-        }
+      toast({
+        type: "success",
+        title: "Welcome back!",
+        message: `Logged in as ${res.data.user.username}`,
       });
+      if (role === "admin" || role === "superAdmin") {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
     } catch (error) {
-      Swal.fire({
-        title: "Error",
-        text: error?.response?.data?.message || "Something went wrong.",
-        icon: "error",
+      toast({
+        type: "error",
+        title: "Login failed",
+        message: error?.response?.data?.message || "Something went wrong.",
       });
       console.error(error);
     } finally {

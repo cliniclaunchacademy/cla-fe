@@ -1,5 +1,4 @@
 import axios from "axios";
-import Swal from "sweetalert2";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
@@ -18,30 +17,26 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === (401 || 403)) {
+    const hasToken = !!localStorage.getItem("accessToken");
+    if (hasToken && (error.response?.status === 401 || error.response?.status === 403)) {
       // Token expired or invalid → clear token and redirect
       localStorage.removeItem("accessToken");
 
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "error",
-        title:
-          error?.response?.data?.message ||
-          "Something went wrong. Please log in again.",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-      });
+      // Dispatch a custom event so ToastProvider can show the toast
+      window.dispatchEvent(new CustomEvent("app:toast", {
+        detail: {
+          type: "error",
+          title: "Session expired",
+          message: error?.response?.data?.message || "Please log in again.",
+        },
+      }));
 
-      // Redirect after the toast duration
+      // Redirect after a short delay
       setTimeout(() => {
         const currentRoute = window.location.pathname;
-        console.log("111111111111", currentRoute);
         if (currentRoute.startsWith("/login")) {
           return;
         }
-
         window.location.href = "/login";
       }, 1000);
     }
