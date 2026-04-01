@@ -2,19 +2,19 @@
 
 import Image from "next/image";
 import logoImg from "@assets/images/logo.png";
-import logo from "@assets/images/logo.png";
 import { useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "apis/auth.api";
+import { login } from "api/ApiAuth";
 import FormFieldInput from "@common/FormFieldComponent/FormFieldInput/FormFieldInput";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import Loader from "@common/Loader";
 
-export default function Login() {
+export default function Signup() {
   const [isLoading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -32,10 +32,10 @@ export default function Login() {
     setLoading(true);
     try {
       const res = await mutateLogin(data);
-      localStorage.setItem("accessToken", res.data.token);
-      localStorage.setItem("role", res.data.user.role);
-      localStorage.setItem("email", res.data.user.email);
-      localStorage.setItem("username", res.data.user.username);
+      localStorage.setItem("accessToken", res.data.data.accessToken);
+      localStorage.setItem("role", res.data.data.user.role);
+      localStorage.setItem("email", res.data.data.user.email);
+      localStorage.setItem("username", res.data.data.user.username);
       Swal.fire({
         title: "Success",
         text: "User logged in successfully!",
@@ -43,7 +43,7 @@ export default function Login() {
         timer: 2000,
         showConfirmButton: false,
       }).then(() => {
-        router.push("/dashboard");
+        router.push("/");
       });
     } catch (error) {
       Swal.fire({
@@ -66,8 +66,8 @@ export default function Login() {
           height={101}
           className="mx-auto mb-[31px] "
         />
-        <h3 className="text-center text-[#DFE1E3] textDisplay36 mb-3 ">Welcome Back</h3>
-        <p className="text-center text-[#AFABA3] textLabel16 !text-[18px]  mb-[31px] ">Sign in to continue your learning journey</p>
+        <h3 className="text-center text-[#DFE1E3] textDisplay36 mb-3 ">Create Your Account</h3>
+        <p className="text-center text-[#AFABA3] textLabel16 !text-[18px]  mb-[31px] ">Join Clinic Launch Academy today</p>
         <div className="bg-[#37352B] border-2 border-[#484942] rounded-[16px] py-10 px-8 ">
           <form
             className="flex flex-col gap-[22px] "
@@ -91,33 +91,83 @@ export default function Login() {
               labelClassName={"textHeading16 text-[#DFE1E3]"}
             // disabled={isEdit}
             />
-
-            <div className="relative ">
-              <button className="absolute top-0 right-0 text-[#AE9060] textLabel16 ">Forgot password?</button>
+            <div className="flex gap-4 ">
               <FormFieldInput
-                id="password"
-                label="Password"
-                type="password"
-                placeholder="Enter password"
-                registration={register("password", {
-                  required: "Password is required",
+                id="firstName"
+                label="First Name"
+                placeholder="Enter first name"
+                registration={register("firstName", {
+                  required: "First name is required"
                 })}
-                error={errors.password}
-                width={474}
+                error={errors.firstName}
+                width={183}
+                vertical={true}
+                labelClassName={"textHeading16 text-[#DFE1E3]"}
+              // disabled={isEdit}
+              />
+              <FormFieldInput
+                id="lastName"
+                label="Last Name"
+                placeholder="Enter last name"
+                registration={register("lastName", {
+                  required: "Last name is required"
+                })}
+                error={errors.lastName}
+                width={183}
                 vertical={true}
                 labelClassName={"textHeading16 text-[#DFE1E3]"}
               // disabled={isEdit}
               />
             </div>
 
+            <FormFieldInput
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="Enter password"
+              registration={register("password", {
+                required: "Password is required",
+              })}
+              error={errors.password}
+              width={474}
+              vertical={true}
+              labelClassName={"textHeading16 text-[#DFE1E3]"}
+            // disabled={isEdit}
+            />
+
+            <FormFieldInput
+              id="confirmPassword"
+              label="Confirm Password"
+              type="password"
+              placeholder="Enter confirm password"
+              registration={register("confirmPassword", {
+                required: "Confirm password is required",
+              })}
+              error={errors.confirmPassword}
+              width={474}
+              vertical={true}
+              labelClassName={"textHeading16 text-[#DFE1E3]"}
+            // disabled={isEdit}
+            />
+
+            <div className="text-[#D74A40] textLabel14 p-4 rounded-[12px] bg-[#49332DCC] border border-[#49332D] ">
+              <p>Your email is not registered in our system.</p>
+              <p>Please contact support to get access.</p>
+            </div>
+
             <button className="bg-[#B88934] hover:bg-[#DFAF32] active:bg-[#B88934] text-[#2C2313] px-4 py-[13px] rounded-[8px] textHeading16 transition duration-300 ">
-              Sign In
+              Sign Up
             </button>
           </form>
           <div className="w-full border-0 border-t-2  border-[#484942] my-[28px] "></div>
           <div className="textLabel16 text-center">
-            <span className="text-[#ABADAF] mr-1 ">Don’t have an account?</span>
-            <Link href="/dashboard/signup" className="text-[#B88934] ">Sign up</Link>
+            <span className="text-[#ABADAF] mr-1 ">Already have an account?</span>
+            <Link
+              href="/login"
+              className="text-[#B88934] "
+            >
+              Sign in
+            </Link>
           </div>
         </div>
       </div>

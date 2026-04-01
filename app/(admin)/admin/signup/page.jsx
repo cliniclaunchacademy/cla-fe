@@ -43,7 +43,7 @@ export default function Signup() {
         timer: 2000,
         showConfirmButton: false,
       }).then(() => {
-        router.push("/dashboard");
+        router.push("/admin");
       });
     } catch (error) {
       Swal.fire({
@@ -163,7 +163,7 @@ export default function Signup() {
           <div className="textLabel16 text-center">
             <span className="text-[#ABADAF] mr-1 ">Already have an account?</span>
             <Link
-              href="/dashboard/login"
+              href="/login"
               className="text-[#B88934] "
             >
               Sign in

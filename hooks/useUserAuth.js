@@ -8,7 +8,7 @@ import { getUserDetails } from "@api/ApiAuth";
 export const useUserAuth = () => {
   const router = useRouter();
   const pathname = usePathname() || "/";
-  const isAdminLoginRoute = pathname === "/dashboard/login";
+  const isAdminLoginRoute = pathname === "/login";
 
   const [roleChecked, setRoleChecked] = useState(false);
 
@@ -23,7 +23,7 @@ export const useUserAuth = () => {
       const role = response?.data?.data?.role;
 
       if (role !== "admin" && role !== "superAdmin") {
-        router.push("/dashboard/adminLogin");
+        router.push("/login");
       }
       setRoleChecked(true); // allow rendering
     };

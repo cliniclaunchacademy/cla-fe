@@ -8,32 +8,31 @@ import { getUserDetails } from "@api/ApiAuth";
 export const useAdminAuth = () => {
   const router = useRouter();
   const pathname = usePathname() || "/";
-  const isAdminAuthRoute = (pathname === "/dashboard/login") || (pathname === "/dashboard/signup");
+  const isAdminAuthRoute = pathname === "/login" || pathname === "/signup" || pathname === "/admin/signup";
 
   const [roleChecked, setRoleChecked] = useState(false);
 
-  // // fetch user details
-  // const { mutateAsync: fetchUserDetails } = useMutation({
-  //   mutationFn: getUserDetails,
-  // });
+  useEffect(() => {
+    if (isAdminAuthRoute) {
+      setRoleChecked(true);
+      return;
+    }
 
-  // useEffect(() => {
-  //   const checkRole = async () => {
-  //     const response = await fetchUserDetails();
-  //     const role = response?.data?.data?.role;
+    const token = localStorage.getItem("accessToken");
+    const role = localStorage.getItem("role");
 
-  //     if (role !== "admin" && role !== "superAdmin") {
-  //       router.push("/dashboard/login");
-  //     }
-  //     setRoleChecked(true); // allow rendering
-  //   };
+    if (!token) {
+      router.push("/login");
+      return;
+    }
 
-  //   if (!isAdminAuthRoute) {
-  //     checkRole();
-  //   } else {
-  //     setRoleChecked(true);
-  //   }
-  // }, [isAdminAuthRoute, fetchUserDetails, router]);
+    if (pathname.startsWith("/admin") && role !== "admin" && role !== "superAdmin") {
+      router.push("/login");
+      return;
+    }
+
+    setRoleChecked(true);
+  }, [isAdminAuthRoute, pathname, router]);
 
   return { roleChecked, isAdminAuthRoute };
 };

@@ -7,7 +7,7 @@ export default function Breadcrumbs() {
   const pathParts = pathname.split("/").filter(Boolean);
 
   const filteredParts = pathParts.filter(
-    (part) => part !== "dashboard" && isNaN(Number(part))
+    (part) => isNaN(Number(part))
   );
 
   const ArrowIcon = () => (
@@ -27,13 +27,13 @@ export default function Breadcrumbs() {
   );
 
   // Special Case: Only dashboard
-  if (pathname === "/dashboard") {
+  if (pathname === "/") {
     return <div className="text-gray-500 text-sm">Dashboard</div>;
   }
 
   return (
     <div className="flex items-center space-x-1 textBody16 text-[#3D3D3D]">
-      {pathname === "/dashboard" && (
+      {pathname === "/" && (
         <>
           {" "}
           <span>Dashboard</span> <ArrowIcon />{" "}

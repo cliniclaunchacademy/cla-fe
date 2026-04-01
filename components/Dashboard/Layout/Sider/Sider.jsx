@@ -25,7 +25,7 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
 
   const handleLogout = () => {
     logout();
-    router.push("/dashboard/login");
+    router.push("/login");
   };
 
   console.log(active);
@@ -38,7 +38,7 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
     const isRoutesChildrenActive =
       isRoutesActive || pathname.startsWith(href + "/");
 
-    return href === "/dashboard"
+    return href === "/"
       ? isRoutesActive
       : isRoutesChildrenActive;
   };
@@ -85,8 +85,8 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
 
         <div className="flex-1 flex-col space-y-1 px-[14px] py-6 overflow-y-auto sider-scrollbar">
           <Link
-            href="/dashboard"
-            className={getIconClasses("/dashboard")}
+            href="/"
+            className={getIconClasses("/")}
           >
             <span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,8 +99,8 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             <p className="">Dashboard</p>
           </Link>
           <Link
-            href="/dashboard/courses"
-            className={getIconClasses("/dashboard/courses")}
+            href="/courses"
+            className={getIconClasses("/courses")}
           >
             <span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
