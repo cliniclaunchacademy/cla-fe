@@ -1,5 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import discordImg from "@assets/images/discordImg.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
+const carouselImages = [
+  "/assets/images/dashboard/carousel/CLA Main banner 2.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 1 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 2 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 3 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 4 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 5 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 6 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 7 web.jpg",
+  "/assets/images/dashboard/carousel/CLA Ad 8 web.jpg",
+];
 
 const ProgressBar = ({ percentage = 14 }) => {
   const filledWidth = (68 * percentage) / 100;
@@ -30,7 +49,27 @@ export default function Dashboard() {
         <p className="text-[#ABADAF] textBody18 ">Continue your learning journey at Clinic Launch Academy</p>
       </div>
       {/* slider */}
-      <div className="w-full min-h-[816px] bg-[#AA7C3066] border-2 border-[#1C1E20] rounded-[16px] ">
+      <div className="w-full rounded-[16px] overflow-hidden" style={{ "--swiper-pagination-color": "#B88934", "--swiper-pagination-bullet-inactive-color": "#B88934", "--swiper-pagination-bullet-inactive-opacity": "0.35" }}>
+        <Swiper
+          modules={[Autoplay, Pagination, EffectFade]}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          speed={1200}
+          pagination={{ clickable: true }}
+          loop
+          className="w-full"
+        >
+          {carouselImages.map((src, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={src}
+                alt={`Slide ${index + 1}`}
+                className="w-full object-cover"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       {/* card */}
