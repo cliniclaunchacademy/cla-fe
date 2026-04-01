@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getStudentResources } from "apis/student-resources.api";
+import Loader from "@common/Loader";
 
 function DocumentIcon() {
   return (
@@ -75,10 +76,10 @@ function LessonSection({ lessonTitle, resources, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-[#26282A] rounded-[12px] overflow-hidden">
+    <div>
       <button
         onClick={() => setOpen((p) => !p)}
-        className="w-full flex items-center gap-3 px-5 py-4 bg-[#0F1012] hover:bg-[#17191B] transition duration-200"
+        className="w-full flex items-center gap-3 py-3 hover:opacity-80 transition duration-200"
       >
         <BookIcon />
         <span className="flex-1 text-left textHeading16 text-[#B88934]">
@@ -91,7 +92,7 @@ function LessonSection({ lessonTitle, resources, defaultOpen = false }) {
       </button>
 
       {open && (
-        <div className="px-5 pb-5 pt-4 bg-[#0A0A0A]">
+        <div className="border border-[#26282A] rounded-[12px] px-5 pb-5 pt-4 mt-2 mb-4">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
             {resources.map((resource) => (
               <ResourceCard key={resource._id} resource={resource} />
@@ -103,18 +104,6 @@ function LessonSection({ lessonTitle, resources, defaultOpen = false }) {
   );
 }
 
-function SkeletonSection() {
-  return (
-    <div className="border border-[#26282A] rounded-[12px] overflow-hidden animate-pulse">
-      <div className="flex items-center gap-3 px-5 py-4 bg-[#0F1012]">
-        <div className="w-5 h-5 rounded bg-[#26282A]" />
-        <div className="flex-1 h-4 rounded bg-[#26282A]" />
-        <div className="w-6 h-4 rounded-full bg-[#26282A] mr-2" />
-        <div className="w-4 h-4 rounded bg-[#26282A]" />
-      </div>
-    </div>
-  );
-}
 
 export default function ResourcesPage() {
   const [filter, setFilter] = useState("all");
@@ -145,7 +134,7 @@ export default function ResourcesPage() {
       : grouped.filter((g) => g.courseId === filter);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] px-6 md:px-10 py-8">
+    <div className="min-h-screen px-6 md:px-10 py-8">
       {/* Page header */}
       <h1 className="textDisplay36 text-[#DFE1E3] mb-2">Resources</h1>
       <p className="textBody16 text-[#ABADAF] mb-8">
@@ -179,11 +168,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* States */}
-      {isLoading && (
-        <div className="flex flex-col gap-4">
-          {[1, 2, 3, 4].map((i) => <SkeletonSection key={i} />)}
-        </div>
-      )}
+      {isLoading && <Loader isLoading={true} />}
 
       {isError && (
         <div className="text-center py-16">

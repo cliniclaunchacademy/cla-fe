@@ -17,6 +17,7 @@ import {
 } from "apis/student-dashboard.api";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from "@common/Loader";
 
 const staticCarouselImages = [
   "/assets/images/dashboard/carousel/CLA Main banner 2.jpg",
@@ -73,7 +74,7 @@ export default function Dashboard() {
     queryFn: getStudentDashboardStats,
   });
 
-  const { data: continueLearningData } = useQuery({
+  const { data: continueLearningData, isLoading: isContinueLoading } = useQuery({
     queryKey: ["dashboard-continue-learning"],
     queryFn: getContinueLearning,
   });
@@ -88,7 +89,7 @@ export default function Dashboard() {
     queryFn: getCommunityBanner,
   });
 
-  const { data: activityData } = useQuery({
+  const { data: activityData, isLoading: isActivityLoading } = useQuery({
     queryKey: ["dashboard-recent-activity"],
     queryFn: getRecentActivity,
   });
@@ -216,7 +217,9 @@ export default function Dashboard() {
         {/* Continue Learning */}
         <div>
           <h5 className="text-[#EFEFEE] textHeading20 mb-8">Continue Learning</h5>
-          {continueLearning ? (
+          {isContinueLoading ? (
+            <Loader isLoading={true} />
+          ) : continueLearning ? (
             <div className="w-full border-2 border-[#26282A] rounded-[16px] py-3 px-5 bg-[#1C1E20]">
               <div className="text-[#DFE1E3]">
                 <div className="flex items-stretch gap-2 mb-3">
@@ -280,7 +283,9 @@ export default function Dashboard() {
       <div>
         <h5 className="text-[#EFEFEE] textHeading20 mb-8">Recent Activity</h5>
         <div className="border border-[#313335] rounded-[14px] bg-[#1C1E20]">
-          {activities.length === 0 ? (
+          {isActivityLoading ? (
+            <Loader isLoading={true} />
+          ) : activities.length === 0 ? (
             <div className="px-5 py-6">
               <p className="text-[#ABADAF] textBody16">No recent activity yet.</p>
             </div>
