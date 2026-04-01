@@ -62,6 +62,17 @@ export default function CourseOverview() {
   );
   const progressPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
 
+  const allLessons = modules.flatMap((m) => m.lessons || []);
+  const targetLesson =
+    allLessons.find((l) => !l.completed) || allLessons[0];
+
+  const handleStartContinue = () => {
+    if (!targetLesson) return;
+    router.push(
+      `/courses/courseVideoPlayer?courseId=${courseId}&lessonId=${targetLesson._id}`
+    );
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -132,8 +143,16 @@ export default function CourseOverview() {
                 <p className="text-[#ABADAF] textBody16 ps-5">No modules available.</p>
               )}
               {modules.map((module, index) => (
-                <div
+                <button
                   key={module._id}
+                  onClick={() => {
+                    const firstLesson = module.lessons?.[0];
+                    if (firstLesson) {
+                      router.push(
+                        `/courses/courseVideoPlayer?courseId=${courseId}&lessonId=${firstLesson._id}`
+                      );
+                    }
+                  }}
                   className="w-full ps-5 pr-[39px] py-[19px] text-start rounded-[16px] hover:bg-[#26282A] active:bg-transparent transition duration-200 flex justify-between items-center gap-5"
                 >
                   <div className="flex gap-4 items-center">
@@ -150,7 +169,7 @@ export default function CourseOverview() {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.29289 5.29289C8.68342 4.90237 9.31643 4.90237 9.70696 5.29289L15.707 11.2929C16.0975 11.6834 16.0975 12.3164 15.707 12.707L9.70696 18.707C9.31643 19.0975 8.68342 19.0975 8.29289 18.707C7.90237 18.3164 7.90237 17.6834 8.29289 17.2929L13.5859 11.9999L8.29289 6.70696C7.90237 6.31643 7.90237 5.68342 8.29289 5.29289Z" fill="#ABADAF" />
                   </svg>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -160,7 +179,7 @@ export default function CourseOverview() {
         <div className="flex-1 max-w-[448px] flex flex-col gap-[22px]">
           {/* Progress card */}
           <div className="border-2 border-[#26282A] bg-[#1C1E20] p-[26px] rounded-[12px]">
-            <button className="w-full px-[14px] py-[13px] bg-[#B88934] hover:bg-[#DFAF32] active:bg-[#B88934] text-[#2C2313] rounded-[8px] flex gap-2 items-center justify-center textHeading16 transition duration-300 mb-[22px]">
+            <button onClick={handleStartContinue} className="w-full px-[14px] py-[13px] bg-[#B88934] hover:bg-[#DFAF32] active:bg-[#B88934] text-[#2C2313] rounded-[8px] flex gap-2 items-center justify-center textHeading16 transition duration-300 mb-[22px]">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.25732 1.49952C5.65319 1.50087 6.04187 1.6069 6.38379 1.80641L15.3794 7.05348H15.3801C15.7207 7.25111 16.0038 7.53483 16.2004 7.87599C16.3971 8.21715 16.5004 8.60426 16.5007 8.99806C16.5011 9.39181 16.398 9.77866 16.2019 10.1201C16.0303 10.4189 15.793 10.6739 15.5083 10.8657L15.3838 10.9441L6.38379 16.1941C6.04193 16.3935 5.6531 16.4989 5.25732 16.5003C4.86159 16.5015 4.47255 16.3985 4.12939 16.2014C3.78617 16.0043 3.50075 15.7201 3.30249 15.3775C3.10422 15.0348 2.99988 14.6454 3 14.2495V3.75026C2.99988 3.35446 3.10432 2.96567 3.30249 2.62306C3.50076 2.28039 3.78611 1.99556 4.12939 1.79835C4.47254 1.60128 4.86162 1.49824 5.25732 1.49952ZM4.5 14.2503C4.49997 14.3822 4.535 14.5118 4.60107 14.626C4.66716 14.7402 4.76206 14.8349 4.87647 14.9006C4.99079 14.9663 5.12035 15.0006 5.2522 15.0003C5.3841 14.9998 5.51399 14.9649 5.62793 14.8984L14.6279 9.64845L14.6287 9.64772C14.742 9.58165 14.8358 9.48681 14.9011 9.37306C14.9664 9.25933 15.0008 9.13064 15.0007 8.99952C15.0006 8.86826 14.9659 8.73898 14.9004 8.62526C14.8348 8.51161 14.7407 8.41718 14.6272 8.35133L14.6257 8.3506L5.62793 3.10206C5.51395 3.03555 5.38416 2.99997 5.2522 2.99952C5.12038 2.99914 4.99077 3.03348 4.87647 3.09913C4.7621 3.16483 4.66716 3.25966 4.60107 3.37379C4.53502 3.48795 4.5 3.61763 4.5 3.74952V14.2503Z" fill="currentColor" />
               </svg>
