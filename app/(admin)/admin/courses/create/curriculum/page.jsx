@@ -679,6 +679,7 @@ export default function CurriculumPage() {
           {/* Save & Next */}
           <button
             type="button"
+            onClick={() => router.push("/admin/courses/create/preview")}
             className="flex items-center gap-2 px-[14px] py-3 rounded-[8px] text-[16px] font-semibold transition-colors hover:opacity-90"
             style={{ background: "#B88934", color: "#2C2313" }}
           >
