@@ -105,7 +105,7 @@ function ConfirmDialog({ title, message, confirmLabel, onConfirm, onCancel, isLo
 
 // ─── Create Course Modal ──────────────────────────────────────────────────────
 
-const EMPTY_COURSE = { title: "", subheading: "", about: "", instructorId: "", status: "draft", difficulty: "beginner", comingSoon: false };
+const EMPTY_COURSE = { title: "", subheading: "", about: "", instructorId: "", status: "draft", comingSoon: false };
 
 function CourseModal({ mode, course, instructors, onClose, onSave, isSaving }) {
   const [form, setForm] = useState(
@@ -116,7 +116,6 @@ function CourseModal({ mode, course, instructors, onClose, onSave, isSaving }) {
           about: course.about || "",
           instructorId: course.instructor?._id || "",
           status: course.status || "draft",
-          difficulty: course.difficulty || "beginner",
           comingSoon: course.comingSoon || false,
         }
       : EMPTY_COURSE
@@ -164,23 +163,13 @@ function CourseModal({ mode, course, instructors, onClose, onSave, isSaving }) {
               ))}
             </select>
           </div>
-          <div className="flex gap-3">
-            <div className="flex-1">
-              <label className="textLabel14 text-[#ABADAF] mb-1 block">Status <span className="text-red-400">*</span></label>
-              <select value={form.status} onChange={(e) => set("status", e.target.value)} className={inputCls}>
-                <option value="draft">Draft</option>
-                <option value="unpublished">Unpublished</option>
-                <option value="published">Published</option>
-              </select>
-            </div>
-            <div className="flex-1">
-              <label className="textLabel14 text-[#ABADAF] mb-1 block">Difficulty</label>
-              <select value={form.difficulty} onChange={(e) => set("difficulty", e.target.value)} className={inputCls}>
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-              </select>
-            </div>
+          <div>
+            <label className="textLabel14 text-[#ABADAF] mb-1 block">Status <span className="text-red-400">*</span></label>
+            <select value={form.status} onChange={(e) => set("status", e.target.value)} className={inputCls}>
+              <option value="draft">Draft</option>
+              <option value="unpublished">Unpublished</option>
+              <option value="published">Published</option>
+            </select>
           </div>
           <label className="flex items-center gap-3 cursor-pointer group">
             <div
@@ -373,7 +362,6 @@ export default function CourseManagementPage() {
           <span className="textLabel16 text-[#DFE1E3] w-[130px]">Instructors</span>
           <span className="textLabel16 text-[#DFE1E3] w-[150px]">Status</span>
           <span className="textLabel16 text-[#DFE1E3] w-[100px]">Modules</span>
-          <span className="textLabel16 text-[#DFE1E3] w-[140px]">Difficulty</span>
           <span className="textLabel16 text-[#DFE1E3] w-[120px]">Created</span>
           <span className="textLabel16 text-[#DFE1E3] text-right w-[140px]">Actions</span>
         </div>
@@ -432,11 +420,6 @@ export default function CourseManagementPage() {
               {/* Modules */}
               <div className="w-[100px]">
                 <span className="textBody16 text-[#DFE1E3]">{course.moduleCount ?? 0} modules</span>
-              </div>
-
-              {/* Difficulty */}
-              <div className="w-[140px]">
-                <DifficultyBadge difficulty={course.difficulty} />
               </div>
 
               {/* Created */}
