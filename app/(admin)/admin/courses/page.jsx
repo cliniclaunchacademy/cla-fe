@@ -274,6 +274,12 @@ export default function CourseManagementPage() {
     toast({ type: "success", title: `Course ${next}`, message: `"${course.title}" is now ${next}.` });
   };
 
+  const toggleComingSoon = (course) => {
+    const next = !course.comingSoon;
+    doUpdate({ courseId: course._id, data: { comingSoon: next } });
+    toast({ type: "success", title: next ? "Marked as Coming Soon" : "Coming Soon removed", message: `"${course.title}" updated.` });
+  };
+
   const move = (index, direction) => {
     const base = localOrder ? [...localOrder] : rawCourses.map((c) => c._id);
     const target = index + direction;
@@ -363,7 +369,7 @@ export default function CourseManagementPage() {
           <span className="textLabel16 text-[#DFE1E3] w-[150px]">Status</span>
           <span className="textLabel16 text-[#DFE1E3] w-[100px]">Modules</span>
           <span className="textLabel16 text-[#DFE1E3] w-[120px]">Created</span>
-          <span className="textLabel16 text-[#DFE1E3] text-right w-[140px]">Actions</span>
+          <span className="textLabel16 text-[#DFE1E3] text-right w-[170px]">Actions</span>
         </div>
 
         {/* Rows */}
@@ -430,7 +436,7 @@ export default function CourseManagementPage() {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center gap-4 w-[140px] justify-end">
+              <div className="flex items-center gap-4 w-[170px] justify-end">
                 {/* Edit */}
                 <button onClick={() => router.push(`/admin/courses/edit/${course._id}`)} className="text-[#ABADAF] hover:text-[#DFE1E3] transition" title="Edit">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -443,6 +449,18 @@ export default function CourseManagementPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="1.5"/>
                     <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </button>
+                {/* Toggle coming soon */}
+                <button
+                  onClick={() => toggleComingSoon(course)}
+                  className="transition"
+                  style={{ color: course.comingSoon ? "#13B882" : "#ABADAF" }}
+                  title={course.comingSoon ? "Remove Coming Soon" : "Mark as Coming Soon"}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
                 {/* Delete */}
