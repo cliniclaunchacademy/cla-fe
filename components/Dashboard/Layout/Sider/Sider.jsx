@@ -81,11 +81,11 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
         {/* Logo & title */}
         <div className="flex justify-between px-[26px] pb-[26px] border-0 border-b-2 border-b-[#26282A] ">
           <Image
-            className=""
             src={logo}
-            width={44}
-            height={44}
+            width={72}
+            height={72}
             alt=""
+            style={{ width: '72px', height: 'auto' }}
           />
           <button className="bg-[#17191B] hover:bg-[#23272a] active:bg-[#17191B] rounded-[8px] p-[11px] transition duration-300 " >
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
