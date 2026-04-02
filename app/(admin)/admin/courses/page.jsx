@@ -282,11 +282,39 @@ export default function CourseManagementPage() {
 
   const move = (index, direction) => {
     const base = localOrder ? [...localOrder] : rawCourses.map((c) => c._id);
-    const target = index + direction;
-    if (target < 0 || target >= base.length) return;
-    [base[index], base[target]] = [base[target], base[index]];
-    setLocalOrder(base);
-    doReorder(base);
+    const dragCourse = filtered[index];
+    const overCourse = filtered[index + direction];
+    if (!dragCourse || !overCourse) return;
+    const fromPos = base.indexOf(dragCourse._id);
+    const toPos = base.indexOf(overCourse._id);
+    if (fromPos === -1 || toPos === -1) return;
+    const newBase = [...base];
+    [newBase[fromPos], newBase[toPos]] = [newBase[toPos], newBase[fromPos]];
+    setLocalOrder(newBase);
+    doReorder(newBase);
+  };
+
+  const [dragIndex, setDragIndex] = useState(null);
+  const [overIndex, setOverIndex] = useState(null);
+
+  const handleDragStart = (index) => setDragIndex(index);
+  const handleDragOver = (e, index) => { e.preventDefault(); setOverIndex(index); };
+  const handleDragEnd = () => { setDragIndex(null); setOverIndex(null); };
+
+  const handleDrop = (index) => {
+    if (dragIndex === null || dragIndex === index) { handleDragEnd(); return; }
+    const base = localOrder ? [...localOrder] : rawCourses.map((c) => c._id);
+    const dragCourse = filtered[dragIndex];
+    const overCourse = filtered[index];
+    const fromPos = base.indexOf(dragCourse._id);
+    const toPos = base.indexOf(overCourse._id);
+    if (fromPos === -1 || toPos === -1) { handleDragEnd(); return; }
+    const newBase = [...base];
+    newBase.splice(fromPos, 1);
+    newBase.splice(toPos, 0, dragCourse._id);
+    setLocalOrder(newBase);
+    doReorder(newBase);
+    handleDragEnd();
   };
 
   return (
@@ -379,11 +407,24 @@ export default function CourseManagementPage() {
           <div className="px-5 py-16 text-center textBody16 text-[#ABADAF]">No courses found.</div>
         ) : (
           filtered.map((course, index) => (
-            <div key={course._id} className={`flex items-center px-5 py-4 border-b border-[#313335] last:border-b-0 ${index % 2 === 1 ? "bg-[#26282A]" : ""}`}>
+            <div
+              key={course._id}
+              draggable
+              onDragStart={() => handleDragStart(index)}
+              onDragOver={(e) => handleDragOver(e, index)}
+              onDrop={() => handleDrop(index)}
+              onDragEnd={handleDragEnd}
+              className={`flex items-center px-5 py-4 border-b border-[#313335] last:border-b-0 transition-colors select-none ${
+                overIndex === index && dragIndex !== index
+                  ? "bg-[#2C2313]"
+                  : index % 2 === 1 ? "bg-[#26282A]" : ""
+              }`}
+              style={{ opacity: dragIndex === index ? 0.4 : 1 }}
+            >
 
               {/* Reorder controls */}
               <div className="w-[80px] flex items-center gap-2 flex-shrink-0">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="cursor-grab text-[#ABADAF]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="cursor-grab text-[#ABADAF] flex-shrink-0">
                   <path d="M9 5H7M9 9H7M9 13H7M9 17H7M17 5H15M17 9H15M17 13H15M17 17H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
                 <div className="flex flex-col gap-1">
