@@ -369,12 +369,12 @@ export default function CourseManagementPage() {
         {/* Table header */}
         <div className="flex items-center px-5 py-3.5 border-b border-[#313335]">
           <div className="w-[80px]" />
-          <span className="textLabel16 text-[#DFE1E3] w-[300px]">Course</span>
+          <span className="textLabel16 text-[#DFE1E3] flex-1">Course</span>
           <span className="textLabel16 text-[#DFE1E3] w-[130px]">Instructors</span>
           <span className="textLabel16 text-[#DFE1E3] w-[150px]">Status</span>
           <span className="textLabel16 text-[#DFE1E3] w-[100px]">Modules</span>
           <span className="textLabel16 text-[#DFE1E3] w-[140px]">Difficulty</span>
-          <span className="textLabel16 text-[#DFE1E3] flex-1">Created</span>
+          <span className="textLabel16 text-[#DFE1E3] w-[120px]">Created</span>
           <span className="textLabel16 text-[#DFE1E3] text-right w-[140px]">Actions</span>
         </div>
 
@@ -403,7 +403,7 @@ export default function CourseManagementPage() {
               </div>
 
               {/* Course */}
-              <div className="flex items-center gap-3 w-[300px] min-w-0">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div className="w-[50px] h-[58px] rounded-[4px] overflow-hidden bg-[#26282A] flex-shrink-0">
                   {course.thumbnail ? (
                     <img src={course.thumbnail} alt="" className="w-full h-full object-cover" />
@@ -440,7 +440,7 @@ export default function CourseManagementPage() {
               </div>
 
               {/* Created */}
-              <div className="flex-1">
+              <div className="w-[120px]">
                 <span className="textBody16 text-[#ABADAF]">
                   {course.createdAt ? new Date(course.createdAt).toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" }) : "—"}
                 </span>
@@ -453,13 +453,6 @@ export default function CourseManagementPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M18.5 2.50001C18.8978 2.10219 19.4374 1.87869 20 1.87869C20.5626 1.87869 21.1022 2.10219 21.5 2.50001C21.8978 2.89784 22.1213 3.43741 22.1213 4.00001C22.1213 4.56262 21.8978 5.10219 21.5 5.50001L12 15L8 16L9 12L18.5 2.50001Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                {/* View — editor page not built yet, disabled */}
-                <button disabled className="text-[#484942] cursor-not-allowed" title="Course editor coming soon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
                 {/* Toggle publish/unpublish */}
