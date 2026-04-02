@@ -15,6 +15,7 @@ export default function ResetPasswordPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
+  const isWelcome = searchParams.get("welcome") === "true";
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -98,9 +99,9 @@ export default function ResetPasswordPage() {
     <section className="relative w-full min-h-screen bg-[#181818] flex justify-center items-center overflow-hidden py-[117px] loginBgImg">
       <div className="relative w-10/12 lg:w-5/12 max-w-[458px]">
         <Image src={logoImg} width={133} height={101} className="mx-auto mb-[31px]" alt="CLA" />
-        <h3 className="text-center text-[#DFE1E3] textDisplay36 mb-3">Set New Password</h3>
+        <h3 className="text-center text-[#DFE1E3] textDisplay36 mb-3">{isWelcome ? "Set Your Password" : "Set New Password"}</h3>
         <p className="text-center text-[#AFABA3] textLabel16 !text-[18px] mb-[31px]">
-          Choose a strong password for your account
+          {isWelcome ? "Welcome! Create a password to access your account." : "Choose a strong password for your account"}
         </p>
         <div className="bg-[#37352B] border-2 border-[#484942] rounded-[16px] py-10 px-8">
           <form className="flex flex-col gap-[22px]" onSubmit={handleSubmit(onSubmit)}>
@@ -166,7 +167,7 @@ export default function ResetPasswordPage() {
               disabled={isPending}
               className="bg-[#B88934] hover:bg-[#DFAF32] active:bg-[#B88934] text-[#2C2313] px-4 py-[13px] rounded-[8px] textHeading16 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isPending ? "Updating..." : "Update Password"}
+              {isPending ? "Setting..." : isWelcome ? "Set Password" : "Update Password"}
             </button>
 
             <Link
