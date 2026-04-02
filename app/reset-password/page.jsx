@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -10,7 +10,7 @@ import logoImg from "@assets/images/logo.png";
 import { resetPassword } from "apis/auth.api";
 import { useToast } from "@components/Common/Toast/ToastProvider";
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const toast = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -183,5 +183,13 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }

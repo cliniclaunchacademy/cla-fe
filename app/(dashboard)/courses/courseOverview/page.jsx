@@ -6,7 +6,7 @@ import { getStudentCourseById } from "apis/student-courses.api";
 import Image from "next/image";
 import courseBannerBottomBg from "@assets/images/courseBannerBottomBg.png";
 import courseBanner from "@assets/images/courseBanner.png";
-import React from "react";
+import React, { Suspense } from "react";
 import Loader from "@common/Loader";
 
 const ProgressBar = ({ percentage = 0, height = 7 }) => {
@@ -41,7 +41,7 @@ const ProgressBar = ({ percentage = 0, height = 7 }) => {
   );
 };
 
-export default function CourseOverview() {
+function CourseOverviewContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const courseId = searchParams.get("id");
@@ -244,5 +244,13 @@ export default function CourseOverview() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function CourseOverview() {
+  return (
+    <Suspense>
+      <CourseOverviewContent />
+    </Suspense>
   );
 }

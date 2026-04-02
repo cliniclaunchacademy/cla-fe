@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import {
   getStudentLesson,
@@ -24,7 +25,7 @@ function getVimeoEmbedUrl(url) {
   return embedUrl;
 }
 
-export default function CourseVideoPlayer() {
+function CourseVideoPlayerContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const courseId = searchParams.get("courseId");
@@ -389,5 +390,13 @@ export default function CourseVideoPlayer() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function CourseVideoPlayer() {
+  return (
+    <Suspense>
+      <CourseVideoPlayerContent />
+    </Suspense>
   );
 }
