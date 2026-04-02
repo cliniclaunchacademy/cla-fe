@@ -2,7 +2,12 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import {
+  createAdminCourse,
+  uploadCourseThumbnail,
+  getAdminInstructors,
+} from "apis/admin-courses.api";
 
 // ─── Step Indicator ───────────────────────────────────────────────────────────
 
@@ -176,7 +181,6 @@ function ThumbnailUpload({ file, previewUrl, onFile }) {
       ) : (
         <>
           <div className="flex flex-col items-center gap-2">
-            {/* File icon */}
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#B88934" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M14 2V8H20" stroke="#B88934" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -193,7 +197,6 @@ function ThumbnailUpload({ file, previewUrl, onFile }) {
             style={{ border: "1.5px solid #ABADAF" }}
             onClick={(e) => { e.stopPropagation(); inputRef.current?.click(); }}
           >
-            {/* Upload icon */}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M17 8L12 3L7 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -219,8 +222,36 @@ export default function CreateCoursePage() {
   const [difficulty, setDifficulty] = useState("");
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
+  const [error, setError] = useState("");
 
   const ABOUT_MAX = 500;
+
+  const { data: instructorsData } = useQuery({
+    queryKey: ["adminInstructors"],
+    queryFn: getAdminInstructors,
+  });
+  const instructors =
+    instructorsData?.data?.instructors ??
+    instructorsData?.instructors ??
+    [];
+
+  const { mutate: doCreate, isPending } = useMutation({
+    mutationFn: createAdminCourse,
+    onSuccess: async (res) => {
+      const courseId = res.data?.course?._id;
+      if (thumbnailFile && courseId) {
+        try {
+          await uploadCourseThumbnail({ courseId, file: thumbnailFile });
+        } catch {
+          // non-fatal — course created, thumbnail failed
+        }
+      }
+      router.push(`/admin/courses/create/curriculum/${courseId}`);
+    },
+    onError: (err) => {
+      setError(err?.response?.data?.message || "Failed to create course.");
+    },
+  });
 
   const handleThumbnailFile = (file) => {
     setThumbnailFile(file);
@@ -228,7 +259,16 @@ export default function CreateCoursePage() {
   };
 
   const handleSaveNext = () => {
-    router.push("/admin/courses/create/curriculum");
+    setError("");
+    if (!title.trim()) { setError("Course title is required."); return; }
+    if (!instructorId) { setError("Please select an instructor."); return; }
+    doCreate({
+      title: title.trim(),
+      subheading: subtitle.trim(),
+      about: about.trim(),
+      instructorId,
+      status: "draft",
+    });
   };
 
   return (
@@ -250,13 +290,16 @@ export default function CreateCoursePage() {
         <button
           type="button"
           onClick={handleSaveNext}
-          className="flex items-center gap-2 px-[14px] py-3 rounded-[8px] text-[16px] font-semibold transition-colors hover:opacity-90 active:opacity-80"
+          disabled={isPending}
+          className="flex items-center gap-2 px-[14px] py-3 rounded-[8px] text-[16px] font-semibold transition-colors hover:opacity-90 active:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
           style={{ background: "#B88934", color: "#2C2313" }}
         >
-          Save &amp; Next
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          {isPending ? "Saving..." : "Save & Next"}
+          {!isPending && (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
         </button>
       </div>
 
@@ -264,6 +307,11 @@ export default function CreateCoursePage() {
       <div className="flex flex-col items-start px-9 py-7 gap-7 w-full">
         {/* Step indicator */}
         <StepIndicator currentStep={1} />
+
+        {/* Error */}
+        {error && (
+          <p className="text-[14px] text-red-400">{error}</p>
+        )}
 
         {/* Form */}
         <div className="flex flex-col gap-[22px] w-[80%]">
@@ -315,9 +363,13 @@ export default function CreateCoursePage() {
               <StyledSelect
                 value={instructorId}
                 onChange={(e) => setInstructorId(e.target.value)}
-                placeholder="Select instructor"
+                placeholder={instructors.length === 0 ? "Loading instructors..." : "Select instructor"}
               >
-                {/* Instructors loaded via API in next phase */}
+                {instructors.map((inst) => (
+                  <option key={inst._id} value={inst._id} style={{ background: "#232420", color: "#DFE1E3" }}>
+                    {inst.firstName} {inst.lastName}
+                  </option>
+                ))}
               </StyledSelect>
             </Field>
 
@@ -340,7 +392,7 @@ export default function CreateCoursePage() {
               <span className="text-[16px] font-semibold leading-[140%] text-[#DFE1E3]">Thumbnail</span>
             </div>
             <p className="text-[14px] text-[#ABADAF] pl-1">
-              Attach a valid document. Supported formats: JPG, PNG, PDF (max 5 MB).
+              Attach a valid document. Supported formats: JPG, PNG, WebP (max 5 MB).
             </p>
             <div className="w-full">
               <ThumbnailUpload
