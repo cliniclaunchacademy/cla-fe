@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import discordImg from "@assets/images/discordImg.png";
+import discordImg from "@assets/images/cla-discord.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
@@ -269,7 +269,7 @@ export default function Dashboard() {
           <h5 className="text-[#EFEFEE] textHeading20 mb-8">Join our community</h5>
           {discordUrl ? (
             <a href={discordUrl} target="_blank" rel="noopener noreferrer" className="rounded-[16px] block">
-              <Image src={discordImg} alt="Join Discord" />
+              <Image style={{pointer: "cursor", borderRadius: "16px"}} src={discordImg} alt="Join Discord" />
             </a>
           ) : (
             <button className="rounded-[16px]">
