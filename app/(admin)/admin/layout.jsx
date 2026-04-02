@@ -1,7 +1,7 @@
 import LayoutWrapper from "@components/AdminDashboard/Layout/LayoutWrapper/LayoutWrapper";
 
 export const metadata = {
-  title: "ISCB dashboard",
+  title: "CLA",
   description: "Great institution dashboard",
   icons: {
     // icon: "/appLogo.png"
