@@ -44,6 +44,28 @@ Fetch all banners.
 
 ---
 
+## GET `/api/admin/banners/active`
+
+Fetch only active banners, ordered by `order` field.
+
+### Response `200`
+```json
+{
+  "banners": [
+    {
+      "_id": "65f1a2b3c4d5e6f7a8b9c091",
+      "imageUrl": "https://res.cloudinary.com/dy0j4c40y/image/upload/v1775039328/cla/dashboard-carousel/CLA_Ad_4_web_jxafn5.jpg",
+      "label": "CLA Ad 4",
+      "status": "active",
+      "order": 1,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}
+```
+
+---
+
 ## POST `/api/admin/banners`
 
 Create a new banner with an image upload.
@@ -61,13 +83,18 @@ Create a new banner with an image upload.
 ```json
 {
   "_id": "64f1a2b3c4d5e6f7a8b9c0b2",
-  "imageUrl": "http://localhost:5000/uploads/banner-xyz789.jpg",
+  "imageUrl": "https://res.cloudinary.com/dy0j4c40y/image/upload/v1234567890/cla/dashboard-carousel/abc123.jpg",
   "label": "Summer Sale — 50% Off!",
   "status": "active",
   "order": 2,
   "createdAt": "2024-01-15T00:00:00.000Z"
 }
 ```
+
+### Notes
+- Image is uploaded to Cloudinary under the `cla/dashboard-carousel` folder
+- `imageUrl` in the response is a full Cloudinary `https://` URL
+- Max file size: 5MB. Accepted formats: JPEG, PNG, WebP
 
 ---
 

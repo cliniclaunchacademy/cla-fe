@@ -17,6 +17,17 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Maintenance mode — redirect students to /maintenance
+    if (error.response?.status === 503) {
+      const currentRoute = window.location.pathname;
+      if (!currentRoute.startsWith("/admin") && !currentRoute.startsWith("/maintenance")) {
+        const msg = error.response?.data?.message || "";
+        if (msg) sessionStorage.setItem("maintenanceMessage", msg);
+        window.location.href = "/maintenance";
+      }
+      return Promise.reject(error);
+    }
+
     const hasToken = !!localStorage.getItem("accessToken");
     if (hasToken && (error.response?.status === 401 || error.response?.status === 403)) {
       // Token expired or invalid → clear token and redirect

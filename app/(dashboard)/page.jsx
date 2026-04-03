@@ -96,7 +96,7 @@ export default function Dashboard() {
 
   const stats = statsData?.data?.stats;
   const continueLearning = continueLearningData?.data?.continueLearning;
-  const apiBanners = bannersData?.data?.banners || [];
+  const apiBanners = (bannersData?.data?.banners || []).filter((b) => b.status === "active");
   const carouselImages = apiBanners.length > 0
     ? apiBanners.map((b) => b.imageUrl)
     : staticCarouselImages;

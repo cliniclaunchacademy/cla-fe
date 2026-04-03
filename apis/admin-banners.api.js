@@ -2,6 +2,8 @@ import api from "api/ApiAxiosInstance";
 
 export const getAdminBanners = () => api.get("/admin/banners");
 
+export const getActiveBanners = () => api.get("/admin/banners/active");
+
 export const createAdminBanner = ({ label, file }) => {
   const formData = new FormData();
   formData.append("label", label);
