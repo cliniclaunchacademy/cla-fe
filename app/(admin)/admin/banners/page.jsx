@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useMemo } from "react";
+import ReactSwitch from "react-switch";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getAdminBanners,
@@ -239,15 +240,20 @@ function BannerFormModal({ banner, onClose, onSave, isPending }) {
 
       <div className="flex items-center justify-between py-2">
         <span className="text-[14px] font-semibold text-[#DFE1E3]">Active</span>
-        <button
-          type="button"
-          onClick={() => setStatus((s) => s === "active" ? "inactive" : "active")}
-          className={`w-11 h-6 rounded-full transition-colors duration-200 relative flex-shrink-0 ${status === "active" ? "bg-[#B88934]" : "bg-[#313335]"}`}
-        >
-          <span
-            className={`absolute top-[3px] w-[18px] h-[18px] rounded-full bg-white shadow transition-transform duration-200 ${status === "active" ? "translate-x-[22px]" : "translate-x-[3px]"}`}
-          />
-        </button>
+        <ReactSwitch
+          checked={status === "active"}
+          onChange={(checked) => setStatus(checked ? "active" : "inactive")}
+          onColor="#B88934"
+          offColor="#313335"
+          onHandleColor="#ffffff"
+          offHandleColor="#ffffff"
+          handleDiameter={18}
+          uncheckedIcon={false}
+          checkedIcon={false}
+          height={24}
+          width={44}
+          activeBoxShadow="0 0 0 2px rgba(184,137,52,0.3)"
+        />
       </div>
 
       <div className="flex justify-end gap-3">
