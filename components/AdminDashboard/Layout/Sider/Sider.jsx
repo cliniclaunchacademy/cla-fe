@@ -147,6 +147,30 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             <p className="">Users</p>
           </Link>
           <Link
+            href="/admin/recordings"
+            className={getIconClasses("/admin/recordings")}
+          >
+            <span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 10L19.553 7.724C19.7054 7.64784 19.8748 7.61188 20.045 7.61955C20.2152 7.62721 20.3806 7.67824 20.5256 7.76781C20.6706 7.85738 20.7902 7.98248 20.8733 8.1313C20.9563 8.28012 21 8.44778 21 8.618V15.382C21 15.5522 20.9563 15.7199 20.8733 15.8687C20.7902 16.0175 20.6706 16.1426 20.5256 16.2322C20.3806 16.3218 20.2152 16.3728 20.045 16.3805C19.8748 16.3881 19.7054 16.3522 19.553 16.276L15 14V10Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H13C13.5304 6 14.0391 6.21071 14.4142 6.58579C14.7893 6.96086 15 7.46957 15 8V16C15 16.5304 14.7893 17.0391 14.4142 17.4142C14.0391 17.7893 13.5304 18 13 18H5C4.46957 18 3.96086 17.7893 3.58579 17.4142C3.21071 17.0391 3 16.5304 3 16V8Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <p className="">Recordings</p>
+          </Link>
+          <Link
+            href="/admin/categories"
+            className={getIconClasses("/admin/categories")}
+          >
+            <span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.46-6.46a2.426 2.426 0 0 0 0-3.42L12.586 2.586z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/>
+              </svg>
+            </span>
+            <p className="">Categories</p>
+          </Link>
+          <Link
             href="/admin/banners"
             className={getIconClasses("/admin/banners")}
           >

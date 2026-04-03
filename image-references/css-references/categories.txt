@@ -1,0 +1,5149 @@
+/* category */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 1728px;
+height: 1080px;
+
+background: #FFFFFF;
+
+
+/* left menubar */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 26px 0px 16px;
+gap: 24px;
+
+width: 256px;
+height: 1080px;
+
+/* Basic/Black */
+background: #0A0A0A;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479631 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-start;
+padding: 0px 26px;
+gap: 16px;
+
+width: 256px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* image 121 */
+
+margin: 0 auto;
+width: 44px;
+height: 44px;
+
+background: url(image.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* TRIAL-Primary button-WMS */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 2px 14px;
+gap: 8px;
+
+margin: 0 auto;
+width: 44px;
+height: 44px;
+
+/* Grey/700 */
+background: #17191B;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/bell */
+
+width: 22px;
+height: 22px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.35%;
+right: 8.32%;
+top: 4.16%;
+bottom: 4.17%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Vector 64 */
+
+width: 256px;
+height: 0px;
+
+/* Grey/500 */
+border: 2px solid #26282A;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* menu */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 14px;
+gap: 4px;
+
+width: 256px;
+height: 764px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 40px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479755 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 8px;
+
+width: 121px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/shield */
+
+width: 18px;
+height: 18px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 4.17%;
+bottom: 4.15%;
+
+/* Golden/600 */
+background: #AE9060;
+
+
+/* ADMIN PANEL */
+
+width: 95px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 120px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/Dashboard */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 54.17%;
+top: 8.33%;
+bottom: 45.83%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 54.17%;
+right: 8.33%;
+top: 8.33%;
+bottom: 62.5%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 54.17%;
+right: 8.33%;
+top: 45.83%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 54.17%;
+top: 62.5%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 84px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 81px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/users-round */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.17%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 45px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 100px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/grid-3x3 */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 64px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 120px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/user-star istructor */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 3.9%;
+top: 8.33%;
+bottom: 5.55%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 84px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 63px;
+
+width: 228px;
+height: 44px;
+
+/* Gradient/Golden-H1 */
+background: linear-gradient(90deg, rgba(170, 124, 48, 0.4) 0%, rgba(170, 124, 48, 0.2) 100%);
+/* GreyGolden/600 */
+border: 1px solid #37352B;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 120px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/swatch-book category */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Grey/100 */
+background: #DFE1E3;
+
+
+/* Dashboard */
+
+width: 84px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/100 */
+color: #DFE1E3;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 117px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/file-text */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 4.17%;
+bottom: 4.17%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 81px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 123px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/video */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.17%;
+top: 20.83%;
+bottom: 20.83%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 87px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 134px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/flask-conical */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 4.17%;
+bottom: 4.17%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 98px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 164px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/clipboard-list */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 4.17%;
+bottom: 4.17%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 128px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 91px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/image */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 55px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 11;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 134px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/bell */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 8.34%;
+top: 4.17%;
+bottom: 4.17%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 98px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 12;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 100px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/settings */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.51%;
+right: 8.52%;
+top: 4.24%;
+bottom: 4.24%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 64px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector 65 */
+
+width: 256px;
+height: 0px;
+
+/* Grey/500 */
+border: 2px solid #26282A;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479640 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 256px;
+height: 134px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* menu-item */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 63px;
+
+width: 228px;
+height: 74px;
+
+/* Transparent/Golden 17% */
+background: rgba(170, 124, 48, 0.07);
+/* GreyGolden/700 */
+border: 1px solid #2E2D26;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 198px;
+height: 46px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479621 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 4px 11px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Transparent/Golden 20% */
+background: rgba(170, 124, 48, 0.2);
+/* Yellow/600 */
+border: 1px solid #514920;
+border-radius: 999px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/user-round */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Golden/500 */
+background: #B88934;
+
+
+/* Frame 1707479622 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 140px;
+height: 39px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Test Student */
+
+width: 98px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/100 */
+color: #DFE1E3;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* teststudent@lms.local */
+
+width: 140px;
+height: 17px;
+
+/* Inter/Body/Regular 12 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 140%;
+/* identical to box height, or 17px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479639 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 14px;
+gap: 10px;
+
+width: 256px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* menu-item */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 12px;
+gap: 59px;
+
+width: 228px;
+height: 44px;
+
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title-wrapper */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 102px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/log-out */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Dashboard */
+
+width: 66px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479651 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 40px 36px;
+gap: 40px;
+
+width: 1472px;
+height: 1080px;
+
+/* Grey/800 */
+background: #121415;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame 1707479788 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-start;
+padding: 0px;
+gap: 40px;
+
+width: 1400px;
+height: 85px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479652 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+margin: 0 auto;
+width: 485px;
+height: 85px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Categories */
+
+width: 485px;
+height: 48px;
+
+/* Inter/Display/Bold 40 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 120%;
+/* identical to box height, or 48px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Manage course categories and tags */
+
+width: 485px;
+height: 25px;
+
+/* Inter/Body/Regular 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 14px;
+gap: 8px;
+
+margin: 0 auto;
+width: 162px;
+min-width: 48px;
+height: 48px;
+
+/* Golden/500 */
+background: #B88934;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/plus */
+
+width: 18px;
+height: 18px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 16.67%;
+bottom: 16.67%;
+
+/* Golden/900 */
+background: #2C2313;
+
+
+/* MyButton */
+
+width: 108px;
+height: 22px;
+
+/* Inter/Heading/SemiBold 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+text-align: center;
+
+/* Golden/900 */
+color: #2C2313;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/Dashboard */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+display: none;
+width: 18px;
+height: 18px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 1707479767 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 1400px;
+height: 46px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* search bar */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 10px;
+
+width: 512px;
+height: 46px;
+
+/* Grey/700 */
+background: #17191B;
+/* Grey/500 */
+border: 1.5px solid #26282A;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* left */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 484px;
+height: 22px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* lucide/search */
+
+width: 18px;
+height: 18px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* Search users... */
+
+width: 458px;
+height: 22px;
+
+/* Inter/Label/Medium 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* lucide/chevron-down */
+
+display: none;
+width: 18px;
+height: 18px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 1707479680 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 32px;
+
+width: 1400px;
+height: 855px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479676 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 32px;
+
+width: 1400px;
+height: 855px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* rows */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 1400px;
+height: 855px;
+
+/* Grey/600 */
+background: #1C1E20;
+/* Grey/400 */
+border: 1px solid #313335;
+border-radius: 14px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Violet/900 */
+background: #211E2D;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Violet/500 */
+background: #8563EA;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 71px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Violet/500 */
+background: #8563EA;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 8 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Violet/900 */
+background: #211E2D;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Violet/500 */
+background: #8563EA;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 79px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Purple/500 */
+background: #8B42E1;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 9 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Pink/900 */
+background: #261820;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Pink/500 */
+background: #E24A96;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 143px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Pink/500 */
+background: #E24A96;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 10 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Orange/900 */
+background: #271C13;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Orange/500 */
+background: #DE8130;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 154px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Orange/500 */
+background: #DE8130;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 11 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Green/900 */
+background: #15241C;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Green/500 */
+background: #13B882;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 48px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Green/500 */
+background: #13B882;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 12 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Blue/900 */
+background: #141C2A;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Blue/500 */
+background: #437EDA;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 137px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Blue/500 */
+background: #437EDA;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 13 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 11;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 12;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Grey/600 */
+background: #1C1E20;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Grey/300 */
+background: #868889;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 97px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Grey/300 */
+background: #868889;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 14 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 13;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 14;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Yellow/900 */
+background: #252115;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Yellow/500 */
+background: #B59E1E;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 101px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Yellow/500 */
+background: #B59E1E;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* category: Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 20px;
+gap: 4px;
+
+width: 1400px;
+height: 95px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 15;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479684 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 594px;
+
+width: 1360px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479683 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1193px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479682 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 0px;
+gap: 10px;
+
+width: 46px;
+height: 46px;
+
+/* Red/900 */
+background: #1B1416;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* lucide/tag */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.35%;
+top: 8.33%;
+bottom: 8.35%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.19%;
+top: 4.17%;
+bottom: 4.19%;
+
+/* Red/500 */
+background: #B52427;
+
+
+/* Frame 1707479801 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 1707479799 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 1707479811 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 1127px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Mindset */
+
+width: 65px;
+height: 25px;
+
+/* Inter/Heading/SemiBold 18 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 140%;
+/* or 25px */
+
+/* Grey/50 */
+color: #EFEFEE;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 3 */
+
+width: 12px;
+height: 12px;
+
+/* Red/500 */
+background: #B52427;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* (1 course) */
+
+width: 67px;
+height: 20px;
+
+/* Inter/Label/Medium 14 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+/* identical to box height, or 20px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Mental frameworks and discipline for success. Transform your thinking to unlock your potential. */
+
+width: 1127px;
+height: 22px;
+
+/* Inter/Body/Regular 16 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+/* Grey/200 */
+color: #ABADAF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1707479628 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 22px;
+
+width: 62px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* lucide/square-pen */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 4.18%;
+top: 4.18%;
+bottom: 8.34%;
+
+/* Grey/200 */
+background: #ABADAF;
+
+
+/* lucide/trash-2 */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 8.34%;
+right: 8.33%;
+top: 4.17%;
+bottom: 4.16%;
+
+/* Red/200 */
+background: #C0696B;
+
+
+/* Vector 15 */
+
+width: 1400px;
+height: 0px;
+
+/* Grey/400 */
+border: 1px solid #313335;
+
+/* Inside auto layout */
+flex: none;
+order: 16;
+align-self: stretch;
+flex-grow: 0;
