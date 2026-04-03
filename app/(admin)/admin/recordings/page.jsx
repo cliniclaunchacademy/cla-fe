@@ -4,9 +4,6 @@ import { useState, useMemo } from "react";
 import { useQuery, useQueries, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   getAdminRecordingCategories,
-  createAdminCategory,
-  updateAdminCategory,
-  deleteAdminCategory,
   getCategoryRecordings,
   createAdminRecording,
   updateAdminRecording,
@@ -203,53 +200,6 @@ function RecordingModal({ recording, categories, onClose, onSave, isPending }) {
 
 // ─── Category form modal ──────────────────────────────────────────────────────
 
-function CategoryModal({ category, onClose, onSave, isPending }) {
-  const isEdit = !!category;
-  const [name, setName] = useState(category?.name ?? "");
-  const [status, setStatus] = useState(category?.status ?? "published");
-
-  const handleSave = () => {
-    if (!name.trim()) return;
-    onSave({ name: name.trim(), status });
-  };
-
-  return (
-    <Modal title={isEdit ? "Edit Category" : "Add Category"} onClose={onClose}>
-      <Field label="Category Name" required>
-        <StyledInput value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Weekly Webinars" maxLength={200} />
-      </Field>
-
-      <div className="flex items-center justify-between py-1">
-        <div>
-          <span className="text-[14px] font-semibold text-[#DFE1E3]">Published</span>
-          <p className="text-[12px] text-[#868889] mt-0.5">Hidden categories won't be visible to students</p>
-        </div>
-        <ReactSwitch
-          checked={status === "published"}
-          onChange={(checked) => setStatus(checked ? "published" : "hidden")}
-          onColor="#B88934" offColor="#313335"
-          onHandleColor="#ffffff" offHandleColor="#ffffff"
-          handleDiameter={18} uncheckedIcon={false} checkedIcon={false}
-          height={24} width={44} activeBoxShadow="0 0 0 2px rgba(184,137,52,0.3)"
-        />
-      </div>
-
-      <div className="flex justify-end gap-3 pt-1">
-        <button onClick={onClose} className="px-4 py-2.5 rounded-[8px] text-[14px] font-medium text-[#DFE1E3] border border-[#484942] hover:border-[#B88934] transition">
-          Cancel
-        </button>
-        <button
-          onClick={handleSave}
-          disabled={isPending || !name.trim()}
-          className="px-4 py-2.5 rounded-[8px] text-[14px] font-semibold text-[#2C2313] bg-[#B88934] hover:bg-[#DFAF32] transition disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isPending ? "Saving..." : isEdit ? "Save Changes" : "Add Category"}
-        </button>
-      </div>
-    </Modal>
-  );
-}
-
 // ─── Delete confirm ───────────────────────────────────────────────────────────
 
 function DeleteConfirm({ label, onConfirm, onCancel, isPending, warning }) {
@@ -344,7 +294,6 @@ export default function AdminRecordingsPage() {
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [modal, setModal] = useState(null);
-  const [catModal, setCatModal] = useState(null);
 
   // ── Fetch categories ──
 
@@ -442,43 +391,6 @@ export default function AdminRecordingsPage() {
     }
   };
 
-  // ── Category mutations ──
-
-  const { mutate: doCreateCat, isPending: isCreatingCat } = useMutation({
-    mutationFn: createAdminCategory,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["adminRecordingCategories"] });
-      setCatModal(null);
-      toast({ type: "success", title: "Category added" });
-    },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
-  });
-
-  const { mutate: doUpdateCat, isPending: isUpdatingCat } = useMutation({
-    mutationFn: ({ categoryId, data }) => updateAdminCategory({ categoryId, data }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["adminRecordingCategories"] });
-      setCatModal(null);
-      toast({ type: "success", title: "Category updated" });
-    },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
-  });
-
-  const { mutate: doDeleteCat, isPending: isDeletingCat } = useMutation({
-    mutationFn: (categoryId) => deleteAdminCategory(categoryId),
-    onSuccess: () => {
-      invalidateAll();
-      setCatModal(null);
-      toast({ type: "success", title: "Category deleted" });
-    },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
-  });
-
-  const handleSaveCat = (fields) => {
-    if (catModal?.type === "addCat") doCreateCat(fields);
-    else if (catModal?.type === "editCat") doUpdateCat({ categoryId: catModal.category._id, data: fields });
-  };
-
   // ── Render ──
 
   return (
@@ -558,65 +470,6 @@ export default function AdminRecordingsPage() {
         )}
       </div>
 
-      {/* Categories section */}
-      <div className="mt-10">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h2 className="text-[20px] font-semibold text-[#DFE1E3]">Categories</h2>
-            <p className="text-[14px] text-[#868889] mt-0.5">Manage recording categories</p>
-          </div>
-          <button
-            onClick={() => setCatModal({ type: "addCat" })}
-            className="flex items-center gap-2 text-[14px] font-semibold text-[#B88934] hover:text-[#DFAF32] px-3.5 py-2 rounded-[8px] border border-[#37352B] hover:border-[#B88934] transition"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Add Category
-          </button>
-        </div>
-
-        <div className="rounded-[14px] overflow-hidden" style={{ background: "#1C1E20", border: "1px solid #313335" }}>
-          {isLoadingCats ? (
-            <div className="flex justify-center py-10"><Loader isLoading={true} /></div>
-          ) : categories.length === 0 ? (
-            <div className="px-5 py-10 text-center text-[15px] text-[#ABADAF]">
-              No categories yet. Add one to get started.
-            </div>
-          ) : (
-            categories.map((cat, index) => (
-              <div
-                key={cat._id}
-                className="flex items-center justify-between px-5 py-4 gap-4"
-                style={{ borderBottom: index === categories.length - 1 ? "none" : "1px solid #313335" }}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-[16px] font-semibold text-[#DFE1E3]">{cat.name}</span>
-                  <span className="text-[12px] font-medium text-[#B88934] px-2 py-0.5 rounded-full" style={{ background: "#37352B" }}>
-                    {cat.recordingCount ?? 0} {cat.recordingCount === 1 ? "recording" : "recordings"}
-                  </span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <StatusBadge status={cat.status} />
-                  <button onClick={() => setCatModal({ type: "editCat", category: cat })} className="text-[#ABADAF] hover:text-[#B88934] transition-colors">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M18.5 2.5C18.8978 2.10218 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.10218 21.5 2.5C21.8978 2.89782 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.10218 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                  <button onClick={() => setCatModal({ type: "deleteCat", category: cat })} className="text-[#ABADAF] hover:text-red-400 transition-colors">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M3 6H5H21" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-
       {/* Recording modals */}
       {(modal?.type === "add" || modal?.type === "edit") && (
         <RecordingModal
@@ -636,24 +489,6 @@ export default function AdminRecordingsPage() {
         />
       )}
 
-      {/* Category modals */}
-      {(catModal?.type === "addCat" || catModal?.type === "editCat") && (
-        <CategoryModal
-          category={catModal.type === "editCat" ? catModal.category : null}
-          onClose={() => setCatModal(null)}
-          onSave={handleSaveCat}
-          isPending={isCreatingCat || isUpdatingCat}
-        />
-      )}
-      {catModal?.type === "deleteCat" && (
-        <DeleteConfirm
-          label={catModal.category.name}
-          warning="This will permanently delete all recordings inside this category."
-          onConfirm={() => doDeleteCat(catModal.category._id)}
-          onCancel={() => setCatModal(null)}
-          isPending={isDeletingCat}
-        />
-      )}
     </div>
   );
 }
