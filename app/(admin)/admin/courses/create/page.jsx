@@ -6,6 +6,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import {
   createAdminCourse,
   uploadCourseThumbnail,
+  uploadCourseBanner,
   getAdminInstructors,
 } from "apis/admin-courses.api";
 
@@ -222,6 +223,8 @@ export default function CreateCoursePage() {
   const [difficulty, setDifficulty] = useState("");
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
+  const [bannerFile, setBannerFile] = useState(null);
+  const [bannerPreview, setBannerPreview] = useState(null);
   const [error, setError] = useState("");
 
   const ABOUT_MAX = 500;
@@ -246,6 +249,13 @@ export default function CreateCoursePage() {
           // non-fatal — course created, thumbnail failed
         }
       }
+      if (bannerFile && courseId) {
+        try {
+          await uploadCourseBanner({ courseId, file: bannerFile });
+        } catch {
+          // non-fatal — course created, banner failed
+        }
+      }
       router.push(`/admin/courses/create/curriculum/${courseId}`);
     },
     onError: (err) => {
@@ -256,6 +266,11 @@ export default function CreateCoursePage() {
   const handleThumbnailFile = (file) => {
     setThumbnailFile(file);
     setThumbnailPreview(URL.createObjectURL(file));
+  };
+
+  const handleBannerFile = (file) => {
+    setBannerFile(file);
+    setBannerPreview(URL.createObjectURL(file));
   };
 
   const handleSaveNext = () => {
@@ -399,6 +414,23 @@ export default function CreateCoursePage() {
                 file={thumbnailFile}
                 previewUrl={thumbnailPreview}
                 onFile={handleThumbnailFile}
+              />
+            </div>
+          </div>
+
+          {/* Banner */}
+          <div className="flex flex-col gap-1.5 w-full">
+            <div className="flex items-center pl-1">
+              <span className="text-[16px] font-semibold leading-[140%] text-[#DFE1E3]">Banner</span>
+            </div>
+            <p className="text-[14px] text-[#ABADAF] pl-1">
+              Course banner shown at the top of the course overview page. Supported formats: JPG, PNG, WebP (max 5 MB).
+            </p>
+            <div className="w-full">
+              <ThumbnailUpload
+                file={bannerFile}
+                previewUrl={bannerPreview}
+                onFile={handleBannerFile}
               />
             </div>
           </div>

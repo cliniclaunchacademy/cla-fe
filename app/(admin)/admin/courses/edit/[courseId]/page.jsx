@@ -7,7 +7,6 @@ import {
   getAdminCourseEditor,
   updateAdminCourse,
   uploadCourseThumbnail,
-  uploadCourseBanner,
   getAdminInstructors,
 } from "apis/admin-courses.api";
 
@@ -273,13 +272,6 @@ export default function EditCourseOverviewPage() {
           // non-fatal
         }
       }
-      if (bannerFile) {
-        try {
-          await uploadCourseBanner({ courseId, file: bannerFile });
-        } catch {
-          // non-fatal
-        }
-      }
       router.push(`/admin/courses/edit/${courseId}/curriculum`);
     },
     onError: (err) => {
@@ -309,6 +301,7 @@ export default function EditCourseOverviewPage() {
         about: about.trim(),
         instructorId,
       },
+      bannerFile: bannerFile || undefined,
     });
   };
 

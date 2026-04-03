@@ -9,8 +9,19 @@ export const getAdminCourseEditor = async (courseId) =>
 
 export const createAdminCourse = async (data) => api.post("/admin/courses", data);
 
-export const updateAdminCourse = async ({ courseId, data }) =>
-  api.put(`/admin/courses/${courseId}`, data);
+export const updateAdminCourse = async ({ courseId, data, bannerFile }) => {
+  if (bannerFile) {
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) formData.append(key, value);
+    });
+    formData.append("bannerImage", bannerFile);
+    return api.put(`/admin/courses/${courseId}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  }
+  return api.put(`/admin/courses/${courseId}`, data);
+};
 
 export const deleteAdminCourse = async (courseId) =>
   api.delete(`/admin/courses/${courseId}`);
