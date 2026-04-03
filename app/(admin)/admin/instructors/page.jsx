@@ -10,7 +10,6 @@ import {
   deleteAdminInstructor,
 } from "apis/admin-instructors.api";
 import { useToast } from "@components/Common/Toast/ToastProvider";
-import ReactSwitch from "react-switch";
 import Loader from "@common/Loader";
 
 // ─── Avatar ──────────────────────────────────────────────────────────────────
@@ -155,7 +154,6 @@ function InstructorFormModal({ instructor, onClose, onSave, isPending }) {
   const [lastName, setLastName] = useState(instructor?.lastName ?? "");
   const [title, setTitle] = useState(instructor?.title ?? "");
   const [bio, setBio] = useState(instructor?.bio ?? "");
-  const [status, setStatus] = useState(instructor?.status ?? "active");
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
 
@@ -166,7 +164,7 @@ function InstructorFormModal({ instructor, onClose, onSave, isPending }) {
 
   const handleSubmit = () => {
     if (!firstName.trim() || !lastName.trim() || !title.trim()) return;
-    onSave({ firstName: firstName.trim(), lastName: lastName.trim(), title: title.trim(), bio: bio.trim(), status, photoFile });
+    onSave({ firstName: firstName.trim(), lastName: lastName.trim(), title: title.trim(), bio: bio.trim(), status: "active", photoFile });
   };
 
   const canSubmit = firstName.trim() && lastName.trim() && title.trim();
@@ -206,27 +204,6 @@ function InstructorFormModal({ instructor, onClose, onSave, isPending }) {
           onFile={handleFile}
         />
       </Field>
-
-      <div className="flex items-center justify-between py-1">
-        <div>
-          <span className="text-[14px] font-semibold text-[#DFE1E3]">Active</span>
-          <p className="text-[12px] text-[#868889] mt-0.5">Inactive instructors won't appear in course assignment</p>
-        </div>
-        <ReactSwitch
-          checked={status === "active"}
-          onChange={(checked) => setStatus(checked ? "active" : "inactive")}
-          onColor="#B88934"
-          offColor="#313335"
-          onHandleColor="#ffffff"
-          offHandleColor="#ffffff"
-          handleDiameter={18}
-          uncheckedIcon={false}
-          checkedIcon={false}
-          height={24}
-          width={44}
-          activeBoxShadow="0 0 0 2px rgba(184,137,52,0.3)"
-        />
-      </div>
 
       <div className="flex justify-end gap-3 pt-1">
         <button
@@ -305,11 +282,6 @@ function InstructorRow({ instructor, onEdit, onDelete, isLast }) {
             >
               {instructor.coursesAssigned ?? 0} {instructor.coursesAssigned === 1 ? "course" : "courses"}
             </span>
-            {instructor.status === "inactive" && (
-              <span className="text-[12px] text-[#ABADAF] px-2 py-0.5 rounded-full border border-[#484942]">
-                Inactive
-              </span>
-            )}
           </div>
 
           {/* Title */}
@@ -382,7 +354,7 @@ export default function AdminInstructorsPage() {
   const { mutate: doCreate, isPending: isCreating } = useMutation({
     mutationFn: async ({ firstName, lastName, title, bio, status, photoFile }) => {
       const res = await createAdminInstructor({ firstName, lastName, title, bio, status });
-      const newId = res.data?._id;
+      const newId = res.data?._id ?? res.data?.instructor?._id;
       if (photoFile && newId) {
         await uploadInstructorPhoto({ instructorId: newId, file: photoFile });
       }
