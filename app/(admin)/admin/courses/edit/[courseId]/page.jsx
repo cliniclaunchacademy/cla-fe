@@ -7,6 +7,7 @@ import {
   getAdminCourseEditor,
   updateAdminCourse,
   uploadCourseThumbnail,
+  uploadCourseBanner,
   getAdminInstructors,
 } from "apis/admin-courses.api";
 
@@ -222,6 +223,8 @@ export default function EditCourseOverviewPage() {
   const [difficulty, setDifficulty] = useState("");
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
+  const [bannerFile, setBannerFile] = useState(null);
+  const [bannerPreview, setBannerPreview] = useState(null);
   const [initialized, setInitialized] = useState(false);
   const [error, setError] = useState("");
 
@@ -254,6 +257,7 @@ export default function EditCourseOverviewPage() {
         setInstructorId(course.instructor?._id || "");
         setDifficulty(course.difficulty || "");
         if (course.thumbnail) setThumbnailPreview(course.thumbnail);
+        if (course.banner) setBannerPreview(course.banner);
       }
       setInitialized(true);
     }
@@ -269,6 +273,13 @@ export default function EditCourseOverviewPage() {
           // non-fatal
         }
       }
+      if (bannerFile) {
+        try {
+          await uploadCourseBanner({ courseId, file: bannerFile });
+        } catch {
+          // non-fatal
+        }
+      }
       router.push(`/admin/courses/edit/${courseId}/curriculum`);
     },
     onError: (err) => {
@@ -279,6 +290,11 @@ export default function EditCourseOverviewPage() {
   const handleThumbnailFile = (file) => {
     setThumbnailFile(file);
     setThumbnailPreview(URL.createObjectURL(file));
+  };
+
+  const handleBannerFile = (file) => {
+    setBannerFile(file);
+    setBannerPreview(URL.createObjectURL(file));
   };
 
   const handleSaveNext = () => {
@@ -417,6 +433,23 @@ export default function EditCourseOverviewPage() {
                 file={thumbnailFile}
                 previewUrl={thumbnailPreview}
                 onFile={handleThumbnailFile}
+              />
+            </div>
+          </div>
+
+          {/* Banner */}
+          <div className="flex flex-col gap-1.5 w-full">
+            <div className="flex items-center pl-1">
+              <span className="text-[16px] font-semibold leading-[140%] text-[#DFE1E3]">Banner</span>
+            </div>
+            <p className="text-[14px] text-[#ABADAF] pl-1">
+              Course banner shown at the top of the course overview page. Supported formats: JPG, PNG, WebP (max 5 MB).
+            </p>
+            <div className="w-full">
+              <ThumbnailUpload
+                file={bannerFile}
+                previewUrl={bannerPreview}
+                onFile={handleBannerFile}
               />
             </div>
           </div>

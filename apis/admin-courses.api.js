@@ -26,6 +26,14 @@ export const uploadCourseThumbnail = async ({ courseId, file }) => {
   });
 };
 
+export const uploadCourseBanner = async ({ courseId, file }) => {
+  const formData = new FormData();
+  formData.append("banner", file);
+  return api.post(`/admin/courses/${courseId}/banner`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+};
+
 export const getAdminInstructors = async () => api.get("/admin/instructors");
 
 // ─── Modules ──────────────────────────────────────────────────────────────────
