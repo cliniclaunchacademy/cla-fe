@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { getStudentRecording } from "apis/student-recordings.api";
+import { getStudentRecording, getStudentRecordings } from "apis/student-recordings.api";
 import Loader from "@common/Loader";
 
 function getVimeoEmbedUrl(url) {
@@ -19,10 +19,49 @@ function getVimeoEmbedUrl(url) {
 function formatDate(dateStr) {
   if (!dateStr) return null;
   return new Date(dateStr).toLocaleDateString("en-US", {
-    month: "long",
+    month: "short",
     day: "numeric",
     year: "numeric",
   });
+}
+
+function SidebarRecordingCard({ rec, categoryName, isActive, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`w-full text-left flex gap-3 p-3 rounded-[12px] border-2 transition duration-200 ${
+        isActive
+          ? "bg-gradient-to-b from-[rgba(170,124,48,0.3)] to-[rgba(170,124,48,0.15)] border-[#50392A]"
+          : "bg-[#1C1E20] border-[#313335] hover:border-[#50392A]"
+      }`}
+    >
+      {/* Thumbnail */}
+      <div
+        className="w-[100px] h-[64px] rounded-[8px] flex-shrink-0 flex items-center justify-center"
+        style={{ background: "#232420" }}
+      >
+        <div className="w-7 h-7 rounded-full bg-[#37352B] flex items-center justify-center">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+            <path d="M5 3L19 12L5 21V3Z" fill="#B88934" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Info */}
+      <div className="flex flex-col gap-1 flex-1 min-w-0">
+        <p className="text-[#FFFFFF] text-[13px] font-semibold leading-snug line-clamp-2">{rec.title}</p>
+        <span
+          className="text-[11px] font-semibold text-[#B88934] px-2 py-0.5 rounded-full w-fit"
+          style={{ background: "#37352B" }}
+        >
+          {categoryName}
+        </span>
+        {rec.recordedDate && (
+          <p className="text-[#868889] text-[11px]">{formatDate(rec.recordedDate)}</p>
+        )}
+      </div>
+    </button>
+  );
 }
 
 export default function RecordingPlayerPage() {
@@ -35,7 +74,19 @@ export default function RecordingPlayerPage() {
     enabled: !!id,
   });
 
+  const { data: allData } = useQuery({
+    queryKey: ["studentRecordings"],
+    queryFn: getStudentRecordings,
+  });
+
   const recording = data?.data?.recording;
+
+  // Flatten all recordings from all categories, attach categoryName
+  const allRecordings = (allData?.data?.categories ?? []).flatMap((cat) =>
+    (cat.recordings ?? []).map((r) => ({ ...r, categoryName: cat.name }))
+  );
+
+  const otherRecordings = allRecordings.filter((r) => r._id !== id);
 
   if (isLoading) {
     return (
@@ -71,58 +122,70 @@ export default function RecordingPlayerPage() {
         <span>Back to Recordings</span>
       </button>
 
-      <div className="max-w-[960px] mx-auto">
-        {/* Video player */}
-        {embedUrl ? (
-          <div
-            className="w-full rounded-[14px] overflow-hidden"
-            style={{ padding: "56.25% 0 0 0", position: "relative" }}
-          >
-            <iframe
-              src={embedUrl}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: 0,
-              }}
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              title={recording.title}
-            />
+      <div className="flex flex-col lg:flex-row gap-7">
+        {/* ── Left: player + meta ── */}
+        <div className="flex-1 min-w-0">
+          {embedUrl ? (
+            <div
+              className="w-full rounded-[14px] overflow-hidden"
+              style={{ padding: "56.25% 0 0 0", position: "relative" }}
+            >
+              <iframe
+                src={embedUrl}
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title={recording.title}
+              />
+            </div>
+          ) : (
+            <div
+              className="w-full aspect-video rounded-[14px] flex items-center justify-center"
+              style={{ background: "#1C1E20", border: "1px solid #313335" }}
+            >
+              <p className="text-[#ABADAF] textBody16">No video available</p>
+            </div>
+          )}
+
+          <div className="mt-6 flex flex-col gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
+              {recording.categoryName && (
+                <span
+                  className="text-[13px] font-semibold text-[#B88934] px-3 py-1 rounded-full"
+                  style={{ background: "#37352B" }}
+                >
+                  {recording.categoryName}
+                </span>
+              )}
+              {recording.recordedDate && (
+                <span className="text-[14px] text-[#868889]">{formatDate(recording.recordedDate)}</span>
+              )}
+            </div>
+
+            <h1 className="textDisplay36 text-[#FFFFFF] leading-tight">{recording.title}</h1>
+
+            {recording.subheading && (
+              <p className="textBody18 text-[#ABADAF] leading-relaxed">{recording.subheading}</p>
+            )}
           </div>
-        ) : (
-          <div
-            className="w-full aspect-video rounded-[14px] flex items-center justify-center"
-            style={{ background: "#1C1E20", border: "1px solid #313335" }}
-          >
-            <p className="text-[#ABADAF] textBody16">No video available</p>
+        </div>
+
+        {/* ── Right: more recordings ── */}
+        {otherRecordings.length > 0 && (
+          <div className="w-full lg:w-[320px] flex-shrink-0">
+            <p className="text-[#FFFFFF] text-[16px] font-bold mb-4">More Recordings</p>
+            <div className="flex flex-col gap-3 lg:max-h-[calc(100vh-160px)] lg:overflow-y-auto scrollbar-thin pr-0.5">
+              {otherRecordings.map((rec) => (
+                <SidebarRecordingCard
+                  key={rec._id}
+                  rec={rec}
+                  categoryName={rec.categoryName}
+                  isActive={false}
+                  onClick={() => router.push(`/recordings/${rec._id}`)}
+                />
+              ))}
+            </div>
           </div>
         )}
-
-        {/* Meta */}
-        <div className="mt-6 flex flex-col gap-3">
-          <div className="flex items-center gap-3 flex-wrap">
-            {recording.categoryName && (
-              <span
-                className="text-[13px] font-semibold text-[#B88934] px-3 py-1 rounded-full"
-                style={{ background: "#37352B" }}
-              >
-                {recording.categoryName}
-              </span>
-            )}
-            {recording.recordedDate && (
-              <span className="text-[14px] text-[#868889]">{formatDate(recording.recordedDate)}</span>
-            )}
-          </div>
-
-          <h1 className="textDisplay36 text-[#FFFFFF] leading-tight">{recording.title}</h1>
-
-          {recording.subheading && (
-            <p className="textBody18 text-[#ABADAF] leading-relaxed">{recording.subheading}</p>
-          )}
-        </div>
       </div>
     </section>
   );
