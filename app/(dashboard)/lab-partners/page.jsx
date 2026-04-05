@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
+
 const LAB_PARTNERS = [
   {
     _id: "alphabiomedlabs",
     name: "AlphaBioMed Labs",
     subheading: "Access exclusive wholesale pricing from our trusted laboratory partner.",
-    logo: null,
+    logo: "/ABM_200X200_G.png",
     portalUrl: "https://partners.alphabiomedlabs.com/",
     status: "live",
   },
@@ -87,7 +89,7 @@ function LabCard({ lab }) {
         }}
       >
         {lab.logo ? (
-          <img src={lab.logo} alt={lab.name} className="w-full h-full object-cover" />
+          <Image src={lab.logo} alt={lab.name} width={90} height={80} className="object-contain" />
         ) : (
           <span
             className="font-bold select-none"
