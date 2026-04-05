@@ -56,7 +56,7 @@ export default function AdminNotificationsPage() {
     try {
       setHistoryLoading(true);
       const res = await api.get("/admin/dashboard/notification-history?limit=50");
-      setHistory(res.data?.data?.notifications ?? []);
+      setHistory(res.data?.notifications ?? []);
     } catch {
       // silent
     } finally {
@@ -76,7 +76,7 @@ export default function AdminNotificationsPage() {
       try {
         setUserSearchLoading(true);
         const res = await api.get(`/admin/users?search=${encodeURIComponent(userSearch)}&limit=20`);
-        const users = res.data?.data?.users ?? [];
+        const users = res.data?.users ?? [];
         setUserResults(users.filter((u) => !selectedUsers.find((s) => s._id === u._id)));
       } catch {
         // silent
@@ -108,9 +108,7 @@ export default function AdminNotificationsPage() {
       if (targetType === "user") body.targetUsers = selectedUsers.map((u) => u._id);
 
       const res = await api.post("/admin/notifications", body);
-      const data = res.data?.data;
-
-      setSendResult({ success: true, message: "Notification sent!", recipientCount: data?.recipientCount });
+      setSendResult({ success: true, message: "Notification sent!", recipientCount: res.data?.recipientCount });
       setTitle(""); setMessage(""); setType("custom");
       setTargetType("all"); setTargetRole("student");
       setSelectedUsers([]); setUserSearch("");
