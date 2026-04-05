@@ -40,7 +40,7 @@ export default function Signup() {
       toast({ type: "success", title: "Welcome!", message: "Account created successfully." });
       router.push("/admin");
     } catch (error) {
-      toast({ type: "error", title: "Sign up failed", message: error?.response?.data?.message || "Something went wrong." });
+      toast({ type: "error", title: "Sign up failed", message: error?.response?.data?.error || "Something went wrong." });
       console.error(error);
     } finally {
       setLoading(false);

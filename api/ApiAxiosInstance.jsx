@@ -21,7 +21,7 @@ api.interceptors.response.use(
     if (error.response?.status === 503) {
       const currentRoute = window.location.pathname;
       if (!currentRoute.startsWith("/admin") && !currentRoute.startsWith("/maintenance")) {
-        const msg = error.response?.data?.message || "";
+        const msg = error.response?.data?.error || "";
         if (msg) sessionStorage.setItem("maintenanceMessage", msg);
         window.location.href = "/maintenance";
       }
@@ -38,7 +38,7 @@ api.interceptors.response.use(
         detail: {
           type: "error",
           title: "Session expired",
-          message: error?.response?.data?.message || "Please log in again.",
+          message: error?.response?.data?.error || "Please log in again.",
         },
       }));
 

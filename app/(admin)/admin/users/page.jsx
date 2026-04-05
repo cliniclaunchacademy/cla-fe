@@ -268,37 +268,37 @@ export default function UserManagementPage() {
   const { mutate: doCreate, isPending: isCreating } = useMutation({
     mutationFn: createAdminUser,
     onSuccess: () => { invalidate(); setModal(null); toast({ type: "success", title: "User created", message: "New user has been added." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doUpdate, isPending: isUpdating } = useMutation({
     mutationFn: updateAdminUser,
     onSuccess: () => { invalidate(); setModal(null); toast({ type: "success", title: "User updated", message: "Changes have been saved." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doBan, isPending: isBanning } = useMutation({
     mutationFn: banAdminUser,
     onSuccess: () => { invalidate(); setConfirm(null); toast({ type: "success", title: "User banned", message: "The user has been banned." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doUnban, isPending: isUnbanning } = useMutation({
     mutationFn: unbanAdminUser,
     onSuccess: () => { invalidate(); setConfirm(null); toast({ type: "success", title: "User unbanned", message: "The user has been restored." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doResend, isPending: isResending } = useMutation({
     mutationFn: resendWelcomeEmail,
     onSuccess: () => { setConfirm(null); toast({ type: "success", title: "Email sent", message: "Welcome email has been sent." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doDelete, isPending: isDeleting } = useMutation({
     mutationFn: deleteAdminUser,
     onSuccess: () => { invalidate(); setConfirm(null); toast({ type: "success", title: "User deleted", message: "The user has been removed." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const handleSearch = useCallback((e) => {

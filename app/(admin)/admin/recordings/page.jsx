@@ -359,7 +359,7 @@ export default function AdminRecordingsPage() {
       setModal(null);
       toast({ type: "success", title: "Recording added" });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doUpdate, isPending: isUpdating } = useMutation({
@@ -369,7 +369,7 @@ export default function AdminRecordingsPage() {
       setModal(null);
       toast({ type: "success", title: "Recording updated" });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doDelete, isPending: isDeleting } = useMutation({
@@ -379,7 +379,7 @@ export default function AdminRecordingsPage() {
       setModal(null);
       toast({ type: "success", title: "Recording deleted" });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const handleSaveRecording = (fields) => {

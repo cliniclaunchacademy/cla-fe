@@ -76,7 +76,7 @@ export default function SettingsPage() {
       toast({
         type: "error",
         title: "Update failed",
-        message: err?.response?.data?.message || "Something went wrong.",
+        message: err?.response?.data?.error || "Something went wrong.",
       });
     },
   });
@@ -92,7 +92,7 @@ export default function SettingsPage() {
       toast({
         type: "error",
         title: "Upload failed",
-        message: err?.response?.data?.message || "Something went wrong.",
+        message: err?.response?.data?.error || "Something went wrong.",
       });
     },
   });
@@ -127,7 +127,7 @@ export default function SettingsPage() {
       toast({
         type: "error",
         title: "Update failed",
-        message: err?.response?.data?.message || "Something went wrong.",
+        message: err?.response?.data?.error || "Something went wrong.",
       });
     },
   });

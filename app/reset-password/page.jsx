@@ -41,7 +41,7 @@ function ResetPasswordContent() {
       setSuccess(true);
       setTimeout(() => router.push("/login"), 3000);
     } catch (err) {
-      const msg = err?.response?.data?.message || "Something went wrong.";
+      const msg = err?.response?.data?.error || "Something went wrong.";
       toast({ type: "error", title: "Reset failed", message: msg });
     }
   };

@@ -248,19 +248,19 @@ export default function CourseManagementPage() {
   const { mutate: doCreate, isPending: isCreating } = useMutation({
     mutationFn: createAdminCourse,
     onSuccess: () => { invalidate(); setModal(null); toast({ type: "success", title: "Course created", message: "The new course has been added." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doUpdate, isPending: isUpdating } = useMutation({
     mutationFn: updateAdminCourse,
     onSuccess: () => { invalidate(); setModal(null); toast({ type: "success", title: "Course updated", message: "Changes have been saved." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doDelete, isPending: isDeleting } = useMutation({
     mutationFn: deleteAdminCourse,
     onSuccess: () => { invalidate(); setDeleteConfirm(null); toast({ type: "success", title: "Course deleted", message: "The course has been removed." }); },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doReorder } = useMutation({

@@ -316,7 +316,7 @@ export default function AdminBannersPage() {
       setModal(null);
       toast({ type: "success", title: "Banner added", message: "New banner has been created." });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doUpdate, isPending: isUpdating } = useMutation({
@@ -326,7 +326,7 @@ export default function AdminBannersPage() {
       setModal(null);
       toast({ type: "success", title: "Banner updated", message: "Changes have been saved." });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doDelete, isPending: isDeleting } = useMutation({
@@ -336,7 +336,7 @@ export default function AdminBannersPage() {
       setModal(null);
       toast({ type: "success", title: "Banner deleted", message: "The banner has been removed." });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doReorder } = useMutation({

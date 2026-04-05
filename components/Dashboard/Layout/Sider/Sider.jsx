@@ -61,8 +61,6 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
     router.push("/login");
   };
 
-  console.log(active);
-
   // ✅ Proper active route logic
   const isActiveRoute = (href) => {
     if (!href) return false;

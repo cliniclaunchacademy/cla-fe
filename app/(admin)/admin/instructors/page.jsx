@@ -365,7 +365,7 @@ export default function AdminInstructorsPage() {
       setModal(null);
       toast({ type: "success", title: "Instructor added", message: "New instructor has been created." });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doUpdate, isPending: isUpdating } = useMutation({
@@ -384,7 +384,7 @@ export default function AdminInstructorsPage() {
       setModal(null);
       toast({ type: "success", title: "Instructor updated", message: "Changes have been saved." });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   const { mutate: doDelete, isPending: isDeleting } = useMutation({
@@ -394,7 +394,7 @@ export default function AdminInstructorsPage() {
       setModal(null);
       toast({ type: "success", title: "Instructor deleted", message: "The instructor has been removed." });
     },
-    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.message || "Something went wrong." }),
+    onError: (e) => toast({ type: "error", title: "Failed", message: e?.response?.data?.error || "Something went wrong." }),
   });
 
   // ── Save handler ──

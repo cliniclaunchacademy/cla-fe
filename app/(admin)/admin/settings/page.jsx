@@ -137,7 +137,7 @@ export default function AdminSettingsPage() {
       toast({ type: "success", title: "Profile updated", message: "Your name has been saved." });
     },
     onError: (err) => {
-      toast({ type: "error", title: "Update failed", message: err?.response?.data?.message || "Something went wrong." });
+      toast({ type: "error", title: "Update failed", message: err?.response?.data?.error || "Something went wrong." });
     },
   });
 
@@ -150,7 +150,7 @@ export default function AdminSettingsPage() {
       toast({ type: "success", title: "Username updated", message: "Your username has been saved." });
     },
     onError: (err) => {
-      toast({ type: "error", title: "Update failed", message: err?.response?.data?.message || "Something went wrong." });
+      toast({ type: "error", title: "Update failed", message: err?.response?.data?.error || "Something went wrong." });
     },
   });
 
@@ -162,7 +162,7 @@ export default function AdminSettingsPage() {
       toast({ type: "success", title: "Photo updated", message: "Your profile photo has been saved." });
     },
     onError: (err) => {
-      toast({ type: "error", title: "Upload failed", message: err?.response?.data?.message || "Something went wrong." });
+      toast({ type: "error", title: "Upload failed", message: err?.response?.data?.error || "Something went wrong." });
     },
   });
 
@@ -173,7 +173,7 @@ export default function AdminSettingsPage() {
       queryClient.invalidateQueries({ queryKey: ["adminSettings"] });
     },
     onError: (err) => {
-      toast({ type: "error", title: "Update failed", message: err?.response?.data?.message || "Something went wrong." });
+      toast({ type: "error", title: "Update failed", message: err?.response?.data?.error || "Something went wrong." });
     },
   });
 

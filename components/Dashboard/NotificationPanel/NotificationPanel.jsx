@@ -4,7 +4,6 @@ import { useEffect, useRef, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   getStudentNotifications,
-  markAllNotificationsRead,
   markNotificationRead,
 } from "apis/student-notifications.api";
 
@@ -64,7 +63,7 @@ function NotifItem({ item, onRead }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          timer = setTimeout(() => onRead(item._id), 2000);
+          timer = setTimeout(() => onRead(item.notification?._id), 2000);
         } else {
           clearTimeout(timer);
         }
@@ -122,7 +121,7 @@ export default function NotificationPanel({ isOpen, onClose }) {
 
   useEffect(() => {
     if (!isOpen) return;
-    load().then(() => markAllNotificationsRead().catch(() => {})).catch(() => {});
+    load();
   }, [isOpen, load]);
 
   useEffect(() => {

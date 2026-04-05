@@ -259,7 +259,7 @@ export default function CreateCoursePage() {
       router.push(`/admin/courses/create/curriculum/${courseId}`);
     },
     onError: (err) => {
-      setError(err?.response?.data?.message || "Failed to create course.");
+      setError(err?.response?.data?.error || "Failed to create course.");
     },
   });
 

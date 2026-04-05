@@ -687,7 +687,7 @@ export default function EditCurriculumPage() {
         router.push(`/admin/courses/edit/${courseId}/preview`);
       }
     } catch (err) {
-      setSaveError(err?.response?.data?.message || "Save failed. Please try again.");
+      setSaveError(err?.response?.data?.error || "Save failed. Please try again.");
     } finally {
       setIsSaving(false);
     }

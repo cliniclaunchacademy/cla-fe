@@ -72,7 +72,7 @@ export default function Login() {
       toast({
         type: "error",
         title: "Login failed",
-        message: error?.response?.data?.message || "Something went wrong.",
+        message: error?.response?.data?.error || "Something went wrong.",
       });
       console.error(error);
     } finally {

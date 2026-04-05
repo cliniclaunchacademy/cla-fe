@@ -275,7 +275,7 @@ export default function EditCourseOverviewPage() {
       router.push(`/admin/courses/edit/${courseId}/curriculum`);
     },
     onError: (err) => {
-      setError(err?.response?.data?.message || "Failed to save course.");
+      setError(err?.response?.data?.error || "Failed to save course.");
     },
   });
 
