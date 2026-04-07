@@ -20,6 +20,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/clalogo.ico" />
+      </head>
       <body className={`${inter.variable}`}>
         <QueryClientProvider client={queryClient}>
           <ToastProvider>
