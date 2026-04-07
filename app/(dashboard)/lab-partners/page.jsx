@@ -8,7 +8,7 @@ const LAB_PARTNERS = [
     name: "AlphaBioMed Labs",
     subheading: "Access exclusive wholesale pricing from our trusted laboratory partner.",
     logo: "/ABM_200X200_G.png",
-    portalUrl: "https://partners.alphabiomedlabs.com/",
+    portalUrl: "https://links.cliniclaunchacademy.com/widget/form/Czef9BFF3vlK6LY3UOBr",
     status: "live",
   },
 ];

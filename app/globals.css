@@ -266,6 +266,11 @@ button {
   scrollbar-color: #F0A500 #0A0A0A;
 }
 
+@keyframes bannerShimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 @keyframes toastIn {
   from { transform: translateX(calc(100% + 16px)); opacity: 0; }
   to   { transform: translateX(0); opacity: 1; }

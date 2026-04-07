@@ -79,7 +79,7 @@ export default function Dashboard() {
     queryFn: getContinueLearning,
   });
 
-  const { data: bannersData } = useQuery({
+  const { data: bannersData, isLoading: isBannersLoading } = useQuery({
     queryKey: ["dashboard-banners"],
     queryFn: getDashboardBanners,
   });
@@ -97,9 +97,11 @@ export default function Dashboard() {
   const stats = statsData?.data?.stats;
   const continueLearning = continueLearningData?.data?.continueLearning;
   const apiBanners = (bannersData?.data?.banners || []).filter((b) => b.status === "active");
-  const carouselImages = apiBanners.length > 0
-    ? apiBanners.map((b) => b.imageUrl)
-    : staticCarouselImages;
+  const carouselImages = isBannersLoading
+    ? []
+    : apiBanners.length > 0
+      ? apiBanners.map((b) => b.imageUrl)
+      : staticCarouselImages;
   const discordUrl = communityData?.data?.discordInviteUrl;
   const activities = activityData?.data?.activities || [];
 
@@ -123,26 +125,46 @@ export default function Dashboard() {
           "--swiper-pagination-bullet-inactive-opacity": "0.35",
         }}
       >
-        <Swiper
-          modules={[Autoplay, Pagination, EffectFade]}
-          effect="fade"
-          fadeEffect={{ crossFade: true }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          speed={1200}
-          pagination={{ clickable: true }}
-          loop
-          className="w-full"
-        >
-          {carouselImages.map((src, index) => (
-            <SwiperSlide key={index}>
-              <img
-                src={src}
-                alt={`Slide ${index + 1}`}
-                className="w-full object-cover"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {isBannersLoading ? (
+          <div
+            className="w-full rounded-[16px] overflow-hidden relative"
+            style={{ aspectRatio: "16 / 5.5" }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{ background: "#1C1E20" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, #26282A 50%, transparent 100%)",
+                backgroundSize: "200% 100%",
+                animation: "bannerShimmer 1.6s ease-in-out infinite",
+              }}
+            />
+          </div>
+        ) : carouselImages.length > 0 ? (
+          <Swiper
+            modules={[Autoplay, Pagination, EffectFade]}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            speed={1200}
+            pagination={{ clickable: true }}
+            loop={carouselImages.length > 1}
+            className="w-full"
+          >
+            {carouselImages.map((src, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={src}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : null}
       </div>
 
       {/* Stats cards — 3 columns (watch time removed) */}
