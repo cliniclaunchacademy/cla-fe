@@ -44,6 +44,7 @@
     "react-easy-crop": "^5.5.0",
     "react-hook-form": "^7.62.0",
     "react-switch": "^7.1.0",
+    "recharts": "^3.8.1",
     "sweetalert2": "^11.22.4",
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.1"
