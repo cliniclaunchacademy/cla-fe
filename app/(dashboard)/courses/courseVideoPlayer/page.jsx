@@ -360,6 +360,55 @@ function CourseVideoPlayerContent() {
                   {module.lessons?.map((sidebarLesson) => {
                     const isActive =
                       sidebarLesson.isActive || sidebarLesson._id === lessonId;
+                    const isComingSoon = sidebarLesson.comingSoon;
+
+                    if (isComingSoon) {
+                      return (
+                        <div
+                          key={sidebarLesson._id}
+                          className="p-3 border-2 rounded-[12px] flex gap-3 items-start bg-[#181818] border-[#26282A] opacity-70 cursor-not-allowed"
+                        >
+                          {/* Thumbnail — locked overlay */}
+                          <div className="relative w-[100px] h-[68px] bg-[#26282A] rounded-[8px] flex-shrink-0 overflow-hidden">
+                            {course?.banner && (
+                              <img
+                                src={course.banner}
+                                alt=""
+                                className="w-full h-full object-cover grayscale"
+                              />
+                            )}
+                            <div className="absolute inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.55)]">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 11H7C5.89543 11 5 11.8954 5 13V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V13C19 11.8954 18.1046 11 17 11Z" stroke="#ABADAF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17Z" fill="#ABADAF"/>
+                                <path d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11" stroke="#ABADAF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </div>
+                            <div className="absolute bottom-1 right-1.5 text-[#5A5C5E] text-[10px] font-bold leading-none">
+                              {sidebarLesson.number}
+                            </div>
+                          </div>
+
+                          {/* Title + Coming Soon label */}
+                          <div className="flex flex-col flex-1 min-w-0">
+                            <p className="text-[#5A5C5E] textLabel14 line-clamp-2">
+                              {sidebarLesson.title}
+                            </p>
+                            <div className="flex items-center gap-1 mt-1">
+                              <span className="textLabel12 px-1.5 py-0.5 rounded-full bg-[#2E2D26] text-[#B88934] border border-[#413D28]">
+                                Coming Soon
+                              </span>
+                            </div>
+                            {sidebarLesson.releaseDate && (
+                              <p className="text-[#5A5C5E] text-[11px] mt-0.5">
+                                {new Date(sidebarLesson.releaseDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    }
+
                     return (
                       <button
                         key={sidebarLesson._id}
