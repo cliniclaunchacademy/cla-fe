@@ -405,6 +405,15 @@ function LessonCard({ lesson, lessonNumber, onUpdate, onDelete }) {
                 )}
               </div>
 
+              {/* Description */}
+              <textarea
+                value={lesson.description || ""}
+                onChange={(e) => onUpdate({ description: e.target.value })}
+                placeholder="Lesson description (optional)..."
+                rows={3}
+                className="w-full bg-[#1C1E20] text-[14px] text-[#EFEFEE] placeholder:text-[#5A5C5E] outline-none resize-none rounded-[6px] px-3 py-2 border border-[#313335] focus:border-[#B88934] transition-colors"
+              />
+
               {/* Resources */}
               {(lesson.resources || []).map((res) => (
                 <ResourceRow
@@ -448,7 +457,7 @@ function ModuleCard({ module, moduleIndex, moduleCount, onUpdate, onDelete, onMo
   }, [module.lessons, onUpdate]);
 
   const addLesson = () => {
-    onUpdate({ lessons: [...module.lessons, { _id: tmpId(), title: "", videoEmbed: "", collapsed: false, resources: [] }] });
+    onUpdate({ lessons: [...module.lessons, { _id: tmpId(), title: "", videoEmbed: "", description: "", collapsed: false, resources: [] }] });
   };
 
   return (
@@ -557,6 +566,7 @@ async function syncCurriculum({ courseId, modules, deletedModuleIds, deletedLess
       const lessonData = {
         title: lesson.title || "Untitled Lesson",
         videoEmbed: lesson.videoEmbed || "",
+        description: lesson.description || "",
         status: "draft",
       };
 

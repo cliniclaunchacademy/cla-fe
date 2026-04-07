@@ -165,6 +165,11 @@ function CourseVideoPlayerContent() {
                   {lesson.subheading}
                 </p>
               )}
+              {lesson.description && (
+                <p className="textBody16 text-[#ABADAF] mt-3 whitespace-pre-wrap">
+                  {lesson.description}
+                </p>
+              )}
             </div>
 
             <div className="flex gap-2.5 items-center flex-wrap">
