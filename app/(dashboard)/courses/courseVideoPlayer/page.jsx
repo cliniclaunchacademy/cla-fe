@@ -11,6 +11,7 @@ import {
   flagLessonVideo,
 } from "apis/student-courses.api";
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Loader from "@common/Loader";
 
 function getVimeoEmbedUrl(url) {
@@ -23,6 +24,48 @@ function getVimeoEmbedUrl(url) {
   let embedUrl = `https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479`;
   if (hash) embedUrl += `&h=${hash}`;
   return embedUrl;
+}
+
+const DESC_TRUNCATE = 80;
+
+function LessonDescTooltip({ description }) {
+  const [tooltipPos, setTooltipPos] = useState(null);
+  const needsTooltip = description.length > DESC_TRUNCATE;
+  const truncated = needsTooltip
+    ? description.slice(0, DESC_TRUNCATE) + "…"
+    : description;
+
+  return (
+    <div
+      onMouseEnter={(e) => {
+        if (!needsTooltip) return;
+        const r = e.currentTarget.getBoundingClientRect();
+        setTooltipPos({ x: r.left, y: r.top });
+      }}
+      onMouseLeave={() => setTooltipPos(null)}
+    >
+      <p className="text-[#ABADAF] text-[11px] leading-[14px] mt-1">
+        {truncated}
+      </p>
+      {tooltipPos &&
+        createPortal(
+          <div
+            style={{
+              position: "fixed",
+              top: tooltipPos.y - 8,
+              left: tooltipPos.x,
+              transform: "translateY(-100%)",
+              zIndex: 9999,
+              maxWidth: 260,
+            }}
+            className="bg-[#26282A] border border-[#313335] rounded-[8px] p-3 text-[#DFE1E3] text-[12px] leading-[18px] shadow-xl pointer-events-none"
+          >
+            {description}
+          </div>,
+          document.body
+        )}
+    </div>
+  );
 }
 
 function CourseVideoPlayerContent() {
@@ -325,7 +368,7 @@ function CourseVideoPlayerContent() {
                             `/courses/courseVideoPlayer?courseId=${courseId}&lessonId=${sidebarLesson._id}`
                           )
                         }
-                        className={`p-3 border-2 rounded-[12px] flex gap-3 items-center text-start transition duration-200 ${
+                        className={`p-3 border-2 rounded-[12px] flex gap-3 items-start text-start transition duration-200 ${
                           isActive
                             ? "bg-gradient-to-b from-[rgba(170,124,48,0.3)] to-[rgba(170,124,48,0.15)] border-[#50392A]"
                             : "bg-[#1C1E20] border-[#313335] hover:border-[#50392A]"
@@ -381,10 +424,15 @@ function CourseVideoPlayerContent() {
                           </div>
                         </div>
 
-                        {/* Title */}
-                        <p className="text-[#FFFFFF] textLabel14 line-clamp-2 flex-1">
-                          {sidebarLesson.title}
-                        </p>
+                        {/* Title + Description */}
+                        <div className="flex flex-col flex-1 min-w-0">
+                          <p className="text-[#FFFFFF] textLabel14 line-clamp-2">
+                            {sidebarLesson.title}
+                          </p>
+                          {sidebarLesson.description && (
+                            <LessonDescTooltip description={sidebarLesson.description} />
+                          )}
+                        </div>
                       </button>
                     );
                   })}
