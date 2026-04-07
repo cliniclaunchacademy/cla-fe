@@ -39,7 +39,7 @@ Audited against LMS_Feature_Scope_v3.docx on 2026-04-07. ~85-90% of Phase 1 comp
 |---|---|---|
 | 1 | Community | Community page (student) + admin link management |
 | 2 | Admin Lab Apps | Bulk approve / reject applications |
-| 3 | Admin Instructors | Social media links (LinkedIn, Instagram, Twitter/X, Website) |
+| 3 | Admin Instructors | Social media links (LinkedIn, Instagram, Twitter/X, Website) | ✅ Done — frontend implemented with `react-icons/fa6`; backend updated instructor populate in `GET /student/courses/:courseId` to include `linkedin instagram twitter website` |
 
 ### Phase 2 — Already Implemented
 
