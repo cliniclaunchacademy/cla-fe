@@ -19,3 +19,7 @@ export const getCommunityBanner = async () => {
 export const getRecentActivity = async () => {
   return api.get("/student/dashboard/recent-activity");
 };
+
+export const getWatchTime = async () => {
+  return api.get("/student/dashboard/watch-time");
+};

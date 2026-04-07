@@ -14,6 +14,7 @@ import {
   getDashboardBanners,
   getCommunityBanner,
   getRecentActivity,
+  getWatchTime,
 } from "apis/student-dashboard.api";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -94,6 +95,11 @@ export default function Dashboard() {
     queryFn: getRecentActivity,
   });
 
+  const { data: watchTimeData } = useQuery({
+    queryKey: ["dashboard-watch-time"],
+    queryFn: getWatchTime,
+  });
+
   const stats = statsData?.data?.stats;
   const continueLearning = continueLearningData?.data?.continueLearning;
   const apiBanners = (bannersData?.data?.banners || []).filter((b) => b.status === "active");
@@ -103,6 +109,7 @@ export default function Dashboard() {
       ? apiBanners.map((b) => b.imageUrl)
       : staticCarouselImages;
   const discordUrl = communityData?.data?.discordInviteUrl;
+  const totalWatchEvents = watchTimeData?.data?.watchTime?.totalWatchEvents ?? null;
   const activities = activityData?.data?.activities || [];
 
   return (
@@ -167,12 +174,12 @@ export default function Dashboard() {
         ) : null}
       </div>
 
-      {/* Stats cards — 3 columns (watch time removed) */}
+      {/* Stats cards */}
       <div
         className="grid justify-between gap-[34px]
         [grid-template-columns:repeat(1,minmax(0,1fr))]
         sm:[grid-template-columns:repeat(2,minmax(0,1fr))]
-        lg:[grid-template-columns:repeat(3,minmax(0,1fr))]"
+        lg:[grid-template-columns:repeat(4,minmax(0,1fr))]"
       >
         {/* Courses Started */}
         <div className="w-full border-2 border-[#26282A] rounded-[16px] bg-[#1C1E20] p-[18px] flex lg:flex-col 2xl:flex-row gap-5 justify-between items-start">
@@ -219,19 +226,21 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Watch Time — commented out until backend adds watchTimeMinutes to stats */}
-        {/* <div className="w-full max-w-[324px] border-2 border-[#26282A] rounded-[16px] bg-[#1C1E20] p-[18px] flex lg:flex-col 2xl:flex-row gap-5 justify-between items-start">
+        {/* Watch Time */}
+        <div className="w-full border-2 border-[#26282A] rounded-[16px] bg-[#1C1E20] p-[18px] flex lg:flex-col 2xl:flex-row gap-5 justify-between items-start">
           <div className="flex flex-col gap-1">
-            <p className="text-[#ABADAF] textHeading16">Watch Time</p>
-            <p className="text-[#EFEFEE] textHeading28 !font-bold">0h</p>
-            <p className="text-[#ABADAF] textHeading16">0 minutes total</p>
+            <p className="text-[#ABADAF] textHeading16">Watch Events</p>
+            <p className="text-[#EFEFEE] textHeading28 !font-bold">
+              {totalWatchEvents ?? "—"}
+            </p>
+            <p className="text-[#ABADAF] textHeading16">Total lessons watched</p>
           </div>
           <div className="w-[44px] h-[44px] rounded-full bg-[#2E2D26] flex items-center justify-center text-[#B88934]">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12ZM11 6C11 5.44772 11.4477 5 12 5C12.5523 5 13 5.44772 13 6V11.3818L16.4473 13.1055C16.9412 13.3525 17.1415 13.9533 16.8945 14.4473C16.6475 14.9412 16.0467 15.1415 15.5527 14.8945L11.5527 12.8945C11.214 12.7251 11 12.3788 11 12V6ZM23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12Z" fill="#B88934" />
             </svg>
           </div>
-        </div> */}
+        </div>
       </div>
 
       {/* Learning & Community */}
