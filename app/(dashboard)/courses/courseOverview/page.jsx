@@ -1,5 +1,7 @@
 "use client";
 
+import { FaLinkedin, FaInstagram, FaXTwitter, FaGlobe } from "react-icons/fa6";
+
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getStudentCourseById } from "apis/student-courses.api";
@@ -239,6 +241,33 @@ function CourseOverviewContent() {
                   )}
                 </div>
               </div>
+              {course.instructor.bio && (
+                <p className="text-[#ABADAF] textBody14 leading-relaxed">{course.instructor.bio}</p>
+              )}
+              {(course.instructor.linkedin || course.instructor.instagram || course.instructor.twitter || course.instructor.website) && (
+                <div className="flex gap-4 flex-wrap">
+                  {course.instructor.linkedin && (
+                    <a href={course.instructor.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#0A66C2] transition-colors" title="LinkedIn">
+                      <FaLinkedin size={20} />
+                    </a>
+                  )}
+                  {course.instructor.instagram && (
+                    <a href={course.instructor.instagram} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#E1306C] transition-colors" title="Instagram">
+                      <FaInstagram size={20} />
+                    </a>
+                  )}
+                  {course.instructor.twitter && (
+                    <a href={course.instructor.twitter} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#DFE1E3] transition-colors" title="X / Twitter">
+                      <FaXTwitter size={20} />
+                    </a>
+                  )}
+                  {course.instructor.website && (
+                    <a href={course.instructor.website} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#B88934] transition-colors" title="Website">
+                      <FaGlobe size={20} />
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

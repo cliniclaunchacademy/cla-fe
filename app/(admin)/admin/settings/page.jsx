@@ -86,6 +86,8 @@ export default function AdminSettingsPage() {
   // ── Platform state ──
   const [editingDiscord, setEditingDiscord] = useState(false);
   const [discordUrl, setDiscordUrl] = useState("");
+  const [editingSupportEmail, setEditingSupportEmail] = useState(false);
+  const [supportEmail, setSupportEmail] = useState("");
   const [maintenanceMode, setMaintenanceMode] = useState(false);
   const [editingMessage, setEditingMessage] = useState(false);
   const [maintenanceMessage, setMaintenanceMessage] = useState("");
@@ -120,6 +122,7 @@ export default function AdminSettingsPage() {
   useEffect(() => {
     if (settings) {
       setDiscordUrl(settings.discordInviteUrl || "");
+      setSupportEmail(settings.supportEmail || "");
       setMaintenanceMode(!!settings.maintenanceMode);
       setMaintenanceMessage(settings.maintenanceMessage || "");
     }
@@ -189,6 +192,15 @@ export default function AdminSettingsPage() {
       onSuccess: () => {
         setEditingDiscord(false);
         toast({ type: "success", title: "Discord URL updated", message: "The invite link has been saved." });
+      },
+    });
+  };
+
+  const handleSaveSupportEmail = () => {
+    saveSettings({ supportEmail: supportEmail.trim() }, {
+      onSuccess: () => {
+        setEditingSupportEmail(false);
+        toast({ type: "success", title: "Support email updated", message: "The support email has been saved." });
       },
     });
   };
@@ -345,6 +357,33 @@ export default function AdminSettingsPage() {
                   {settings?.discordInviteUrl || "Not set"}
                 </span>
                 <OutlineButton onClick={() => setEditingDiscord(true)}>Update</OutlineButton>
+              </>
+            )}
+          </SettingRow>
+
+          {/* Support Email */}
+          <SettingRow label="Support Email" sublabel="Displayed to students when they need help">
+            {editingSupportEmail ? (
+              <div className="flex items-center gap-2">
+                <InlineInput
+                  value={supportEmail}
+                  onChange={(e) => setSupportEmail(e.target.value)}
+                  placeholder="support@example.com"
+                  width="240px"
+                />
+                <SaveButton onClick={handleSaveSupportEmail} disabled={isSavingSettings}>
+                  {isSavingSettings ? "Saving..." : "Save"}
+                </SaveButton>
+                <CancelButton onClick={() => { setSupportEmail(settings?.supportEmail || ""); setEditingSupportEmail(false); }} disabled={isSavingSettings}>
+                  Cancel
+                </CancelButton>
+              </div>
+            ) : (
+              <>
+                <span className="textBody14 text-[#ABADAF] max-w-[260px] truncate">
+                  {settings?.supportEmail || "Not set"}
+                </span>
+                <OutlineButton onClick={() => setEditingSupportEmail(true)}>Update</OutlineButton>
               </>
             )}
           </SettingRow>

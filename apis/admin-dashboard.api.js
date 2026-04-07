@@ -32,3 +32,7 @@ export const getStudentOverview = async ({ queryKey }) => {
   const [, userId] = queryKey;
   return api.get(`/admin/dashboard/users/${userId}/overview`);
 };
+
+export const getLessonCompletionTrend = async () => {
+  return api.get("/admin/dashboard/lesson-completion-trend");
+};

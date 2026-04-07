@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useState, useMemo } from "react";
 import { getStudentRecordings } from "apis/student-recordings.api";
 import Loader from "@common/Loader";
 
@@ -60,14 +61,40 @@ function RecordingCard({ recording, categoryName, onClick }) {
 
 export default function RecordingsPage() {
   const router = useRouter();
+  const [search, setSearch] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["studentRecordings"],
     queryFn: getStudentRecordings,
   });
 
-  const categories = data?.data?.categories ?? [];
-  const hasAny = categories.some((c) => c.recordings?.length > 0);
+  const allCategories = data?.data?.categories ?? [];
+
+  const filteredCategories = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    const from = dateFrom ? new Date(dateFrom) : null;
+    const to = dateTo ? new Date(dateTo + "T23:59:59") : null;
+
+    return allCategories.map((cat) => ({
+      ...cat,
+      recordings: (cat.recordings ?? []).filter((rec) => {
+        if (q && !rec.title.toLowerCase().includes(q)) return false;
+        if (from || to) {
+          if (!rec.recordedDate) return false;
+          const d = new Date(rec.recordedDate);
+          if (from && d < from) return false;
+          if (to && d > to) return false;
+        }
+        return true;
+      }),
+    }));
+  }, [allCategories, search, dateFrom, dateTo]);
+
+  const isFiltering = search.trim() || dateFrom || dateTo;
+  const categories = filteredCategories;
+  const hasAny = allCategories.some((c) => c.recordings?.length > 0);
 
   if (isLoading) {
     return (
@@ -93,12 +120,78 @@ export default function RecordingsPage() {
         <p className="textBody18 text-[#ABADAF]">Browse all recorded sessions and webinars</p>
       </div>
 
+      {/* Search + Date filters */}
+      <div className="flex flex-wrap gap-3 items-center">
+        {/* Title search */}
+        <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-[10px] flex-1 min-w-[220px] max-w-[400px]" style={{ background: "#1C1E20", border: "1.5px solid #26282A" }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+            <path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="#ABADAF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search recordings..."
+            className="bg-transparent text-[#DFE1E3] text-[15px] placeholder-[#ABADAF] outline-none w-full"
+          />
+          {search && (
+            <button onClick={() => setSearch("")} className="text-[#5A5C5E] hover:text-[#ABADAF] flex-shrink-0 transition">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+            </button>
+          )}
+        </div>
+
+        {/* Date from */}
+        <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-[10px]" style={{ background: "#1C1E20", border: "1.5px solid #26282A" }}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
+            <path d="M8 2V6M16 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke="#ABADAF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-[#5A5C5E] text-[13px] flex-shrink-0">From</span>
+          <input
+            type="date"
+            value={dateFrom}
+            onChange={(e) => setDateFrom(e.target.value)}
+            className="bg-transparent text-[#DFE1E3] text-[14px] outline-none"
+            style={{ colorScheme: "dark", width: 130 }}
+          />
+        </div>
+
+        {/* Date to */}
+        <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-[10px]" style={{ background: "#1C1E20", border: "1.5px solid #26282A" }}>
+          <span className="text-[#5A5C5E] text-[13px] flex-shrink-0">To</span>
+          <input
+            type="date"
+            value={dateTo}
+            onChange={(e) => setDateTo(e.target.value)}
+            className="bg-transparent text-[#DFE1E3] text-[14px] outline-none"
+            style={{ colorScheme: "dark", width: 130 }}
+          />
+        </div>
+
+        {/* Clear */}
+        {isFiltering && (
+          <button
+            onClick={() => { setSearch(""); setDateFrom(""); setDateTo(""); }}
+            className="textLabel14 text-[#ABADAF] hover:text-[#DFE1E3] transition underline underline-offset-2"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
       {!hasAny ? (
         <div
           className="rounded-[16px] px-6 py-16 text-center"
           style={{ background: "#1C1E20", border: "1px solid #313335" }}
         >
           <p className="text-[#ABADAF] textBody16">No recordings available yet. Check back soon.</p>
+        </div>
+      ) : categories.every((c) => c.recordings?.length === 0) ? (
+        <div
+          className="rounded-[16px] px-6 py-16 text-center"
+          style={{ background: "#1C1E20", border: "1px solid #313335" }}
+        >
+          <p className="text-[#ABADAF] textBody16">No recordings match your search.</p>
         </div>
       ) : (
         categories

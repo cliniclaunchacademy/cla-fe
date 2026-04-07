@@ -2,6 +2,7 @@
 
 import { useState, useRef, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { FaLinkedin, FaInstagram, FaXTwitter, FaGlobe } from "react-icons/fa6";
 import {
   getAdminInstructors,
   createAdminInstructor,
@@ -154,6 +155,10 @@ function InstructorFormModal({ instructor, onClose, onSave, isPending }) {
   const [lastName, setLastName] = useState(instructor?.lastName ?? "");
   const [title, setTitle] = useState(instructor?.title ?? "");
   const [bio, setBio] = useState(instructor?.bio ?? "");
+  const [linkedin, setLinkedin] = useState(instructor?.linkedin ?? "");
+  const [instagram, setInstagram] = useState(instructor?.instagram ?? "");
+  const [twitter, setTwitter] = useState(instructor?.twitter ?? "");
+  const [website, setWebsite] = useState(instructor?.website ?? "");
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
 
@@ -164,7 +169,18 @@ function InstructorFormModal({ instructor, onClose, onSave, isPending }) {
 
   const handleSubmit = () => {
     if (!firstName.trim() || !lastName.trim() || !title.trim()) return;
-    onSave({ firstName: firstName.trim(), lastName: lastName.trim(), title: title.trim(), bio: bio.trim(), status: "active", photoFile });
+    onSave({
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      title: title.trim(),
+      bio: bio.trim(),
+      linkedin: linkedin.trim(),
+      instagram: instagram.trim(),
+      twitter: twitter.trim(),
+      website: website.trim(),
+      status: "active",
+      photoFile,
+    });
   };
 
   const canSubmit = firstName.trim() && lastName.trim() && title.trim();
@@ -204,6 +220,29 @@ function InstructorFormModal({ instructor, onClose, onSave, isPending }) {
           onFile={handleFile}
         />
       </Field>
+
+      {/* Social media links */}
+      <div className="flex flex-col gap-1">
+        <span className="text-[13px] font-semibold text-[#ABADAF] uppercase tracking-wide">Social Links (optional)</span>
+        <div className="flex flex-col gap-2 mt-1">
+          <div className="flex items-center gap-2">
+            <FaLinkedin size={16} className="text-[#0A66C2] flex-shrink-0" />
+            <StyledInput value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder="LinkedIn URL" maxLength={300} />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaInstagram size={16} className="text-[#E1306C] flex-shrink-0" />
+            <StyledInput value={instagram} onChange={(e) => setInstagram(e.target.value)} placeholder="Instagram URL" maxLength={300} />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaXTwitter size={16} className="text-[#ABADAF] flex-shrink-0" />
+            <StyledInput value={twitter} onChange={(e) => setTwitter(e.target.value)} placeholder="X / Twitter URL" maxLength={300} />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaGlobe size={16} className="text-[#ABADAF] flex-shrink-0" />
+            <StyledInput value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="Website URL" maxLength={300} />
+          </div>
+        </div>
+      </div>
 
       <div className="flex justify-end gap-3 pt-1">
         <button
@@ -291,6 +330,32 @@ function InstructorRow({ instructor, onEdit, onDelete, isLast }) {
           {instructor.bio && (
             <p className="text-[14px] text-[#ABADAF] leading-relaxed line-clamp-2">{instructor.bio}</p>
           )}
+
+          {/* Social links */}
+          {(instructor.linkedin || instructor.instagram || instructor.twitter || instructor.website) && (
+            <div className="flex gap-3 flex-wrap">
+              {instructor.linkedin && (
+                <a href={instructor.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#0A66C2] transition-colors" title="LinkedIn">
+                  <FaLinkedin size={16} />
+                </a>
+              )}
+              {instructor.instagram && (
+                <a href={instructor.instagram} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#E1306C] transition-colors" title="Instagram">
+                  <FaInstagram size={16} />
+                </a>
+              )}
+              {instructor.twitter && (
+                <a href={instructor.twitter} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#DFE1E3] transition-colors" title="X / Twitter">
+                  <FaXTwitter size={16} />
+                </a>
+              )}
+              {instructor.website && (
+                <a href={instructor.website} target="_blank" rel="noopener noreferrer" className="text-[#ABADAF] hover:text-[#B88934] transition-colors" title="Website">
+                  <FaGlobe size={16} />
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
@@ -352,8 +417,8 @@ export default function AdminInstructorsPage() {
   // ── Mutations ──
 
   const { mutate: doCreate, isPending: isCreating } = useMutation({
-    mutationFn: async ({ firstName, lastName, title, bio, status, photoFile }) => {
-      const res = await createAdminInstructor({ firstName, lastName, title, bio, status });
+    mutationFn: async ({ firstName, lastName, title, bio, linkedin, instagram, twitter, website, status, photoFile }) => {
+      const res = await createAdminInstructor({ firstName, lastName, title, bio, linkedin, instagram, twitter, website, status });
       const newId = res.data?._id ?? res.data?.instructor?._id;
       if (photoFile && newId) {
         await uploadInstructorPhoto({ instructorId: newId, file: photoFile });
@@ -369,10 +434,10 @@ export default function AdminInstructorsPage() {
   });
 
   const { mutate: doUpdate, isPending: isUpdating } = useMutation({
-    mutationFn: async ({ instructor, firstName, lastName, title, bio, status, photoFile }) => {
+    mutationFn: async ({ instructor, firstName, lastName, title, bio, linkedin, instagram, twitter, website, status, photoFile }) => {
       const res = await updateAdminInstructor({
         instructorId: instructor._id,
-        data: { firstName, lastName, title, bio, status },
+        data: { firstName, lastName, title, bio, linkedin, instagram, twitter, website, status },
       });
       if (photoFile) {
         await uploadInstructorPhoto({ instructorId: instructor._id, file: photoFile });

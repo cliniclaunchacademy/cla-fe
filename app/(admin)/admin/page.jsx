@@ -24,11 +24,14 @@ import {
   getPopularCourses,
   getActivityHeatmap,
   getAtRiskLearners,
+  getLessonCompletionTrend,
 } from "apis/admin-dashboard.api";
 import Loader from "@common/Loader";
 import {
   BarChart,
   Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -137,6 +140,16 @@ const CustomBarTooltip = ({ active, payload, label }) => {
   );
 };
 
+const CustomLineTooltip = ({ active, payload, label }) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="bg-[#26282A] border border-[#313335] rounded-[8px] px-3 py-2 text-[#DFE1E3] text-[12px]">
+      <p className="font-semibold mb-0.5">{label}</p>
+      <p>{payload[0].value} lesson completions</p>
+    </div>
+  );
+};
+
 export default function AdminDashboard() {
   const router = useRouter();
 
@@ -175,6 +188,11 @@ export default function AdminDashboard() {
     queryFn: getAtRiskLearners,
   });
 
+  const { data: lessonTrendData, isLoading: lessonTrendLoading } = useQuery({
+    queryKey: ["adminLessonCompletionTrend"],
+    queryFn: getLessonCompletionTrend,
+  });
+
   const stats = statsData?.data?.stats;
   const recentUsers = recentData?.data?.users || [];
   const notifications = notifData?.data?.notifications || [];
@@ -182,10 +200,16 @@ export default function AdminDashboard() {
   const popularCourses = popularData?.data?.popularCourses || [];
   const heatmap = heatmapData?.data?.heatmap || [];
   const atRiskLearners = atRiskData?.data?.atRiskLearners || [];
+  const lessonTrend = lessonTrendData?.data?.lessonCompletionTrend || [];
 
   const chartData = weeklySignups.map((w) => ({
     week: formatWeek(w.week),
     signups: w.count,
+  }));
+
+  const lessonTrendChartData = lessonTrend.map((w) => ({
+    week: formatWeek(w.week),
+    completions: w.count,
   }));
 
   return (
@@ -411,6 +435,55 @@ export default function AdminDashboard() {
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          {/* Lesson Completion Trend */}
+          <Accordion type="single" collapsible defaultValue="lesson-trend" className="w-full bg-[#181818] border-2 border-[#2E2D26] rounded-[16px] p-8">
+            <AccordionItem value="lesson-trend">
+              <AccordionTrigger>
+                <div className="flex items-center gap-3">
+                  <div className="w-fit h-[21px] border-2 border-[#B88934] rounded-[1px]"></div>
+                  <p className="text-[#DFE1E3] textDisplay22">Lesson Completion Trend</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="text-[#ABADAF] textBody14 mb-4">Weekly lesson completions — last 12 weeks</p>
+                {lessonTrendLoading ? (
+                  <Loader isLoading={true} />
+                ) : lessonTrendChartData.length === 0 ? (
+                  <p className="text-[#ABADAF] textBody16 mb-6">No completion data yet.</p>
+                ) : (
+                  <div style={{ height: 200 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={lessonTrendChartData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#26282A" vertical={false} />
+                        <XAxis
+                          dataKey="week"
+                          tick={{ fill: "#5A5C5E", fontSize: 11 }}
+                          axisLine={false}
+                          tickLine={false}
+                        />
+                        <YAxis
+                          tick={{ fill: "#5A5C5E", fontSize: 11 }}
+                          axisLine={false}
+                          tickLine={false}
+                          allowDecimals={false}
+                        />
+                        <Tooltip content={<CustomLineTooltip />} cursor={{ stroke: "rgba(184,137,52,0.2)", strokeWidth: 1 }} />
+                        <Line
+                          type="monotone"
+                          dataKey="completions"
+                          stroke="#B88934"
+                          strokeWidth={2}
+                          dot={{ fill: "#B88934", r: 3 }}
+                          activeDot={{ r: 5, fill: "#DFAF32" }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
                   </div>
                 )}
               </AccordionContent>

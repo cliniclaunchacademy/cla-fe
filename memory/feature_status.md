@@ -13,7 +13,7 @@ Audited against LMS_Feature_Scope_v3.docx on 2026-04-07. ~85-90% of Phase 1 comp
 
 ## REMAINING WORK
 
-### Phase 1 — Not Done / Partial
+### Phase 1 — Not Done / Partial (2026-04-07 session closed these out)
 
 #### Lab Partners (Student Side)
 - [ ] Embedded application form — clicking "Complete Application" should open an iframe embed with the lab's application form; submitting creates a pending application record. Currently lab cards only have external portal links, no iframe form.
