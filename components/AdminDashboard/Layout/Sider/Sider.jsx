@@ -171,6 +171,17 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             <p className="">Categories</p>
           </Link>
           <Link
+            href="/admin/lab-applications"
+            className={getIconClasses("/admin/lab-applications")}
+          >
+            <span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H15M9 3C9 3.55228 9.44772 4 10 4H14C14.5523 4 15 3.55228 15 3M9 3C9 2.44772 9.44772 2 10 2H14C14.5523 2 15 2.44772 15 3M12 8V16M8 12H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <p className="">Lab Applications</p>
+          </Link>
+          <Link
             href="/admin/banners"
             className={getIconClasses("/admin/banners")}
           >
