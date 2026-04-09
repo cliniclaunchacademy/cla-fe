@@ -9,18 +9,7 @@ import Loader from "@common/Loader";
 
 function ApplicationStatusBadge({ applicationStatus, rejectionReason }) {
   if (applicationStatus === "approved") {
-    return (
-      <div
-        className="flex items-center gap-2 px-3 py-[7px] rounded-full border"
-        style={{ background: "#0D1F12", borderColor: "#1A3824" }}
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="9" stroke="#22C55E" strokeWidth="1.5" />
-          <path d="M8.5 12L11 14.5L15.5 10" stroke="#22C55E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="text-[14px] font-medium" style={{ color: "#22C55E" }}>Approved</span>
-      </div>
-    );
+    return null; // rendered separately as a login button in LabCard
   }
 
   if (applicationStatus === "pending") {
@@ -141,14 +130,13 @@ function LabCard({ lab }) {
   const isComingSoon = status === "coming_soon";
   const isMaintenance = status === "maintenance";
 
-  // Clickable only when approved (to open the portal)
   const handleClick = () => {
-    if (isApproved && portalUrl) {
+    if (isLive && !hasApplied && portalUrl) {
       window.open(portalUrl, "_blank", "noopener,noreferrer");
     }
   };
 
-  const clickable = isApproved && !!portalUrl;
+  const clickable = isLive && !hasApplied && !!portalUrl;
 
   return (
     <div
@@ -205,9 +193,25 @@ function LabCard({ lab }) {
           </div>
         )}
         {isLive && (
-          hasApplied
-            ? <ApplicationStatusBadge applicationStatus={applicationStatus} rejectionReason={rejectionReason} />
-            : <VisitPortalBadge />
+          isApproved && portalUrl
+            ? (
+              <a
+                href={portalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-2 px-4 py-2 rounded-full border transition hover:opacity-90"
+                style={{ background: "#252115", borderColor: "#514920" }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15M10 17L15 12M15 12L10 7M15 12H3" stroke="#B59E1E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span className="text-[14px] font-medium" style={{ color: "#B59E1E" }}>Login to Portal</span>
+              </a>
+            )
+            : hasApplied
+              ? <ApplicationStatusBadge applicationStatus={applicationStatus} rejectionReason={rejectionReason} />
+              : <VisitPortalBadge />
         )}
       </div>
     </div>
