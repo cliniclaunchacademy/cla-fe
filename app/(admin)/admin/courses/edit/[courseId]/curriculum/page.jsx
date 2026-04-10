@@ -14,7 +14,7 @@ import {
   deleteAdminLesson,
   reorderAdminLessons,
 } from "apis/admin-courses.api";
-import { addLessonResource, deleteLessonResource } from "apis/admin-resources.api";
+import { addLessonResource, deleteLessonResource, getAdminResourcesByCourse } from "apis/admin-resources.api";
 
 // ─── ID helper ────────────────────────────────────────────────────────────────
 let _seq = 0;
@@ -659,9 +659,26 @@ export default function EditCurriculumPage() {
     enabled: !!courseId,
   });
 
+  const { data: resourcesData } = useQuery({
+    queryKey: ["admin-course-resources", courseId],
+    queryFn: () => getAdminResourcesByCourse(courseId),
+    enabled: !!courseId,
+  });
+
   useEffect(() => {
     if (editorData && !initialized) {
       const apiModules = editorData.data?.modules ?? [];
+      const allResources = resourcesData?.data?.resources ?? [];
+
+      // Build a map from lessonId -> resources[]
+      const resourcesByLesson = {};
+      allResources.forEach((r) => {
+        const lessonId = r.lesson?._id ?? r.lesson ?? r.lessonId;
+        if (!lessonId) return;
+        if (!resourcesByLesson[lessonId]) resourcesByLesson[lessonId] = [];
+        resourcesByLesson[lessonId].push(r);
+      });
+
       setModules(
         apiModules.map((m) => ({
           ...m,
@@ -669,13 +686,15 @@ export default function EditCurriculumPage() {
           lessons: (m.lessons || []).map((l) => ({
             ...l,
             collapsed: false,
-            resources: (l.resources || []).map((r) => ({ ...r })),
+            resources: resourcesByLesson[l._id]
+              ? resourcesByLesson[l._id].map((r) => ({ ...r }))
+              : (l.resources || []).map((r) => ({ ...r })),
           })),
         }))
       );
       setInitialized(true);
     }
-  }, [editorData, initialized]);
+  }, [editorData, resourcesData, initialized]);
 
   const updateModule = useCallback((moduleId, patch) => {
     setModules((prev) => prev.map((m) => m._id === moduleId ? { ...m, ...patch } : m));
