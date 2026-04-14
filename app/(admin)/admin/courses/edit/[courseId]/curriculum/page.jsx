@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getAdminCourseEditor,
   createAdminModule,
@@ -644,6 +644,7 @@ async function syncCurriculum({ courseId, modules, deletedModuleIds, deletedLess
 export default function EditCurriculumPage() {
   const router = useRouter();
   const { courseId } = useParams();
+  const queryClient = useQueryClient();
 
   const [modules, setModules] = useState([]);
   const [initialized, setInitialized] = useState(false);
@@ -742,6 +743,8 @@ export default function EditCurriculumPage() {
       setDeletedLessonMap({});
       setDeletedResourceMap({});
       setInitialized(false);
+      await queryClient.invalidateQueries({ queryKey: ["admin-course-resources", courseId] });
+      await queryClient.invalidateQueries({ queryKey: ["admin-course-editor", courseId] });
       if (andNavigate) {
         router.push(`/admin/courses/edit/${courseId}/preview`);
       }
