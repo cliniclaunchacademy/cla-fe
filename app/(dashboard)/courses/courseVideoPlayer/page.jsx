@@ -370,9 +370,9 @@ function CourseVideoPlayerContent() {
                         >
                           {/* Thumbnail — locked overlay */}
                           <div className="relative w-[100px] h-[68px] bg-[#26282A] rounded-[8px] flex-shrink-0 overflow-hidden">
-                            {course?.banner && (
+                            {(sidebarLesson.thumbnail || course?.banner) && (
                               <img
-                                src={course.banner}
+                                src={sidebarLesson.thumbnail || course.banner}
                                 alt=""
                                 className="w-full h-full object-cover grayscale"
                               />
@@ -425,9 +425,9 @@ function CourseVideoPlayerContent() {
                       >
                         {/* Thumbnail */}
                         <div className="relative w-[100px] h-[68px] bg-[#37352B] rounded-[8px] flex-shrink-0 overflow-hidden">
-                          {course?.banner && (
+                          {(sidebarLesson.thumbnail || course?.banner) && (
                             <img
-                              src={course.banner}
+                              src={sidebarLesson.thumbnail || course.banner}
                               alt=""
                               className="w-full h-full object-cover"
                             />

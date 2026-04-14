@@ -14,6 +14,7 @@ import {
   updateAdminLesson,
   deleteAdminLesson,
   reorderAdminLessons,
+  uploadLessonThumbnail,
 } from "apis/admin-courses.api";
 import { addLessonResource, deleteLessonResource } from "apis/admin-resources.api";
 
@@ -80,6 +81,13 @@ const IconCheck = ({ size = 14 }) => (
 const IconChevronRight = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
     <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+const IconImage = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="1.4" />
+    <path d="M21 15L16 10L5 21" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -354,6 +362,8 @@ function ResourceRow({ resource, onDelete }) {
 // ─── Lesson Card ──────────────────────────────────────────────────────────────
 function LessonCard({ lesson, lessonNumber, onUpdate, onDelete }) {
   const [showResourceModal, setShowResourceModal] = useState(false);
+  const thumbnailInputRef = useRef(null);
+  const thumbnailPreview = lesson.thumbnailFile ? URL.createObjectURL(lesson.thumbnailFile) : null;
 
   return (
     <>
@@ -414,6 +424,57 @@ function LessonCard({ lesson, lessonNumber, onUpdate, onDelete }) {
                 className="w-full bg-[#1C1E20] text-[14px] text-[#EFEFEE] placeholder:text-[#5A5C5E] outline-none resize-none rounded-[6px] px-3 py-2 border border-[#313335] focus:border-[#B88934] transition-colors"
               />
 
+              {/* Thumbnail */}
+              <div className="flex flex-col gap-1.5">
+                <span className="text-[13px] font-medium text-[#868889]">Thumbnail</span>
+                <input
+                  ref={thumbnailInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) onUpdate({ thumbnailFile: f });
+                    e.target.value = "";
+                  }}
+                />
+                {thumbnailPreview ? (
+                  <div className="relative w-[120px] h-[68px] rounded-[6px] overflow-hidden group flex-shrink-0" style={{ border: "1px solid #313335" }}>
+                    <img src={thumbnailPreview} alt="thumbnail" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => thumbnailInputRef.current?.click()}
+                        className="text-white hover:text-[#B88934] transition-colors"
+                        title="Change thumbnail"
+                      >
+                        <IconImage size={15} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdate({ thumbnailFile: null })}
+                        className="text-[#C0696B] hover:text-[#E07678] transition-colors"
+                        title="Remove thumbnail"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => thumbnailInputRef.current?.click()}
+                    className="flex items-center gap-2 w-fit px-3 py-1.5 rounded-[6px] text-[13px] text-[#868889] hover:text-[#DFE1E3] hover:bg-[#1C1E20] transition-colors"
+                    style={{ border: "1px dashed #484942" }}
+                  >
+                    <IconImage size={14} />
+                    Add thumbnail
+                  </button>
+                )}
+              </div>
+
               {/* Resources */}
               {(lesson.resources || []).map((res) => (
                 <ResourceRow
@@ -457,7 +518,7 @@ function ModuleCard({ module, moduleIndex, moduleCount, onUpdate, onDelete, onMo
   }, [module.lessons, onUpdate]);
 
   const addLesson = () => {
-    onUpdate({ lessons: [...module.lessons, { _id: tmpId(), title: "", videoEmbed: "", description: "", collapsed: false, resources: [] }] });
+    onUpdate({ lessons: [...module.lessons, { _id: tmpId(), title: "", videoEmbed: "", description: "", collapsed: false, thumbnailFile: null, resources: [] }] });
   };
 
   return (
@@ -579,7 +640,12 @@ async function syncCurriculum({ courseId, modules, deletedModuleIds, deletedLess
       }
       finalLessonIds.push(realLessonId);
 
-      // 5. Add new resources (tmp only — existing ones are already saved)
+      // 5. Upload thumbnail if one was selected
+      if (lesson.thumbnailFile) {
+        await uploadLessonThumbnail({ courseId, moduleId: realModuleId, lessonId: realLessonId, file: lesson.thumbnailFile });
+      }
+
+      // 6. Add new resources (tmp only — existing ones are already saved)
       for (const resource of lesson.resources || []) {
         if (isTmp(resource._id)) {
           await addLessonResource({
@@ -633,6 +699,7 @@ export default function CurriculumPage() {
           lessons: (m.lessons || []).map((l) => ({
             ...l,
             collapsed: false,
+            thumbnailFile: null,
             resources: [],
           })),
         }))

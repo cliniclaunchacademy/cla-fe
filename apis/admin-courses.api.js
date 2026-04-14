@@ -74,3 +74,13 @@ export const deleteAdminLesson = async ({ courseId, moduleId, lessonId }) =>
 
 export const reorderAdminLessons = async ({ courseId, moduleId, order }) =>
   api.patch(`/admin/courses/${courseId}/modules/${moduleId}/lessons/reorder`, { order });
+
+export const uploadLessonThumbnail = async ({ courseId, moduleId, lessonId, file }) => {
+  const formData = new FormData();
+  formData.append("thumbnail", file);
+  return api.post(
+    `/admin/courses/${courseId}/modules/${moduleId}/lessons/${lessonId}/thumbnail`,
+    formData,
+    { headers: { "Content-Type": "multipart/form-data" } }
+  );
+};
