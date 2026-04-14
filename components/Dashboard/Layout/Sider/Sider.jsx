@@ -90,16 +90,8 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
       style={{ minHeight: "100vh" }}
     >
       <div className="h-full flex flex-col  ">
-        {/* Close button for mobile */}
-        <button
-          onClick={() => setIsMobileOpen((prev) => !prev)}
-          className="md:hidden absolute top-2 right-2 border rounded-lg p-1 bg-[#45A08B]"
-        >
-          <CancelIcon />
-        </button>
-
         {/* Logo & title */}
-        <div className="flex justify-between px-[26px] pb-[26px] border-0 border-b-2 border-b-[#26282A] ">
+        <div className="flex items-center justify-between px-[26px] pb-[26px] border-0 border-b-2 border-b-[#26282A] ">
           <Image
             src={logo}
             width={72}
@@ -107,6 +99,7 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
             alt=""
             style={{ width: '72px', height: 'auto' }}
           />
+          <div className="flex items-center gap-2">
           <button
             onClick={() => setNotifOpen((prev) => !prev)}
             className="relative bg-[#17191B] hover:bg-[#23272a] active:bg-[#17191B] rounded-[8px] p-[11px] transition duration-300"
@@ -122,6 +115,15 @@ const Sider = ({ isMobileOpen, setIsMobileOpen }) => {
           </button>
 
           <NotificationPanel isOpen={notifOpen} onClose={handleCloseNotif} />
+
+          {/* Close button — mobile only */}
+          <button
+            onClick={() => setIsMobileOpen((prev) => !prev)}
+            className="md:hidden bg-[#17191B] hover:bg-[#23272a] active:bg-[#17191B] rounded-[8px] p-[11px] text-[#ABADAF] transition duration-300 flex-shrink-0"
+          >
+            <CancelIcon />
+          </button>
+          </div>
         </div>
 
         <div className="flex-1 flex-col space-y-1 px-[14px] py-6 overflow-y-auto sider-scrollbar">
