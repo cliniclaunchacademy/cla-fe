@@ -80,7 +80,7 @@ function VisitPortalBadge() {
         <path d="M15 3H21V9" stroke="#B59E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M10 14L21 3" stroke="#B59E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
-      <span className="text-[14px] font-medium" style={{ color: "#B59E1E" }}>Visit Portal</span>
+      <span className="text-[14px] font-medium" style={{ color: "#B59E1E" }}>Apply Now</span>
     </div>
   );
 }
