@@ -728,16 +728,16 @@ export default function EditCurriculumPage() {
     enabled: !!courseId,
   });
 
-  const { data: resourcesData } = useQuery({
+  const { data: resourcesQueryData } = useQuery({
     queryKey: ["admin-course-resources", courseId],
     queryFn: () => getAdminResourcesByCourse(courseId),
     enabled: !!courseId,
   });
 
   useEffect(() => {
-    if (editorData && !initialized) {
+    if (editorData && resourcesQueryData && !initialized) {
       const apiModules = editorData.data?.modules ?? [];
-      const allResources = resourcesData?.data?.resources ?? [];
+      const allResources = resourcesQueryData.data?.resources ?? [];
 
       // Build a map from lessonId -> resources[]
       const resourcesByLesson = {};
@@ -765,7 +765,7 @@ export default function EditCurriculumPage() {
       );
       setInitialized(true);
     }
-  }, [editorData, resourcesData, initialized]);
+  }, [editorData, resourcesQueryData, initialized]);
 
   const updateModule = useCallback((moduleId, patch) => {
     setModules((prev) => prev.map((m) => m._id === moduleId ? { ...m, ...patch } : m));
