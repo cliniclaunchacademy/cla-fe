@@ -69,9 +69,13 @@ function ApplicationStatusBadge({ applicationStatus, rejectionReason }) {
 
 // ─── Visit Portal badge (shown only when no application has been submitted) ───
 
-function VisitPortalBadge() {
+function VisitPortalBadge({ application_url }) {
   return (
-    <div
+    <a
+      href={application_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
       className="flex items-center gap-2 px-3 py-[7px] rounded-full border"
       style={{ background: "#252115", borderColor: "#514920" }}
     >
@@ -81,7 +85,7 @@ function VisitPortalBadge() {
         <path d="M10 14L21 3" stroke="#B59E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
       <span className="text-[14px] font-medium" style={{ color: "#B59E1E" }}>Apply Now</span>
-    </div>
+    </a>
   );
 }
 
@@ -122,7 +126,7 @@ function MaintenanceBadge() {
 // ─── Lab Card ─────────────────────────────────────────────────────────────────
 
 function LabCard({ lab }) {
-  const { status, applicationStatus, rejectionReason, portalUrl, releaseDate, maintenanceMsg } = lab;
+  const { status, applicationStatus, rejectionReason, portalUrl, releaseDate, maintenanceMsg, applicationEmbed: application_url } = lab;
 
   const hasApplied = applicationStatus !== null && applicationStatus !== undefined;
   const isApproved = applicationStatus === "approved";
@@ -131,12 +135,12 @@ function LabCard({ lab }) {
   const isMaintenance = status === "maintenance";
 
   const handleClick = () => {
-    if (isLive && !hasApplied && portalUrl) {
-      window.open(portalUrl, "_blank", "noopener,noreferrer");
+    if (isLive && !hasApplied && application_url) {
+      window.open(application_url, "_blank", "noopener,noreferrer");
     }
   };
 
-  const clickable = isLive && !hasApplied && !!portalUrl;
+  const clickable = isLive && !hasApplied && !!application_url;
 
   return (
     <div
@@ -211,7 +215,7 @@ function LabCard({ lab }) {
             )
             : hasApplied
               ? <ApplicationStatusBadge applicationStatus={applicationStatus} rejectionReason={rejectionReason} />
-              : <VisitPortalBadge />
+              : <VisitPortalBadge application_url={application_url} />
         )}
       </div>
     </div>
