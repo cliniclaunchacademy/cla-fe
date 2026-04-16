@@ -10,7 +10,7 @@ import {
   unmarkLessonComplete,
   flagLessonVideo,
 } from "apis/student-courses.api";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import Loader from "@common/Loader";
 
@@ -103,6 +103,14 @@ function CourseVideoPlayerContent() {
 
   // Track completion state; initialise from sidebar once data loads
   const [isCompleted, setIsCompleted] = useState(null);
+  const activeLessonRef = useRef(null);
+
+  // Scroll active lesson into view in the sidebar whenever the lesson changes
+  useEffect(() => {
+    if (activeLessonRef.current) {
+      activeLessonRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [lessonId, sidebar]);
 
   useEffect(() => {
     if (!sidebar.length || lessonId === null) return;
@@ -412,6 +420,7 @@ function CourseVideoPlayerContent() {
                     return (
                       <button
                         key={sidebarLesson._id}
+                        ref={isActive ? activeLessonRef : null}
                         onClick={() =>
                           router.push(
                             `/courses/courseVideoPlayer?courseId=${courseId}&lessonId=${sidebarLesson._id}`
