@@ -108,7 +108,7 @@ function CourseVideoPlayerContent() {
   // Scroll active lesson into view in the sidebar whenever the lesson changes
   useEffect(() => {
     if (activeLessonRef.current) {
-      activeLessonRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      activeLessonRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [lessonId, sidebar]);
 
